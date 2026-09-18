@@ -1,1 +1,56 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مولد QR Code | أدواتي</title><link rel="stylesheet" href="../assets/style.css"></head><body><main class="wrap tool"><div class="box"><a class="logo" href="../index.html">أدواتي</a><h1>مولد QR Code</h1><input id="t" placeholder="رابط أو نص"><button onclick="go()">إنشاء</button><div id="q" class="result"></div></div></main><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><script>function go(){q.innerHTML='';new QRCode(q,{text:t.value,width:220,height:220})}</script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء QR Code | أدواتي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>إنشاء QR Code</h1>
+  <p>حوّل النص أو الرابط إلى رمز QR</p>
+</header>
+
+<main>
+  <label for="text">النص أو الرابط:</label>
+  <input type="text" id="text" placeholder="اكتب النص أو الرابط">
+
+  <button onclick="generateQR()">إنشاء QR Code</button>
+
+  <div id="qrcode"></div>
+
+  <p id="result"></p>
+
+  <a href="index.html">العودة إلى أدواتي</a>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+function generateQR() {
+  const text = document.getElementById("text").value.trim();
+  const qr = document.getElementById("qrcode");
+  const result = document.getElementById("result");
+
+  qr.innerHTML = "";
+
+  if (!text) {
+    result.textContent = "يرجى إدخال نص أو رابط أولًا";
+    return;
+  }
+
+  new QRCode(qr, {
+    text: text,
+    width: 200,
+    height: 200
+  });
+
+  result.textContent = "تم إنشاء رمز QR بنجاح";
+}
+</script>
+
+</body>
+</html>
