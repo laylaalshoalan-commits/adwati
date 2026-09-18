@@ -1,1 +1,47 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>عداد الكلمات والحروف | أدواتي</title><link rel="stylesheet" href="../assets/style.css"></head><body><main class="wrap tool"><div class="box"><a class="logo" href="../index.html">أدواتي</a><h1>عداد الكلمات والحروف</h1><textarea id="t"></textarea><div id="r" class="result">الكلمات: 0 · الحروف: 0 · الأسطر: 0</div></div></main><script>t.oninput=()=>{let s=t.value;r.textContent=`الكلمات: ${(s.trim().match(/\S+/g)||[]).length} · الحروف: ${s.length} · الأسطر: ${s?s.split('\n').length:0}`}</script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عداد الكلمات والحروف | أدواتي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>عداد الكلمات والحروف</h1>
+  <p>احسب الكلمات والحروف في النص بسهولة</p>
+</header>
+
+<main>
+  <textarea id="text" rows="10" placeholder="اكتب أو الصق النص هنا..."></textarea>
+
+  <p>عدد الكلمات: <strong id="words">0</strong></p>
+  <p>عدد الحروف: <strong id="characters">0</strong></p>
+  <p>عدد الأحرف بدون المسافات: <strong id="noSpaces">0</strong></p>
+
+  <a href="index.html">العودة إلى أدواتي</a>
+</main>
+
+<script>
+const text = document.getElementById("text");
+
+text.addEventListener("input", function () {
+  const value = text.value;
+
+  const words = value.trim()
+    ? value.trim().split(/\s+/).length
+    : 0;
+
+  const characters = value.length;
+  const noSpaces = value.replace(/\s/g, "").length;
+
+  document.getElementById("words").textContent = words;
+  document.getElementById("characters").textContent = characters;
+  document.getElementById("noSpaces").textContent = noSpaces;
+});
+</script>
+
+</body>
+</html>
