@@ -1,1 +1,47 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>حاسبة النسبة المئوية | أدواتي</title><link rel="stylesheet" href="../assets/style.css"></head><body><main class="wrap tool"><div class="box"><a class="logo" href="../index.html">أدواتي</a><h1>حاسبة النسبة المئوية</h1><div class="row"><div><label>النسبة %</label><input id="p" type="number" value="20"></div><div><label>العدد</label><input id="n" type="number" value="500"></div></div><button onclick="calc()">احسب</button><div id="r" class="result"></div></div></main><script>function calc(){r.innerHTML='<b>'+((+p.value*+n.value)/100).toLocaleString('ar')+'</b>'}</script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاسبة النسبة المئوية | أدواتي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>حاسبة النسبة المئوية</h1>
+  <p>احسب النسبة المئوية بسهولة</p>
+</header>
+
+<main>
+  <label>العدد:</label>
+  <input type="number" id="number" placeholder="أدخل العدد">
+
+  <label>النسبة:</label>
+  <input type="number" id="percent" placeholder="أدخل النسبة">
+
+  <button onclick="calculate()">احسب</button>
+
+  <h2 id="result"></h2>
+
+  <a href="index.html">العودة إلى أدواتي</a>
+</main>
+
+<script>
+function calculate() {
+  const number = parseFloat(document.getElementById("number").value);
+  const percent = parseFloat(document.getElementById("percent").value);
+  const result = document.getElementById("result");
+
+  if (isNaN(number) || isNaN(percent)) {
+    result.textContent = "يرجى إدخال الأرقام أولًا";
+    return;
+  }
+
+  result.textContent = "النتيجة: " + (number * percent / 100);
+}
+</script>
+
+</body>
+</html>
