@@ -1,1 +1,95 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>أداة صور | أدواتي</title><link rel="stylesheet" href="../assets/style.css"></head><body><main class="wrap tool"><div class="box"><a class="logo" href="../index.html">أدواتي</a><h1 id="title">أداة الصور</h1><input id="f" type="file" accept="image/*"><label>الجودة</label><input id="q" type="range" min=".2" max="1" step=".05" value=".85"><button onclick="go()">تنفيذ</button><div id="r" class="result"></div></div></main><script>let mode=location.pathname.includes('compress')?'compress':location.pathname.includes('resize')?'resize':location.pathname.includes('png-to-jpg')?'pngjpg':'jpgpng';let im=new Image();f.onchange=()=>{im.onload=()=>{};im.src=URL.createObjectURL(f.files[0])};title.textContent=mode==='compress'?'ضغط الصور':mode==='resize'?'تغيير حجم الصور':mode==='pngjpg'?'PNG إلى JPG':'JPG إلى PNG';function go(){if(!f.files[0])return;r.textContent='جاري المعالجة...';im.onload=()=>{let c=document.createElement('canvas');c.width=im.width;c.height=im.height;c.getContext('2d').drawImage(im,0,0);let type=mode==='jpgpng'?'image/png':'image/jpeg';c.toBlob(b=>{let u=URL.createObjectURL(b);r.innerHTML=`تمت المعالجة — <a class="download" download="adawati-image.${type==='image/png'?'png':'jpg'}" href="${u}">تحميل الملف</a>`},type,+q.value)};im.src=URL.createObjectURL(f.files[0])}</script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ضغط الصور | أدواتي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>ضغط الصور</h1>
+  <p>قلّل حجم الصورة بسهولة من المتصفح</p>
+</header>
+
+<main>
+  <input type="file" id="imageInput" accept="image/*">
+
+  <label for="quality">جودة الصورة:</label>
+  <input type="range" id="quality" min="10" max="100" value="70">
+
+  <span id="qualityValue">70%</span>
+
+  <button onclick="compressImage()">ضغط الصورة</button>
+
+  <p id="result"></p>
+
+  <a id="download" style="display:none;" download="compressed-image.jpg">
+    تحميل الصورة المضغوطة
+  </a>
+
+  <br><br>
+  <a href="index.html">العودة إلى أدواتي</a>
+</main>
+
+<script>
+const quality = document.getElementById("quality");
+const qualityValue = document.getElementById("qualityValue");
+
+quality.addEventListener("input", function () {
+  qualityValue.textContent = this.value + "%";
+});
+
+function compressImage() {
+  const input = document.getElementById("imageInput");
+  const result = document.getElementById("result");
+  const download = document.getElementById("download");
+
+  if (!input.files || !input.files[0]) {
+    result.textContent = "يرجى اختيار صورة أولًا";
+    return;
+  }
+
+  const file = input.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+    const image = new Image();
+
+    image.onload = function() {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      ctx.drawImage(image, 0, 0);
+
+      canvas.toBlob(
+        function(blob) {
+          const url = URL.createObjectURL(blob);
+
+          download.href = url;
+          download.style.display = "inline-block";
+          download.textContent = "تحميل الصورة المضغوطة";
+
+          result.textContent =
+            "تم ضغط الصورة. الحجم الجديد: " +
+            Math.round(blob.size / 1024) + " KB";
+        },
+        "image/jpeg",
+        quality.value / 100
+      );
+    };
+
+    image.src = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
