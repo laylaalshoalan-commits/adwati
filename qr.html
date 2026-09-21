@@ -3,54 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>إنشاء QR Code | أدواتي</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="أنشئ رمز QR مجاناً لأي نص أو رابط باستخدام أداة أدواتي.">
+
+  <script>
+    if (localStorage.getItem("adwati-theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class"
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0"
+    rel="stylesheet"
+  >
+
+  <!-- مكتبة QR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    body {
+      font-family: "Tajawal", sans-serif;
+    }
+  </style>
 </head>
 
-<body>
+<body class="min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors">
 
-<header>
-  <h1>إنشاء QR Code</h1>
-  <p>حوّل النص أو الرابط إلى رمز QR</p>
-</header>
+  <!-- Header -->
+  <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-50">
 
-<main>
-  <label for="text">النص أو الرابط:</label>
-  <input type="text" id="text" placeholder="اكتب النص أو الرابط">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
 
-  <button onclick="generateQR()">إنشاء QR Code</button>
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 shrink-0">
 
-  <div id="qrcode"></div>
+        <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center shadow-sm">
+          <span class="material-symbols-rounded">build</span>
+        </div>
 
-  <p id="result"></p>
+        <div>
+          <div class="font-extrabold text-lg leading-tight">
+            أدواتي
+          </div>
 
-  <a href="index.html">العودة إلى أدواتي</a>
-</main>
+          <div class="text-xs text-slate-500 dark:text-slate-400">
+            أدوات بسيطة لإنجاز أعمالك اليومية
+          </div>
+        </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+      </a>
 
-<script>
-function generateQR() {
-  const text = document.getElementById("text").value.trim();
-  const qr = document.getElementById("qrcode");
-  const result = document.getElementById("result");
 
-  qr.innerHTML = "";
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-5 text-sm font-medium">
 
-  if (!text) {
-    result.textContent = "يرجى إدخال نص أو رابط أولًا";
-    return;
-  }
+        <a
+          href="index.html"
+          class="hover:text-teal-600 transition"
+        >
+          الرئيسية
+        </a>
 
-  new QRCode(qr, {
-    text: text,
-    width: 200,
-    height: 200
-  });
+        <a
+          href="contact.html"
+          class="hover:text-teal-600 transition"
+        >
+          تواصل معنا
+        </a>
 
-  result.textContent = "تم إنشاء رمز QR بنجاح";
-}
-</script>
+      </nav>
+
+
+      <!-- Dark Mode -->
+      <button
+        id="themeToggle"
+        type="button"
+        aria-label="تبديل الوضع"
+        class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+      >
+
+        <span
+          id="themeIcon"
+          class="material-symbols-rounded"
+        >
+          dark_mode
+        </span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- Main -->
+  <main class="max-w-3xl mx-auto px-4 py-8 md:py-12">
+
+    <!-- Title -->
+    <div class="mb-6">
+
+      <a
+        href="index.html"
+        class="inline-flex items-center gap-2 text-sm font-bold text-teal-700 dark:text-teal-400 hover:underline mb-5"
+      >
+
+        <span class="material-symbols-rounded text-lg">
+          arrow_forward
+        </span>
+
+        العودة للرئيسية
+
+      </a>
+
+
+      <div class="flex items-center gap-3 mb-3">
+
+        <div class="w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-400 flex items-center justify-center">
+
+          <span class="material-symbols-rounded text-2xl">
+            qr_code_2
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <h1 class="text-2xl md:text-3xl font-extrabold">
+            إنشاء رمز QR
+          </h1>
+
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            أنشئ رمز QR لأي نص أو رابط بسهولة ومجاناً
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Tool Card -->
+    <section class="bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 md:p-8">
+
+
+      <!-- Input -->
+      <div>
+
+        <label
+          for="qrText"
+          class="block font-bold mb-2"
+        >
+          النص أو الرابط
+        </label>
+
+        <textarea
+          id="qrText"
+          rows="4"
+          placeholder="اكتب النص أو الصق الرابط هنا..."
+          class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 px-4 py-3 outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition resize-none"
+        ></textarea>
+
+      </div>
+
+
+      <!-- Generate Button -->
+      <button
+        onclick="generateQR()"
+        type="button"
+        class="w-full mt-5 bg-teal-600 hover:bg-teal-700 text-white font-bold py-3.5 px-5 rounded-xl transition active:scale-95 flex items-center justify-center gap-2"
+      >
+
+        <span class="material-symbols-rounded">
+          qr_code_2
+        </span>
+
+        إنشاء رمز QR
+
+      </button>
+
+
+      <!-- Result -->
+      <div
+        id="result"
+        class="hidden mt-6 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 p-5"
+      >
+
+        <div class="text-center">
+
+          <div class="flex items-center justify-center gap-2 mb-4">
+
+            <span class="material-symbols-rounded text-emerald-600 dark:text-emerald-400">
+              check_circle
+            </span>
+
+            <h2 class="font-extrabold">
+              تم إنشاء رمز QR
+            </h2>
+
+          </div>
+
+
+          <!-- QR -->
+          <div
+            id="qrcode"
+            class="bg-white p-4 rounded-2xl inline-flex items-center justify-center shadow-sm"
+          ></div>
+
+
+          <!-- Download -->
+          <a
+            id="downloadQR"
+            href="#"
+            download="adwati-qr.png"
+            class="w-full mt-5 bg-teal-600 hover:bg-teal-700 text-white font-bold py-3.5 px-5 rounded-xl transition active:scale-95 flex items-center justify-center gap-2"
+          >
+
+            <span class="material-symbols-rounded">
+              download
+            </span>
+
+            تنزيل رمز QR
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-7 text-center">
+
+      <div class="font-extrabold text-lg mb-2">
+        أدواتي
+      </div>
+
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">
+        أدوات بسيطة لإنجاز أعمالك اليومية
+      </p>
+
+      <div class="flex justify-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+
+        <a
+          href="privacy.html"
+          class="hover:text-teal-600"
+        >
+          الخصوصية
+        </a>
+
+        <a
+          href="contact.html"
+          class="hover:text-teal-600"
+        >
+          تواصل معنا
+        </a>
+
+      </div>
+
+      <p class="text-xs text-slate-400 dark:text-slate-500 mt-4">
+        © 2026 أدواتي - جميع الحقوق محفوظة
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script>
+
+    function generateQR() {
+
+      const text = document.getElementById("qrText").value.trim();
+
+      const result = document.getElementById("result");
+
+      const qrContainer = document.getElementById("qrcode");
+
+      const downloadQR = document.getElementById("downloadQR");
+
+
+      if (!text) {
+
+        alert("يرجى كتابة نص أو رابط أولاً");
+
+        return;
+
+      }
+
+
+      // حذف الرمز القديم
+      qrContainer.innerHTML = "";
+
+
+      // إنشاء QR
+      new QRCode(qrContainer, {
+
+        text: text,
+
+        width: 220,
+
+        height: 220,
+
+        colorDark: "#0f172a",
+
+        colorLight: "#ffffff",
+
+        correctLevel: QRCode.CorrectLevel.H
+
+      });
+
+
+      result.classList.remove("hidden");
+
+
+      // الانتظار حتى يتم إنشاء صورة QR
+      setTimeout(function() {
+
+        const qrImage = qrContainer.querySelector("img");
+
+        if (qrImage) {
+
+          downloadQR.href = qrImage.src;
+
+        }
+
+      }, 300);
+
+    }
+
+
+    // الوضع الليلي
+
+    const themeToggle =
+      document.getElementById("themeToggle");
+
+    const themeIcon =
+      document.getElementById("themeIcon");
+
+
+    function updateThemeIcon() {
+
+      if (
+        document.documentElement.classList.contains("dark")
+      ) {
+
+        themeIcon.textContent = "light_mode";
+
+      } else {
+
+        themeIcon.textContent = "dark_mode";
+
+      }
+
+    }
+
+
+    updateThemeIcon();
+
+
+    themeToggle.addEventListener("click", function() {
+
+      document.documentElement.classList.toggle("dark");
+
+
+      const isDark =
+        document.documentElement.classList.contains("dark");
+
+
+      localStorage.setItem(
+        "adwati-theme",
+        isDark ? "dark" : "light"
+      );
+
+
+      updateThemeIcon();
+
+    });
+
+  </script>
 
 </body>
 </html>
