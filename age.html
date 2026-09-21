@@ -1,58 +1,515 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حساب العمر | أدواتي</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8fafc">
+
+    <title>حاسبة العمر | أدواتي</title>
+    <meta name="description" content="احسب عمرك بالسنوات والأشهر والأيام بسهولة باستخدام حاسبة العمر المجانية من أدواتي.">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem("adwati-theme");
+
+                if (
+                    savedTheme === "dark" ||
+                    (
+                        savedTheme === null &&
+                        window.matchMedia &&
+                        window.matchMedia("(prefers-color-scheme: dark)").matches
+                    )
+                ) {
+                    document.documentElement.classList.add("dark");
+                }
+            } catch (error) {}
+        })();
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Tajawal", sans-serif;
+        }
+
+        .material-symbols-rounded {
+            font-family: "Material Symbols Rounded";
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            direction: ltr;
+            -webkit-font-feature-settings: "liga";
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+            font-variation-settings:
+                "FILL" 0,
+                "wght" 500,
+                "GRAD" 0,
+                "opsz" 24;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.75);
+        }
+
+        .dark .glass-header {
+            background: rgba(2, 6, 23, 0.88);
+            border-bottom-color: rgba(51, 65, 85, 0.75);
+        }
+
+        .tool-background {
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(20, 184, 166, 0.10),
+                    transparent 30%
+                ),
+                #f8fafc;
+        }
+
+        .dark .tool-background {
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(20, 184, 166, 0.08),
+                    transparent 30%
+                ),
+                #020617;
+        }
+
+        .input-field {
+            width: 100%;
+            min-height: 50px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            color: #0f172a;
+            padding: 12px 14px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: all .2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 4px rgba(20, 184, 166, .10);
+        }
+
+        .dark .input-field {
+            background: #0f172a;
+            border-color: #334155;
+            color: #f8fafc;
+        }
+
+        .dark .input-field:focus {
+            border-color: #2dd4bf;
+        }
+
+        .main-button {
+            width: 100%;
+            min-height: 52px;
+            border: none;
+            border-radius: 12px;
+            background: #0f766e;
+            color: white;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+
+        .main-button:hover {
+            background: #115e59;
+        }
+
+        .main-button:active {
+            transform: scale(.95);
+        }
+
+        .result-box {
+            margin-top: 22px;
+            padding: 20px;
+            border-radius: 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #0f172a;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.8;
+        }
+
+        .dark .result-box {
+            background: #020617;
+            border-color: #1e293b;
+            color: #f8fafc;
+        }
+    </style>
 </head>
-<body>
 
-<header>
-  <h1>حساب العمر</h1>
-  <p>احسب عمرك بسهولة</p>
-</header>
+<body class="tool-background text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
-<main>
-  <label for="birthdate">تاريخ الميلاد:</label>
-  <input type="date" id="birthdate">
+    <!-- Header -->
+    <header class="glass-header sticky top-0 z-50">
 
-  <button onclick="calculateAge()">احسب العمر</button>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-  <h2 id="result"></h2>
+            <div class="h-16 flex items-center justify-between gap-4">
 
-  <a href="index.html">العودة إلى أدواتي</a>
-</main>
+                <!-- Logo -->
+                <a href="index.html"
+                   class="flex items-center gap-2"
+                   aria-label="أدواتي">
 
-<script>
-function calculateAge() {
-  const birthdate = new Date(document.getElementById("birthdate").value);
-  const today = new Date();
+                    <span class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center">
 
-  if (isNaN(birthdate.getTime())) {
-    document.getElementById("result").textContent = "يرجى اختيار تاريخ الميلاد";
-    return;
-  }
+                        <span class="material-symbols-rounded">
+                            handyman
+                        </span>
 
-  let years = today.getFullYear() - birthdate.getFullYear();
-  let months = today.getMonth() - birthdate.getMonth();
-  let days = today.getDate() - birthdate.getDate();
+                    </span>
 
-  if (days < 0) {
-    months--;
-    const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-    days += previousMonth.getDate();
-  }
+                    <span class="text-xl font-extrabold text-slate-900 dark:text-white">
+                        أدواتي
+                    </span>
 
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
+                </a>
 
-  document.getElementById("result").textContent =
-    "عمرك: " + years + " سنة و" + months + " شهر و" + days + " يوم";
-}
-</script>
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center gap-6 text-sm font-bold">
+
+                    <a href="index.html"
+                       class="text-teal-700 dark:text-teal-400 hover:text-teal-900 transition">
+                        الرئيسية
+                    </a>
+
+                    <a href="index.html#tools"
+                       class="text-slate-600 dark:text-slate-300 hover:text-teal-700 transition">
+                        الأدوات
+                    </a>
+
+                    <a href="contact.html"
+                       class="text-slate-600 dark:text-slate-300 hover:text-teal-700 transition">
+                        تواصل معنا
+                    </a>
+
+                </nav>
+
+                <!-- Theme -->
+                <button
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="تبديل الوضع الليلي"
+                    class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+
+                    <span id="theme-icon" class="material-symbols-rounded">
+                        dark_mode
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main -->
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+        <!-- Back -->
+        <div class="mb-5">
+
+            <a href="index.html"
+               class="inline-flex items-center gap-2 text-teal-700 dark:text-teal-400 font-bold hover:gap-3 transition-all">
+
+                <span class="material-symbols-rounded">
+                    arrow_forward
+                </span>
+
+                العودة للرئيسية
+
+            </a>
+
+        </div>
+
+
+        <!-- Tool Card -->
+        <section class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm p-5 sm:p-8">
+
+            <!-- Title -->
+            <div class="text-center mb-8">
+
+                <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-400 flex items-center justify-center">
+
+                    <span class="material-symbols-rounded text-4xl">
+                        calendar_month
+                    </span>
+
+                </div>
+
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                    حاسبة العمر
+                </h1>
+
+                <p class="mt-2 text-slate-500 dark:text-slate-400">
+                    احسب عمرك بالسنوات والأشهر والأيام بسهولة
+                </p>
+
+            </div>
+
+
+            <!-- Tool -->
+            <div class="space-y-5">
+
+                <div>
+
+                    <label
+                        for="birthdate"
+                        class="block mb-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+
+                        تاريخ الميلاد
+
+                    </label>
+
+                    <input
+                        type="date"
+                        id="birthdate"
+                        class="input-field">
+
+                </div>
+
+
+                <button
+                    onclick="calculateAge()"
+                    class="main-button">
+
+                    <span class="inline-flex items-center justify-center gap-2">
+
+                        <span class="material-symbols-rounded">
+                            calculate
+                        </span>
+
+                        احسب العمر
+
+                    </span>
+
+                </button>
+
+
+                <!-- Result -->
+                <div
+                    id="result"
+                    class="result-box">
+
+                    <span class="text-slate-400 dark:text-slate-500 font-medium">
+                        ستظهر النتيجة هنا
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/70">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+
+                <p>
+                    © 2026 أدواتي — أدوات بسيطة لإنجاز أعمالك اليومية
+                </p>
+
+                <div class="flex items-center gap-5">
+
+                    <a href="privacy.html"
+                       class="hover:text-teal-700 dark:hover:text-teal-400 transition">
+                        الخصوصية
+                    </a>
+
+                    <a href="contact.html"
+                       class="hover:text-teal-700 dark:hover:text-teal-400 transition">
+                        تواصل معنا
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Original Tool JavaScript -->
+    <script>
+
+        function calculateAge() {
+
+            const birthdate =
+                new Date(
+                    document.getElementById("birthdate").value
+                );
+
+            const today = new Date();
+
+            const result =
+                document.getElementById("result");
+
+
+            if (isNaN(birthdate.getTime())) {
+
+                result.textContent =
+                    "يرجى اختيار تاريخ الميلاد";
+
+                return;
+            }
+
+
+            let years =
+                today.getFullYear() -
+                birthdate.getFullYear();
+
+            let months =
+                today.getMonth() -
+                birthdate.getMonth();
+
+            let days =
+                today.getDate() -
+                birthdate.getDate();
+
+
+            if (days < 0) {
+
+                months--;
+
+                const previousMonth =
+                    new Date(
+                        today.getFullYear(),
+                        today.getMonth(),
+                        0
+                    );
+
+                days +=
+                    previousMonth.getDate();
+            }
+
+
+            if (months < 0) {
+
+                years--;
+
+                months += 12;
+            }
+
+
+            result.innerHTML =
+                '<span class="inline-flex items-center justify-center gap-2">' +
+                '<span class="material-symbols-rounded text-teal-600 dark:text-teal-400">celebration</span>' +
+                'عمرك: ' +
+                years +
+                ' سنة و' +
+                months +
+                ' شهر و' +
+                days +
+                ' يوم' +
+                '</span>';
+
+        }
+
+    </script>
+
+
+    <!-- Dark Mode -->
+    <script>
+
+        (function () {
+
+            const root =
+                document.documentElement;
+
+            const button =
+                document.getElementById("theme-toggle");
+
+            const icon =
+                document.getElementById("theme-icon");
+
+
+            function updateIcon() {
+
+                const dark =
+                    root.classList.contains("dark");
+
+                icon.textContent =
+                    dark
+                        ? "light_mode"
+                        : "dark_mode";
+
+            }
+
+
+            button.addEventListener("click", function () {
+
+                const dark =
+                    !root.classList.contains("dark");
+
+                root.classList.toggle(
+                    "dark",
+                    dark
+                );
+
+                localStorage.setItem(
+                    "adwati-theme",
+                    dark
+                        ? "dark"
+                        : "light"
+                );
+
+                updateIcon();
+
+            });
+
+
+            updateIcon();
+
+        })();
+
+    </script>
 
 </body>
 </html>
