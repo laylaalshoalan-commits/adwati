@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>حاسبة النسبة المئوية | أدواتي</title>
-  <meta name="description" content="احسب النسبة المئوية بسرعة وسهولة باستخدام حاسبة النسبة المئوية المجانية من أدواتي.">
+  <title>حاسبة الخصم | أدواتي</title>
+  <meta name="description" content="احسب قيمة الخصم والسعر النهائي بسهولة باستخدام حاسبة الخصم المجانية من أدواتي.">
 
   <script>
     if (localStorage.getItem("adwati-theme") === "dark") {
@@ -14,7 +14,6 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-
   <script>
     tailwind.config = {
       darkMode: "class"
@@ -116,86 +115,101 @@
 
     <!-- Title -->
     <div class="mb-6 flex items-center gap-2">
+
       <span class="material-symbols-rounded text-3xl text-teal-700 dark:text-teal-400">
-        percent
+        sell
       </span>
 
       <div>
         <h1 class="text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">
-          حاسبة النسبة المئوية
+          حاسبة الخصم
         </h1>
 
         <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          احسب النسبة المئوية بسرعة وسهولة
+          احسب قيمة الخصم والسعر النهائي بسهولة
         </p>
       </div>
+
     </div>
 
     <!-- Tool Card -->
     <section class="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/40 sm:p-8 dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/20">
 
       <div class="mb-6 flex items-center gap-3 rounded-2xl bg-teal-50 p-4 dark:bg-teal-950/30">
+
         <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-700 text-white">
-          <span class="material-symbols-rounded">calculate</span>
+          <span class="material-symbols-rounded">percent</span>
         </div>
 
         <div>
           <h2 class="font-extrabold text-slate-900 dark:text-white">
-            احسب النسبة
+            احسب السعر بعد الخصم
           </h2>
 
           <p class="text-sm text-slate-500 dark:text-slate-400">
-            أدخل الرقم والنسبة المطلوبة
+            أدخل السعر ونسبة الخصم
           </p>
         </div>
+
       </div>
 
       <div class="space-y-5">
 
-        <!-- Number -->
+        <!-- Price -->
         <div>
-          <label for="number" class="mb-2 block text-sm font-bold text-slate-700 dark:text-slate-200">
-            الرقم
+          <label
+            for="price"
+            class="mb-2 block text-sm font-bold text-slate-700 dark:text-slate-200"
+          >
+            السعر الأصلي
           </label>
 
           <input
-            id="number"
+            id="price"
             type="number"
             inputmode="decimal"
-            placeholder="مثال: 500"
+            placeholder="مثال: 1000"
             class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-base outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500"
           >
         </div>
 
-        <!-- Percentage -->
+        <!-- Discount -->
         <div>
-          <label for="percent" class="mb-2 block text-sm font-bold text-slate-700 dark:text-slate-200">
-            النسبة المئوية
+          <label
+            for="discount"
+            class="mb-2 block text-sm font-bold text-slate-700 dark:text-slate-200"
+          >
+            نسبة الخصم
           </label>
 
           <div class="relative">
+
             <input
-              id="percent"
+              id="discount"
               type="number"
               inputmode="decimal"
-              placeholder="مثال: 15"
+              placeholder="مثال: 20"
               class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 pl-12 text-base outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500"
             >
 
             <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400">
               %
             </span>
+
           </div>
         </div>
 
         <!-- Button -->
         <button
           type="button"
-          onclick="calculate()"
+          onclick="calculateDiscount()"
           class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-5 py-4 font-extrabold text-white shadow-lg shadow-teal-700/20 transition hover:-translate-y-0.5 hover:bg-teal-800 active:scale-95"
         >
-          <span class="material-symbols-rounded">calculate</span>
-          احسب النسبة
+          <span class="material-symbols-rounded">
+            calculate
+          </span>
+
+          احسب الخصم
         </button>
 
       </div>
@@ -203,20 +217,49 @@
       <!-- Result -->
       <div
         id="resultBox"
-        class="mt-6 hidden rounded-2xl border border-teal-100 bg-teal-50 p-5 text-center dark:border-teal-900 dark:bg-teal-950/30"
+        class="mt-6 hidden rounded-2xl border border-teal-100 bg-teal-50 p-5 dark:border-teal-900 dark:bg-teal-950/30"
       >
-        <span class="material-symbols-rounded mb-2 text-4xl text-teal-700 dark:text-teal-400">
-          check_circle
-        </span>
 
-        <div class="text-sm font-bold text-slate-500 dark:text-slate-400">
-          النتيجة
+        <div class="grid gap-4 sm:grid-cols-2">
+
+          <!-- Discount Value -->
+          <div class="rounded-xl bg-white p-4 text-center shadow-sm dark:bg-slate-900">
+
+            <span class="material-symbols-rounded text-3xl text-teal-700 dark:text-teal-400">
+              price_check
+            </span>
+
+            <div class="mt-2 text-sm font-bold text-slate-500 dark:text-slate-400">
+              قيمة الخصم
+            </div>
+
+            <div
+              id="discountValue"
+              class="mt-1 text-2xl font-extrabold text-teal-700 dark:text-teal-400"
+            ></div>
+
+          </div>
+
+          <!-- Final Price -->
+          <div class="rounded-xl bg-white p-4 text-center shadow-sm dark:bg-slate-900">
+
+            <span class="material-symbols-rounded text-3xl text-teal-700 dark:text-teal-400">
+              payments
+            </span>
+
+            <div class="mt-2 text-sm font-bold text-slate-500 dark:text-slate-400">
+              السعر بعد الخصم
+            </div>
+
+            <div
+              id="finalPrice"
+              class="mt-1 text-2xl font-extrabold text-teal-700 dark:text-teal-400"
+            ></div>
+
+          </div>
+
         </div>
 
-        <div
-          id="result"
-          class="mt-1 text-3xl font-extrabold text-teal-700 dark:text-teal-400"
-        ></div>
       </div>
 
     </section>
@@ -224,16 +267,25 @@
 
   <!-- Footer -->
   <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+
     <div class="mx-auto max-w-6xl px-4 py-8 text-center">
 
       <div class="mb-3 flex justify-center gap-5 text-sm font-bold">
-        <a href="privacy.html" class="text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-400">
+
+        <a
+          href="privacy.html"
+          class="text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-400"
+        >
           سياسة الخصوصية
         </a>
 
-        <a href="contact.html" class="text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-400">
+        <a
+          href="contact.html"
+          class="text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-400"
+        >
           تواصل معنا
         </a>
+
       </div>
 
       <p class="text-sm text-slate-400">
@@ -241,43 +293,80 @@
       </p>
 
     </div>
+
   </footer>
 
   <script>
-    function calculate() {
-      const number = parseFloat(document.getElementById("number").value);
-      const percent = parseFloat(document.getElementById("percent").value);
+    function calculateDiscount() {
+
+      const price = parseFloat(
+        document.getElementById("price").value
+      );
+
+      const discount = parseFloat(
+        document.getElementById("discount").value
+      );
 
       const resultBox = document.getElementById("resultBox");
-      const result = document.getElementById("result");
 
-      if (isNaN(number) || isNaN(percent)) {
-        result.textContent = "يرجى إدخال الرقم والنسبة";
+      const discountValue = document.getElementById("discountValue");
+
+      const finalPrice = document.getElementById("finalPrice");
+
+      if (
+        isNaN(price) ||
+        isNaN(discount) ||
+        price < 0 ||
+        discount < 0
+      ) {
+
+        discountValue.textContent = "بيانات غير صحيحة";
+        finalPrice.textContent = "يرجى إدخال القيم بشكل صحيح";
+
         resultBox.classList.remove("hidden");
+
         return;
       }
 
-      const value = (number * percent) / 100;
+      const discountAmount =
+        (price * discount) / 100;
 
-      result.textContent = value.toLocaleString("ar-EG");
+      const finalAmount =
+        price - discountAmount;
+
+      discountValue.textContent =
+        discountAmount.toLocaleString("ar-EG");
+
+      finalPrice.textContent =
+        finalAmount.toLocaleString("ar-EG");
+
       resultBox.classList.remove("hidden");
     }
 
     // Dark Mode
-    const themeToggle = document.getElementById("themeToggle");
-    const themeIcon = document.getElementById("themeIcon");
+    const themeToggle =
+      document.getElementById("themeToggle");
+
+    const themeIcon =
+      document.getElementById("themeIcon");
 
     function updateThemeIcon() {
-      const isDark = document.documentElement.classList.contains("dark");
-      themeIcon.textContent = isDark ? "light_mode" : "dark_mode";
+
+      const isDark =
+        document.documentElement.classList.contains("dark");
+
+      themeIcon.textContent =
+        isDark ? "light_mode" : "dark_mode";
     }
 
     updateThemeIcon();
 
     themeToggle.addEventListener("click", () => {
+
       document.documentElement.classList.toggle("dark");
 
-      const isDark = document.documentElement.classList.contains("dark");
+      const isDark =
+        document.documentElement.classList.contains("dark");
 
       localStorage.setItem(
         "adwati-theme",
