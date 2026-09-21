@@ -3,93 +3,530 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ضغط الصور | أدواتي</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="اضغط صورك بسهولة وقلل حجمها مع الحفاظ على جودة مناسبة باستخدام أداة ضغط الصور المجانية من أدواتي.">
+
+  <script>
+    if (localStorage.getItem("adwati-theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class"
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0..1,0" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Tajawal", sans-serif;
+    }
+
+    .material-symbols-rounded {
+      font-family: "Material Symbols Rounded";
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-feature-settings: "liga";
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+  </style>
 </head>
 
-<body>
+<body class="min-h-screen bg-slate-50 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
 
-<header>
-  <h1>ضغط الصور</h1>
-  <p>قلّل حجم الصورة بسهولة من المتصفح</p>
-</header>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur-xl dark:border-slate-800/70 dark:bg-slate-950/90">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
 
-<main>
-  <input type="file" id="imageInput" accept="image/*">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700 text-white shadow-sm">
+          <span class="material-symbols-rounded">build</span>
+        </div>
 
-  <label for="quality">جودة الصورة:</label>
-  <input type="range" id="quality" min="10" max="100" value="70">
+        <div>
+          <div class="text-lg font-extrabold text-slate-900 dark:text-white">
+            أدواتي
+          </div>
 
-  <span id="qualityValue">70%</span>
+          <div class="text-xs text-slate-500 dark:text-slate-400">
+            أدوات بسيطة لإنجاز أعمالك اليومية
+          </div>
+        </div>
+      </a>
 
-  <button onclick="compressImage()">ضغط الصورة</button>
+      <div class="flex items-center gap-2">
 
-  <p id="result"></p>
+        <nav class="hidden items-center gap-5 md:flex">
 
-  <a id="download" style="display:none;" download="compressed-image.jpg">
-    تحميل الصورة المضغوطة
-  </a>
+          <a href="index.html"
+             class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
+            الرئيسية
+          </a>
 
-  <br><br>
-  <a href="index.html">العودة إلى أدواتي</a>
-</main>
+          <a href="privacy.html"
+             class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
+            الخصوصية
+          </a>
 
-<script>
-const quality = document.getElementById("quality");
-const qualityValue = document.getElementById("qualityValue");
+          <a href="contact.html"
+             class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
+            تواصل معنا
+          </a>
 
-quality.addEventListener("input", function () {
-  qualityValue.textContent = this.value + "%";
-});
+        </nav>
 
-function compressImage() {
-  const input = document.getElementById("imageInput");
-  const result = document.getElementById("result");
-  const download = document.getElementById("download");
+        <button
+          id="themeToggle"
+          type="button"
+          aria-label="تغيير الوضع"
+          class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-teal-600 dark:hover:text-teal-400"
+        >
+          <span id="themeIcon" class="material-symbols-rounded">
+            dark_mode
+          </span>
+        </button>
 
-  if (!input.files || !input.files[0]) {
-    result.textContent = "يرجى اختيار صورة أولًا";
-    return;
-  }
+      </div>
+    </div>
+  </header>
 
-  const file = input.files[0];
-  const reader = new FileReader();
 
-  reader.onload = function(event) {
-    const image = new Image();
+  <!-- Main -->
+  <main class="mx-auto max-w-3xl px-4 py-8 sm:py-12">
 
-    image.onload = function() {
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
+    <!-- Back -->
+    <a
+      href="index.html"
+      class="mb-5 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-teal-600 dark:hover:text-teal-400"
+    >
+      <span class="material-symbols-rounded text-[20px]">
+        arrow_forward
+      </span>
 
-      canvas.width = image.width;
-      canvas.height = image.height;
+      العودة للرئيسية
+    </a>
 
-      ctx.drawImage(image, 0, 0);
 
-      canvas.toBlob(
-        function(blob) {
-          const url = URL.createObjectURL(blob);
+    <!-- Title -->
+    <div class="mb-6 flex items-center gap-2">
 
-          download.href = url;
-          download.style.display = "inline-block";
-          download.textContent = "تحميل الصورة المضغوطة";
+      <span class="material-symbols-rounded text-3xl text-teal-700 dark:text-teal-400">
+        compress
+      </span>
 
-          result.textContent =
-            "تم ضغط الصورة. الحجم الجديد: " +
-            Math.round(blob.size / 1024) + " KB";
-        },
-        "image/jpeg",
-        quality.value / 100
+      <div>
+
+        <h1 class="text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">
+          ضغط الصور
+        </h1>
+
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          قلل حجم الصورة بسهولة مع الحفاظ على جودة مناسبة
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Tool Card -->
+    <section class="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/40 sm:p-8 dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/20">
+
+      <div class="mb-6 flex items-center gap-3 rounded-2xl bg-teal-50 p-4 dark:bg-teal-950/30">
+
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-700 text-white">
+          <span class="material-symbols-rounded">
+            photo_library
+          </span>
+        </div>
+
+        <div>
+
+          <h2 class="font-extrabold text-slate-900 dark:text-white">
+            اختر صورة
+          </h2>
+
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            تتم معالجة الصورة داخل متصفحك
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="space-y-5">
+
+        <!-- File -->
+        <div>
+
+          <label
+            for="imageInput"
+            class="mb-2 block text-sm font-bold text-slate-700 dark:text-slate-200"
+          >
+            الصورة
+          </label>
+
+          <input
+            id="imageInput"
+            type="file"
+            accept="image/*"
+            class="block w-full cursor-pointer rounded-xl border border-slate-200 bg-white text-sm text-slate-600 file:mr-0 file:rounded-r-xl file:border-0 file:bg-teal-700 file:px-5 file:py-3.5 file:font-bold file:text-white hover:file:bg-teal-800 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
+          >
+
+        </div>
+
+
+        <!-- Quality -->
+        <div>
+
+          <div class="mb-2 flex items-center justify-between">
+
+            <label
+              for="quality"
+              class="text-sm font-bold text-slate-700 dark:text-slate-200"
+            >
+              جودة الصورة
+            </label>
+
+            <span
+              id="qualityValue"
+              class="font-extrabold text-teal-700 dark:text-teal-400"
+            >
+              70%
+            </span>
+
+          </div>
+
+          <input
+            id="quality"
+            type="range"
+            min="10"
+            max="100"
+            value="70"
+            class="w-full accent-teal-700"
+          >
+
+          <div class="mt-1 flex justify-between text-xs text-slate-400">
+            <span>حجم أصغر</span>
+            <span>جودة أعلى</span>
+          </div>
+
+        </div>
+
+
+        <!-- Compress Button -->
+        <button
+          type="button"
+          onclick="compressImage()"
+          class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-5 py-4 font-extrabold text-white shadow-lg shadow-teal-700/20 transition hover:-translate-y-0.5 hover:bg-teal-800 active:scale-95"
+        >
+
+          <span class="material-symbols-rounded">
+            compress
+          </span>
+
+          ضغط الصورة
+
+        </button>
+
+
+        <!-- Result -->
+        <div
+          id="resultBox"
+          class="hidden rounded-2xl border border-teal-100 bg-teal-50 p-5 dark:border-teal-900 dark:bg-teal-950/30"
+        >
+
+          <div class="mb-4 text-center">
+
+            <span class="material-symbols-rounded text-4xl text-teal-700 dark:text-teal-400">
+              check_circle
+            </span>
+
+            <h3 class="mt-2 font-extrabold text-slate-900 dark:text-white">
+              تم ضغط الصورة بنجاح
+            </h3>
+
+          </div>
+
+
+          <div class="grid gap-3 sm:grid-cols-2">
+
+            <div class="rounded-xl bg-white p-4 text-center dark:bg-slate-900">
+
+              <div class="text-sm font-bold text-slate-500 dark:text-slate-400">
+                الحجم الأصلي
+              </div>
+
+              <div
+                id="originalSize"
+                class="mt-1 text-lg font-extrabold text-slate-800 dark:text-white"
+              ></div>
+
+            </div>
+
+
+            <div class="rounded-xl bg-white p-4 text-center dark:bg-slate-900">
+
+              <div class="text-sm font-bold text-slate-500 dark:text-slate-400">
+                الحجم الجديد
+              </div>
+
+              <div
+                id="compressedSize"
+                class="mt-1 text-lg font-extrabold text-teal-700 dark:text-teal-400"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <a
+            id="downloadLink"
+            href="#"
+            download="compressed-image.jpg"
+            class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-5 py-3.5 font-extrabold text-white transition hover:bg-teal-800 active:scale-95"
+          >
+
+            <span class="material-symbols-rounded">
+              download
+            </span>
+
+            تحميل الصورة المضغوطة
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+
+    <div class="mx-auto max-w-6xl px-4 py-8 text-center">
+
+      <div class="mb-3 flex justify-center gap-5 text-sm font-bold">
+
+        <a
+          href="privacy.html"
+          class="text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-400"
+        >
+          سياسة الخصوصية
+        </a>
+
+        <a
+          href="contact.html"
+          class="text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-400"
+        >
+          تواصل معنا
+        </a>
+
+      </div>
+
+      <p class="text-sm text-slate-400">
+        © 2026 أدواتي — جميع الحقوق محفوظة
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    // Quality Slider
+    const quality =
+      document.getElementById("quality");
+
+    const qualityValue =
+      document.getElementById("qualityValue");
+
+    quality.addEventListener("input", () => {
+
+      qualityValue.textContent =
+        quality.value + "%";
+
+    });
+
+
+    // Format Size
+    function formatSize(bytes) {
+
+      if (bytes < 1024) {
+        return bytes + " بايت";
+      }
+
+      if (bytes < 1024 * 1024) {
+        return (bytes / 1024).toFixed(1) + " كيلوبايت";
+      }
+
+      return (bytes / (1024 * 1024)).toFixed(2) + " ميجابايت";
+    }
+
+
+    // Compress Image
+    function compressImage() {
+
+      const input =
+        document.getElementById("imageInput");
+
+      if (!input.files || !input.files[0]) {
+
+        alert("يرجى اختيار صورة أولاً");
+
+        return;
+      }
+
+      const file = input.files[0];
+
+      const image = new Image();
+
+      const reader = new FileReader();
+
+      reader.onload = function(event) {
+
+        image.onload = function() {
+
+          const canvas =
+            document.createElement("canvas");
+
+          canvas.width =
+            image.naturalWidth;
+
+          canvas.height =
+            image.naturalHeight;
+
+          const context =
+            canvas.getContext("2d");
+
+          context.drawImage(
+            image,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          );
+
+
+          const qualityValueNumber =
+            parseInt(quality.value) / 100;
+
+
+          canvas.toBlob(
+            function(blob) {
+
+              if (!blob) {
+
+                alert("تعذر ضغط الصورة");
+
+                return;
+              }
+
+
+              const url =
+                URL.createObjectURL(blob);
+
+
+              document.getElementById("originalSize")
+                .textContent =
+                formatSize(file.size);
+
+
+              document.getElementById("compressedSize")
+                .textContent =
+                formatSize(blob.size);
+
+
+              const downloadLink =
+                document.getElementById("downloadLink");
+
+              downloadLink.href = url;
+
+              downloadLink.download =
+                "adwati-compressed-image.jpg";
+
+
+              document.getElementById("resultBox")
+                .classList.remove("hidden");
+
+            },
+            "image/jpeg",
+            qualityValueNumber
+          );
+
+        };
+
+        image.src = event.target.result;
+
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+
+    // Dark Mode
+    const themeToggle =
+      document.getElementById("themeToggle");
+
+    const themeIcon =
+      document.getElementById("themeIcon");
+
+
+    function updateThemeIcon() {
+
+      const isDark =
+        document.documentElement.classList.contains("dark");
+
+      themeIcon.textContent =
+        isDark ? "light_mode" : "dark_mode";
+    }
+
+
+    updateThemeIcon();
+
+
+    themeToggle.addEventListener("click", () => {
+
+      document.documentElement.classList.toggle("dark");
+
+      const isDark =
+        document.documentElement.classList.contains("dark");
+
+      localStorage.setItem(
+        "adwati-theme",
+        isDark ? "dark" : "light"
       );
-    };
 
-    image.src = event.target.result;
-  };
+      updateThemeIcon();
 
-  reader.readAsDataURL(file);
-}
-</script>
+    });
+
+  </script>
 
 </body>
 </html>
