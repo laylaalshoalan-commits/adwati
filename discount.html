@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>حاسبة الخصم | أدواتي</title>
-  <meta name="description" content="احسب قيمة الخصم والسعر النهائي بسهولة باستخدام حاسبة الخصم المجانية من أدواتي.">
+  <title>مولّد كلمات المرور | أدواتي</title>
+  <meta name="description" content="أنشئ كلمة مرور قوية وعشوائية بسهولة باستخدام مولّد كلمات المرور المجاني من أدواتي.">
 
   <script>
     if (localStorage.getItem("adwati-theme") === "dark") {
@@ -14,6 +14,7 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       darkMode: "class"
@@ -22,7 +23,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0..1,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0..1,0" rel="stylesheet">
 
   <style>
     body {
@@ -55,9 +56,11 @@
 
   <!-- Header -->
   <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur-xl dark:border-slate-800/70 dark:bg-slate-950/90">
+
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
 
       <a href="index.html" class="flex items-center gap-2">
+
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700 text-white shadow-sm">
           <span class="material-symbols-rounded">build</span>
         </div>
@@ -66,26 +69,33 @@
           <div class="text-lg font-extrabold text-slate-900 dark:text-white">
             أدواتي
           </div>
+
           <div class="text-xs text-slate-500 dark:text-slate-400">
             أدوات بسيطة لإنجاز أعمالك اليومية
           </div>
         </div>
+
       </a>
 
       <div class="flex items-center gap-2">
 
         <nav class="hidden items-center gap-5 md:flex">
-          <a href="index.html" class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
+
+          <a href="index.html"
+             class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
             الرئيسية
           </a>
 
-          <a href="privacy.html" class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
+          <a href="privacy.html"
+             class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
             الخصوصية
           </a>
 
-          <a href="contact.html" class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
+          <a href="contact.html"
+             class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400">
             تواصل معنا
           </a>
+
         </nav>
 
         <button
@@ -94,12 +104,15 @@
           aria-label="تغيير الوضع"
           class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-teal-600 dark:hover:text-teal-400"
         >
-          <span id="themeIcon" class="material-symbols-rounded">dark_mode</span>
+          <span id="themeIcon" class="material-symbols-rounded">
+            dark_mode
+          </span>
         </button>
 
       </div>
     </div>
   </header>
+
 
   <!-- Main -->
   <main class="mx-auto max-w-3xl px-4 py-8 sm:py-12">
@@ -109,28 +122,35 @@
       href="index.html"
       class="mb-5 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-teal-600 dark:hover:text-teal-400"
     >
-      <span class="material-symbols-rounded text-[20px]">arrow_forward</span>
+      <span class="material-symbols-rounded text-[20px]">
+        arrow_forward
+      </span>
+
       العودة للرئيسية
     </a>
+
 
     <!-- Title -->
     <div class="mb-6 flex items-center gap-2">
 
       <span class="material-symbols-rounded text-3xl text-teal-700 dark:text-teal-400">
-        sell
+        lock
       </span>
 
       <div>
+
         <h1 class="text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">
-          حاسبة الخصم
+          مولّد كلمات المرور
         </h1>
 
         <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          احسب قيمة الخصم والسعر النهائي بسهولة
+          أنشئ كلمة مرور قوية وعشوائية خلال ثوانٍ
         </p>
+
       </div>
 
     </div>
+
 
     <!-- Tool Card -->
     <section class="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/40 sm:p-8 dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/20">
@@ -138,132 +158,130 @@
       <div class="mb-6 flex items-center gap-3 rounded-2xl bg-teal-50 p-4 dark:bg-teal-950/30">
 
         <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-700 text-white">
-          <span class="material-symbols-rounded">percent</span>
+          <span class="material-symbols-rounded">
+            security
+          </span>
         </div>
 
         <div>
+
           <h2 class="font-extrabold text-slate-900 dark:text-white">
-            احسب السعر بعد الخصم
+            إنشاء كلمة مرور
           </h2>
 
           <p class="text-sm text-slate-500 dark:text-slate-400">
-            أدخل السعر ونسبة الخصم
+            اختر طول كلمة المرور ثم اضغط إنشاء
           </p>
+
         </div>
 
       </div>
+
 
       <div class="space-y-5">
 
-        <!-- Price -->
+        <!-- Length -->
         <div>
+
           <label
-            for="price"
+            for="length"
             class="mb-2 block text-sm font-bold text-slate-700 dark:text-slate-200"
           >
-            السعر الأصلي
+            طول كلمة المرور
           </label>
 
           <input
-            id="price"
+            id="length"
             type="number"
-            inputmode="decimal"
-            placeholder="مثال: 1000"
-            class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-base outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500"
+            min="4"
+            max="64"
+            value="16"
+            inputmode="numeric"
+            class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-base outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           >
+
+          <p class="mt-2 text-xs text-slate-400">
+            يمكنك اختيار طول من 4 إلى 64 حرفًا
+          </p>
+
         </div>
 
-        <!-- Discount -->
-        <div>
-          <label
-            for="discount"
-            class="mb-2 block text-sm font-bold text-slate-700 dark:text-slate-200"
-          >
-            نسبة الخصم
-          </label>
 
-          <div class="relative">
-
-            <input
-              id="discount"
-              type="number"
-              inputmode="decimal"
-              placeholder="مثال: 20"
-              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 pl-12 text-base outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500"
-            >
-
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400">
-              %
-            </span>
-
-          </div>
-        </div>
-
-        <!-- Button -->
+        <!-- Generate -->
         <button
           type="button"
-          onclick="calculateDiscount()"
+          onclick="generatePassword()"
           class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-5 py-4 font-extrabold text-white shadow-lg shadow-teal-700/20 transition hover:-translate-y-0.5 hover:bg-teal-800 active:scale-95"
         >
+
           <span class="material-symbols-rounded">
-            calculate
+            key
           </span>
 
-          احسب الخصم
+          إنشاء كلمة مرور قوية
+
         </button>
 
-      </div>
 
-      <!-- Result -->
-      <div
-        id="resultBox"
-        class="mt-6 hidden rounded-2xl border border-teal-100 bg-teal-50 p-5 dark:border-teal-900 dark:bg-teal-950/30"
-      >
+        <!-- Password Result -->
+        <div
+          id="resultBox"
+          class="hidden rounded-2xl border border-teal-100 bg-teal-50 p-4 dark:border-teal-900 dark:bg-teal-950/30"
+        >
 
-        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="mb-2 flex items-center gap-2">
 
-          <!-- Discount Value -->
-          <div class="rounded-xl bg-white p-4 text-center shadow-sm dark:bg-slate-900">
-
-            <span class="material-symbols-rounded text-3xl text-teal-700 dark:text-teal-400">
-              price_check
+            <span class="material-symbols-rounded text-teal-700 dark:text-teal-400">
+              verified_user
             </span>
 
-            <div class="mt-2 text-sm font-bold text-slate-500 dark:text-slate-400">
-              قيمة الخصم
-            </div>
-
-            <div
-              id="discountValue"
-              class="mt-1 text-2xl font-extrabold text-teal-700 dark:text-teal-400"
-            ></div>
+            <span class="text-sm font-bold text-slate-700 dark:text-slate-200">
+              كلمة المرور الجديدة
+            </span>
 
           </div>
 
-          <!-- Final Price -->
-          <div class="rounded-xl bg-white p-4 text-center shadow-sm dark:bg-slate-900">
 
-            <span class="material-symbols-rounded text-3xl text-teal-700 dark:text-teal-400">
-              payments
-            </span>
+          <div class="flex flex-col gap-3 sm:flex-row">
 
-            <div class="mt-2 text-sm font-bold text-slate-500 dark:text-slate-400">
-              السعر بعد الخصم
-            </div>
+            <input
+              id="password"
+              type="text"
+              readonly
+              class="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-center font-bold tracking-wider text-slate-800 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            >
 
-            <div
-              id="finalPrice"
-              class="mt-1 text-2xl font-extrabold text-teal-700 dark:text-teal-400"
-            ></div>
+            <button
+              type="button"
+              onclick="copyPassword()"
+              class="flex items-center justify-center gap-2 rounded-xl border border-teal-200 bg-white px-5 py-3 font-bold text-teal-700 transition hover:bg-teal-50 active:scale-95 dark:border-teal-800 dark:bg-slate-900 dark:text-teal-400 dark:hover:bg-teal-950/40"
+            >
+
+              <span class="material-symbols-rounded">
+                content_copy
+              </span>
+
+              نسخ
+
+            </button>
 
           </div>
+
+          <p
+            id="copyMessage"
+            class="mt-3 hidden text-center text-sm font-bold text-teal-700 dark:text-teal-400"
+          >
+            تم نسخ كلمة المرور بنجاح ✓
+          </p>
 
         </div>
 
       </div>
 
     </section>
+
   </main>
+
 
   <!-- Footer -->
   <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
@@ -296,52 +314,95 @@
 
   </footer>
 
+
   <script>
-    function calculateDiscount() {
 
-      const price = parseFloat(
-        document.getElementById("price").value
-      );
+    // Generate Password
+    function generatePassword() {
 
-      const discount = parseFloat(
-        document.getElementById("discount").value
-      );
+      const lengthInput =
+        document.getElementById("length");
 
-      const resultBox = document.getElementById("resultBox");
+      let length =
+        parseInt(lengthInput.value);
 
-      const discountValue = document.getElementById("discountValue");
-
-      const finalPrice = document.getElementById("finalPrice");
-
-      if (
-        isNaN(price) ||
-        isNaN(discount) ||
-        price < 0 ||
-        discount < 0
-      ) {
-
-        discountValue.textContent = "بيانات غير صحيحة";
-        finalPrice.textContent = "يرجى إدخال القيم بشكل صحيح";
-
-        resultBox.classList.remove("hidden");
-
-        return;
+      if (isNaN(length)) {
+        length = 16;
       }
 
-      const discountAmount =
-        (price * discount) / 100;
+      length = Math.max(4, Math.min(64, length));
 
-      const finalAmount =
-        price - discountAmount;
+      lengthInput.value = length;
 
-      discountValue.textContent =
-        discountAmount.toLocaleString("ar-EG");
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz" +
+        "0123456789" +
+        "!@#$%^&*()-_=+";
 
-      finalPrice.textContent =
-        finalAmount.toLocaleString("ar-EG");
+      let password = "";
 
-      resultBox.classList.remove("hidden");
+      const randomValues =
+        new Uint32Array(length);
+
+      crypto.getRandomValues(randomValues);
+
+      for (let i = 0; i < length; i++) {
+
+        password +=
+          characters[randomValues[i] % characters.length];
+
+      }
+
+      document.getElementById("password").value =
+        password;
+
+      document.getElementById("resultBox")
+        .classList.remove("hidden");
+
+      document.getElementById("copyMessage")
+        .classList.add("hidden");
     }
+
+
+    // Copy Password
+    async function copyPassword() {
+
+      const password =
+        document.getElementById("password").value;
+
+      const message =
+        document.getElementById("copyMessage");
+
+      if (!password) return;
+
+      try {
+
+        await navigator.clipboard.writeText(password);
+
+        message.classList.remove("hidden");
+
+        setTimeout(() => {
+          message.classList.add("hidden");
+        }, 2500);
+
+      } catch (error) {
+
+        const input =
+          document.getElementById("password");
+
+        input.select();
+
+        document.execCommand("copy");
+
+        message.classList.remove("hidden");
+
+        setTimeout(() => {
+          message.classList.add("hidden");
+        }, 2500);
+      }
+    }
+
 
     // Dark Mode
     const themeToggle =
@@ -349,6 +410,7 @@
 
     const themeIcon =
       document.getElementById("themeIcon");
+
 
     function updateThemeIcon() {
 
@@ -359,7 +421,9 @@
         isDark ? "light_mode" : "dark_mode";
     }
 
+
     updateThemeIcon();
+
 
     themeToggle.addEventListener("click", () => {
 
@@ -374,7 +438,9 @@
       );
 
       updateThemeIcon();
+
     });
+
   </script>
 
 </body>
