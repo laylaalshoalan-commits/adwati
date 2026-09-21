@@ -1,56 +1,44 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset xmlns="http://sitemaps.org">
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/</loc>
+    <loc>https://vercel.app</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/age.html</loc>
+    <loc>https://vercel.appage.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/percentage.html</loc>
+    <loc>https://vercel.apppercentage.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/discount.html</loc>
+    <loc>https://vercel.appdiscount.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/password.html</loc>
+    <loc>https://vercel.apppassword.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/compress-image.html</loc>
+    <loc>https://vercel.appcompress-image.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/resize-image.html</loc>
+    <loc>https://vercel.appresize-image.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/jpg-to-png.html</loc>
+    <loc>https://vercel.appjpg-to-png.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/png-to-jpg.html</loc>
+    <loc>https://vercel.apppng-to-jpg.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/qr.html</loc>
+    <loc>https://vercel.appqr.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/text-counter.html</loc>
+    <loc>https://vercel.apptext-counter.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/privacy.html</loc>
+    <loc>https://vercel.appprivacy.html</loc>
   </url>
-
   <url>
-    <loc>https://laylaalshoalan-commits.github.io/adwati/contact.html</loc>
+    <loc>https://vercel.appcontact.html</loc>
   </url>
-
 </urlset>
+
