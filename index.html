@@ -1,42 +1,109 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 
-    <title>أدواتي | أدوات مجانية وسهلة لإنجاز أعمالك اليومية</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#f8fafc">
+
+    <title>أدواتي | أدوات وحاسبات مجانية وسريعة</title>
 
     <meta name="description"
-          content="أدواتي منصة عربية مجانية تضم أدوات وحاسبات عملية تساعدك على إنجاز الحسابات والمهام اليومية بسهولة وسرعة.">
+          content="أدواتي منصة عربية مجانية تضم أدوات وحاسبات عملية مثل حساب العمر، النسبة المئوية، الخصم، ضغط الصور، تغيير حجم الصور، تحويل الصور، QR، عداد الكلمات ومولد كلمات المرور.">
 
     <meta name="keywords"
-          content="أدوات مجانية, حاسبات, حساب العمر, حساب النسبة, حساب الخصم, ضغط الصور, تغيير حجم الصور, تحويل الصور, QR, كلمات المرور">
+          content="أدوات مجانية, حاسبات مجانية, حساب العمر, حساب النسبة المئوية, حساب الخصم, ضغط الصور, تغيير حجم الصور, تحويل JPG إلى PNG, تحويل PNG إلى JPG, QR Code, عداد الكلمات, مولد كلمات المرور">
 
-    <!-- Tajawal -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="robots" content="index, follow">
 
-    <!-- Material Symbols Rounded -->
+    <link rel="canonical"
+          href="https://adwati-mu.vercel.app/">
+
+    <!-- =====================================================
+         Tailwind CSS v4
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <!-- =====================================================
+         Google Material Symbols Rounded
+    ====================================================== -->
+
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- =====================================================
+         Arabic Font - Tajawal
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         تحميل الوضع الليلي قبل ظهور الصفحة
+         لمنع وميض اللون الأبيض
+    ====================================================== -->
 
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        tajawal: ['Tajawal', 'sans-serif']
-                    }
+        (function () {
+
+            try {
+
+                const savedTheme =
+                    localStorage.getItem("adwati-theme");
+
+                if (
+                    savedTheme === "dark" ||
+                    (
+                        savedTheme === null &&
+                        window.matchMedia &&
+                        window.matchMedia(
+                            "(prefers-color-scheme: dark)"
+                        ).matches
+                    )
+                ) {
+
+                    document.documentElement.classList.add("dark");
+
                 }
+
+            } catch (error) {
+
+                console.warn(
+                    "تعذر قراءة إعداد الوضع الليلي",
+                    error
+                );
+
             }
-        }
+
+        })();
     </script>
 
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
     <style>
+
+        /* -----------------------------------------------------
+           General
+        ----------------------------------------------------- */
+
         * {
             box-sizing: border-box;
         }
@@ -47,356 +114,944 @@
 
         body {
             margin: 0;
-            font-family: 'Tajawal', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
+            min-height: 100vh;
+            font-family: "Tajawal", sans-serif;
         }
+
+
+        /* -----------------------------------------------------
+           Material Symbols
+        ----------------------------------------------------- */
 
         .material-symbols-rounded {
-            font-family: 'Material Symbols Rounded';
+
+            font-family:
+                "Material Symbols Rounded";
+
             font-weight: normal;
             font-style: normal;
+
             font-size: 24px;
             line-height: 1;
+
             letter-spacing: normal;
             text-transform: none;
+
             display: inline-block;
+
             white-space: nowrap;
             word-wrap: normal;
+
             direction: ltr;
-            -webkit-font-feature-settings: 'liga';
+
+            -webkit-font-feature-settings: "liga";
             -webkit-font-smoothing: antialiased;
-            font-feature-settings: 'liga';
+
+            font-feature-settings: "liga";
+
             font-variation-settings:
-                'FILL' 0,
-                'wght' 500,
-                'GRAD' 0,
-                'opsz' 24;
+                "FILL" 0,
+                "wght" 500,
+                "GRAD" 0,
+                "opsz" 24;
         }
+
+
+        /* -----------------------------------------------------
+           Scrollbar
+        ----------------------------------------------------- */
+
+        ::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 999px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+
+
+        /* -----------------------------------------------------
+           Header
+        ----------------------------------------------------- */
 
         .glass-header {
-            background: rgba(255, 255, 255, 0.90);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+
+            background:
+                rgba(255, 255, 255, 0.88);
+
+            backdrop-filter:
+                blur(16px);
+
+            -webkit-backdrop-filter:
+                blur(16px);
+
+            border-bottom:
+                1px solid
+                rgba(226, 232, 240, 0.75);
         }
 
-        .hero-bg {
+        .dark .glass-header {
+
             background:
-                radial-gradient(circle at top right,
-                    rgba(20, 184, 166, 0.13),
-                    transparent 35%),
-                radial-gradient(circle at bottom left,
-                    rgba(14, 165, 233, 0.10),
-                    transparent 35%),
+                rgba(2, 6, 23, 0.88);
+
+            border-bottom:
+                1px solid
+                rgba(51, 65, 85, 0.75);
+        }
+
+
+        /* -----------------------------------------------------
+           Hero
+        ----------------------------------------------------- */
+
+        .hero-background {
+
+            background:
+
+                radial-gradient(
+                    circle at top right,
+                    rgba(20, 184, 166, 0.14),
+                    transparent 34%
+                ),
+
+                radial-gradient(
+                    circle at bottom left,
+                    rgba(59, 130, 246, 0.10),
+                    transparent 34%
+                ),
+
                 #f8fafc;
         }
 
-        /* بطاقات الأدوات */
+        .dark .hero-background {
+
+            background:
+
+                radial-gradient(
+                    circle at top right,
+                    rgba(20, 184, 166, 0.10),
+                    transparent 34%
+                ),
+
+                radial-gradient(
+                    circle at bottom left,
+                    rgba(59, 130, 246, 0.07),
+                    transparent 34%
+                ),
+
+                #020617;
+        }
+
+
+        /* -----------------------------------------------------
+           Tool Cards
+        ----------------------------------------------------- */
+
         .tool-card {
+
             display: flex;
+
             flex-direction: column;
+
             height: 100%;
-            border: 1px solid #e2e8f0;
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 20px;
+
+            padding: 22px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid
+                #e2e8f0;
+
+            border-radius:
+                22px;
+
+            text-decoration:
+                none;
+
             transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease,
-                border-color 0.2s ease;
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+
+        }
+
+        .dark .tool-card {
+
+            background:
+                #0f172a;
+
+            border-color:
+                #1e293b;
+
         }
 
         .tool-card:hover {
-            transform: translateY(-4px);
-            border-color: #99f6e4;
-            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.09);
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                #99f6e4;
+
+            box-shadow:
+                0 18px 40px
+                rgba(15, 23, 42, 0.09);
+
         }
 
-        /* أيقونة البطاقة */
+        .dark .tool-card:hover {
+
+            border-color:
+                rgba(45, 212, 191, 0.45);
+
+            box-shadow:
+                0 18px 40px
+                rgba(0, 0, 0, 0.28);
+
+        }
+
+
+        /* -----------------------------------------------------
+           Tool Icon
+        ----------------------------------------------------- */
+
         .tool-icon {
+
             width: 58px;
             height: 58px;
+
             min-width: 58px;
-            border-radius: 16px;
+
+            border-radius: 17px;
+
             display: flex;
+
             align-items: center;
             justify-content: center;
-            background: #ecfeff;
-            color: #0f766e;
-            margin-bottom: 16px;
+
+            margin-bottom: 17px;
+
+            background:
+                #ecfeff;
+
+            color:
+                #0f766e;
+
+            transition:
+                transform 0.25s ease;
+
+        }
+
+        .dark .tool-icon {
+
+            background:
+                rgba(20, 184, 166, 0.10);
+
+            color:
+                #5eead4;
+
+        }
+
+        .tool-card:hover .tool-icon {
+
+            transform:
+                scale(1.08);
+
         }
 
         .tool-icon .material-symbols-rounded {
+
             font-size: 31px;
+
             font-variation-settings:
-                'FILL' 0,
-                'wght' 600,
-                'GRAD' 0,
-                'opsz' 32;
+                "FILL" 0,
+                "wght" 600,
+                "GRAD" 0,
+                "opsz" 32;
         }
 
-        /* نصوص البطاقات - محاذاة لليمين */
+
+        /* -----------------------------------------------------
+           Tool Name
+        ----------------------------------------------------- */
+
         .tool-name {
+
+            margin: 0 0 8px;
+
             text-align: right;
+
             font-size: 18px;
+
+            line-height: 1.5;
+
             font-weight: 800;
-            color: #0f172a;
-            margin: 0 0 7px;
+
+            color:
+                #0f172a;
+
         }
+
+        .dark .tool-name {
+
+            color:
+                #f8fafc;
+
+        }
+
+
+        /* -----------------------------------------------------
+           Tool Description
+        ----------------------------------------------------- */
 
         .tool-desc {
-            text-align: right;
-            font-size: 14px;
-            line-height: 1.8;
-            color: #64748b;
-            margin: 0 0 18px;
+
+            margin: 0 0 20px;
+
             flex-grow: 1;
+
+            text-align: right;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+
+            color:
+                #64748b;
+
         }
 
-        /* زر البطاقة */
+        .dark .tool-desc {
+
+            color:
+                #94a3b8;
+
+        }
+
+
+        /* -----------------------------------------------------
+           Tool Button
+        ----------------------------------------------------- */
+
         .tool-button {
+
             width: 100%;
-            min-height: 44px;
-            border-radius: 12px;
+
+            min-height: 45px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
-            gap: 7px;
-            background: #0f766e;
-            color: white;
+
+            gap: 6px;
+
+            border-radius: 13px;
+
+            background:
+                #0f766e;
+
+            color:
+                #ffffff;
+
+            font-size: 14px;
+
             font-weight: 700;
-            text-decoration: none;
-            transition: background 0.2s ease;
+
+            text-decoration:
+                none;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+
         }
 
         .tool-button:hover {
-            background: #115e59;
+
+            background:
+                #115e59;
+
         }
 
-        .tool-button .material-symbols-rounded {
-            font-size: 20px;
+        .tool-button:active {
+
+            transform:
+                scale(0.98);
+
         }
 
-        /*
-         * عنوان القسم:
-         * الأيقونة على اليمين ثم النص مباشرة.
-         * gap-2 = مسافة صغيرة بينهما.
-         */
+
+        /* -----------------------------------------------------
+           Section Title
+           icon + title adjacent on the right
+        ----------------------------------------------------- */
+
         .section-title {
+
             display: flex;
+
             flex-direction: row;
+
             align-items: center;
+
             justify-content: flex-start;
-            gap: 0.5rem; /* gap-2 */
+
+            gap: 0.5rem;
+
             width: 100%;
+
             margin-bottom: 22px;
+
             text-align: right;
+
         }
 
         .section-title-icon {
+
             width: 44px;
             height: 44px;
+
             min-width: 44px;
-            border-radius: 13px;
+
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
-            background: #ccfbf1;
-            color: #0f766e;
+
+            border-radius: 13px;
+
+            background:
+                #ccfbf1;
+
+            color:
+                #0f766e;
+
         }
 
-        .section-title-icon .material-symbols-rounded {
+        .dark .section-title-icon {
+
+            background:
+                rgba(20, 184, 166, 0.10);
+
+            color:
+                #5eead4;
+
+        }
+
+        .section-title-icon
+        .material-symbols-rounded {
+
             font-size: 25px;
+
         }
 
         .section-title-text {
+
             margin: 0;
-            font-size: 23px;
-            line-height: 1.3;
+
+            font-size: 22px;
+
+            line-height: 1.4;
+
             font-weight: 800;
-            color: #0f172a;
+
             text-align: right;
+
+            color:
+                #0f172a;
+
         }
 
-        /* الخط يأخذ المساحة المتبقية بعد العنوان */
+        .dark .section-title-text {
+
+            color:
+                #f8fafc;
+
+        }
+
         .section-title-line {
+
             flex: 1;
+
             height: 1px;
-            background: #e2e8f0;
+
             margin-right: 8px;
+
+            background:
+                #e2e8f0;
+
         }
 
-        /* البحث */
+        .dark .section-title-line {
+
+            background:
+                #1e293b;
+
+        }
+
+
+        /* -----------------------------------------------------
+           Search
+        ----------------------------------------------------- */
+
         .search-box {
+
             position: relative;
+
+            width: 100%;
+
         }
 
         .search-box input {
+
             width: 100%;
-            min-height: 56px;
-            padding: 0 52px 0 18px;
-            border: 1px solid #cbd5e1;
-            border-radius: 16px;
-            background: #ffffff;
-            color: #0f172a;
-            outline: none;
-            font-family: inherit;
-            font-size: 15px;
-            text-align: right;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+            min-height: 57px;
+
+            padding:
+                0 53px 0 18px;
+
+            border:
+                1px solid
+                #cbd5e1;
+
+            border-radius:
+                17px;
+
+            outline:
+                none;
+
+            background:
+                #ffffff;
+
+            color:
+                #0f172a;
+
+            font-family:
+                inherit;
+
+            font-size:
+                15px;
+
+            text-align:
+                right;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+        .search-box input::placeholder {
+
+            color:
+                #94a3b8;
+
         }
 
         .search-box input:focus {
-            border-color: #14b8a6;
-            box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+
+            border-color:
+                #14b8a6;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(20, 184, 166, 0.12);
+
+        }
+
+        .dark .search-box input {
+
+            background:
+                #0f172a;
+
+            border-color:
+                #334155;
+
+            color:
+                #f8fafc;
+
+        }
+
+        .dark .search-box input:focus {
+
+            border-color:
+                #2dd4bf;
+
         }
 
         .search-icon {
+
             position: absolute;
+
             right: 17px;
+
             top: 50%;
-            transform: translateY(-50%);
-            color: #64748b;
-            pointer-events: none;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                #64748b;
+
+            pointer-events:
+                none;
+
         }
+
+
+        /* -----------------------------------------------------
+           Hidden Search Items
+        ----------------------------------------------------- */
 
         .hidden-tool {
-            display: none !important;
+
+            display:
+                none !important;
+
         }
 
+
+        /* -----------------------------------------------------
+           Mobile Menu
+        ----------------------------------------------------- */
+
         .mobile-menu {
-            display: none;
+
+            display:
+                none;
+
         }
 
         .mobile-menu.active {
-            display: block;
+
+            display:
+                block;
+
         }
+
+
+        /* -----------------------------------------------------
+           Mobile
+        ----------------------------------------------------- */
 
         @media (max-width: 640px) {
 
             .section-title-text {
-                font-size: 19px;
+
+                font-size:
+                    19px;
+
             }
 
             .section-title-icon {
-                width: 40px;
-                height: 40px;
-                min-width: 40px;
+
+                width:
+                    40px;
+
+                height:
+                    40px;
+
+                min-width:
+                    40px;
+
             }
 
             .section-title-line {
-                display: none;
+
+                display:
+                    none;
+
             }
 
             .tool-card {
-                padding: 17px;
-                border-radius: 18px;
+
+                padding:
+                    18px;
+
+                border-radius:
+                    19px;
+
             }
 
             .tool-icon {
-                width: 54px;
-                height: 54px;
-                min-width: 54px;
+
+                width:
+                    54px;
+
+                height:
+                    54px;
+
+                min-width:
+                    54px;
+
             }
+
+            .tool-name {
+
+                font-size:
+                    17px;
+
+            }
+
+            .tool-desc {
+
+                font-size:
+                    13px;
+
+            }
+
         }
+
     </style>
+
 </head>
 
-<body>
 
-<!-- ================= HEADER ================= -->
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header class="glass-header sticky top-0 z-50">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div class="h-16 flex items-center justify-between gap-4">
 
-            <!-- الشعار -->
-            <a href="index.html"
-               class="flex items-center gap-2 no-underline text-slate-900">
 
-                <span class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center">
+            <!-- Logo -->
+
+            <a href="index.html"
+               aria-label="أدواتي - الصفحة الرئيسية"
+               class="flex items-center gap-2">
+
+                <span class="w-10 h-10 rounded-xl
+                             bg-teal-600
+                             text-white
+                             flex items-center justify-center">
+
                     <span class="material-symbols-rounded">
                         handyman
                     </span>
+
                 </span>
 
-                <span class="font-extrabold text-xl">
+                <span class="text-xl
+                             font-extrabold
+                             text-slate-900
+                             dark:text-white">
+
                     أدواتي
+
                 </span>
+
             </a>
 
-            <!-- قائمة الكمبيوتر -->
-            <nav class="hidden md:flex items-center gap-6 text-sm font-bold">
+
+            <!-- Desktop Navigation -->
+
+            <nav class="hidden md:flex items-center gap-6
+                        text-sm font-bold">
 
                 <a href="index.html"
-                   class="text-teal-700 hover:text-teal-900 transition">
+                   class="text-teal-700 dark:text-teal-400
+                          hover:text-teal-900
+                          transition">
+
                     الرئيسية
+
                 </a>
 
                 <a href="#tools"
-                   class="text-slate-600 hover:text-teal-700 transition">
+                   class="text-slate-600
+                          dark:text-slate-300
+                          hover:text-teal-700
+                          transition">
+
                     الأدوات
+
                 </a>
 
                 <a href="contact.html"
-                   class="text-slate-600 hover:text-teal-700 transition">
+                   class="text-slate-600
+                          dark:text-slate-300
+                          hover:text-teal-700
+                          transition">
+
                     تواصل معنا
+
                 </a>
 
             </nav>
 
-            <!-- زر الهاتف -->
-            <button
-                id="mobileMenuButton"
-                type="button"
-                aria-label="فتح القائمة"
-                class="md:hidden w-10 h-10 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-700">
 
-                <span class="material-symbols-rounded">
-                    menu
-                </span>
+            <!-- Header Controls -->
 
-            </button>
+            <div class="flex items-center gap-2">
+
+
+                <!-- Theme Toggle -->
+
+                <button
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="تفعيل الوضع الليلي"
+                    class="w-10 h-10
+                           rounded-xl
+                           border
+                           border-slate-200
+                           dark:border-slate-700
+                           bg-white
+                           dark:bg-slate-900
+                           text-slate-600
+                           dark:text-slate-300
+                           flex items-center justify-center
+                           hover:bg-slate-100
+                           dark:hover:bg-slate-800
+                           active:scale-95
+                           transition">
+
+                    <span id="theme-icon"
+                          class="material-symbols-rounded">
+
+                        dark_mode
+
+                    </span>
+
+                </button>
+
+
+                <!-- Mobile Menu -->
+
+                <button
+                    id="mobileMenuButton"
+                    type="button"
+                    aria-label="فتح القائمة"
+                    class="md:hidden
+                           w-10 h-10
+                           rounded-xl
+                           border
+                           border-slate-200
+                           dark:border-slate-700
+                           bg-white
+                           dark:bg-slate-900
+                           text-slate-600
+                           dark:text-slate-300
+                           flex items-center justify-center">
+
+                    <span class="material-symbols-rounded">
+                        menu
+                    </span>
+
+                </button>
+
+            </div>
 
         </div>
 
-        <!-- قائمة الهاتف -->
-        <div id="mobileMenu" class="mobile-menu md:hidden pb-4">
+
+        <!-- Mobile Navigation -->
+
+        <div id="mobileMenu"
+             class="mobile-menu md:hidden pb-4">
 
             <div class="flex flex-col gap-2">
 
                 <a href="index.html"
-                   class="px-4 py-3 rounded-xl bg-teal-50 text-teal-700 font-bold">
+                   class="px-4 py-3
+                          rounded-xl
+                          bg-teal-50
+                          dark:bg-teal-500/10
+                          text-teal-700
+                          dark:text-teal-400
+                          font-bold">
+
                     الرئيسية
+
                 </a>
 
                 <a href="#tools"
-                   class="px-4 py-3 rounded-xl text-slate-700 font-bold hover:bg-slate-50">
+                   class="px-4 py-3
+                          rounded-xl
+                          text-slate-700
+                          dark:text-slate-300
+                          font-bold
+                          hover:bg-slate-100
+                          dark:hover:bg-slate-900">
+
                     الأدوات
+
                 </a>
 
                 <a href="contact.html"
-                   class="px-4 py-3 rounded-xl text-slate-700 font-bold hover:bg-slate-50">
+                   class="px-4 py-3
+                          rounded-xl
+                          text-slate-700
+                          dark:text-slate-300
+                          font-bold
+                          hover:bg-slate-100
+                          dark:hover:bg-slate-900">
+
                     تواصل معنا
+
                 </a>
 
             </div>
+
         </div>
 
     </div>
+
 </header>
 
 
-<!-- ================= HERO ================= -->
-<section class="hero-bg">
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+<section class="hero-background">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6
+                py-14 sm:py-20">
 
         <div class="max-w-3xl mx-auto text-center">
 
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 text-teal-700 font-bold text-sm mb-5">
+
+            <!-- Badge -->
+
+            <div class="inline-flex
+                        items-center
+                        gap-2
+                        px-4 py-2
+                        rounded-full
+                        bg-teal-50
+                        dark:bg-teal-500/10
+                        border
+                        border-teal-100
+                        dark:border-teal-500/20
+                        text-teal-700
+                        dark:text-teal-300
+                        font-bold
+                        text-sm
+                        mb-5">
 
                 <span class="material-symbols-rounded">
                     auto_awesome
@@ -406,24 +1061,47 @@
 
             </div>
 
-            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-slate-900 mb-5">
+
+            <!-- Main Heading -->
+
+            <h1 class="text-3xl
+                       sm:text-4xl
+                       md:text-5xl
+                       font-extrabold
+                       leading-tight
+                       text-slate-900
+                       dark:text-white
+                       mb-5">
 
                 كل الأدوات التي تحتاجها
 
-                <span class="text-teal-600">
+                <span class="text-teal-600
+                             dark:text-teal-400">
+
                     في مكان واحد
+
                 </span>
 
             </h1>
 
-            <p class="text-base sm:text-lg leading-8 text-slate-600 mb-8">
 
-                أدوات بسيطة لإنجاز أعمالك اليومية بسرعة وسهولة،
-                بدون تسجيل وبدون تعقيد.
+            <!-- Description -->
+
+            <p class="text-base
+                      sm:text-lg
+                      leading-8
+                      text-slate-600
+                      dark:text-slate-400
+                      mb-8">
+
+                منصة عربية مجانية تضم أدوات وحاسبات عملية
+                تساعدك على إنجاز أعمالك اليومية بسهولة وسرعة.
 
             </p>
 
-            <!-- شريط البحث -->
+
+            <!-- Search -->
+
             <div class="search-box max-w-2xl mx-auto">
 
                 <span class="material-symbols-rounded search-icon">
@@ -433,35 +1111,45 @@
                 <input
                     id="toolSearch"
                     type="search"
-                    placeholder="ابحث عن أداة مثل: العمر، الخصم، الصور..."
                     autocomplete="off"
+                    placeholder="ابحث عن أداة مثل: العمر، الخصم، الصور..."
                     aria-label="البحث عن أداة">
 
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- ================= الأدوات ================= -->
-<main id="tools" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main id="tools"
+      class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
 
 
-    <!-- ================= الحساب والمالية ================= -->
+    <!-- =====================================================
+         FEATURED TOOLS
+    ====================================================== -->
+
     <section class="mb-14 tool-section">
 
         <div class="section-title">
 
-            <!-- الأيقونة أولاً في DOM بسبب RTL -->
             <span class="section-title-icon">
+
                 <span class="material-symbols-rounded">
-                    calculate
+                    star
                 </span>
+
             </span>
 
             <h2 class="section-title-text">
-                الحساب والمالية
+                أدوات مميزة
             </h2>
 
             <span class="section-title-line"></span>
@@ -469,51 +1157,24 @@
         </div>
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-
-            <!-- النسبة المئوية -->
-            <article
-                class="tool-card tool-item text-right"
-                data-name="النسبة المئوية حساب النسبة نسبة مئوية">
-
-                <div class="tool-icon">
-                    <span class="material-symbols-rounded">
-                        percent
-                    </span>
-                </div>
-
-                <h3 class="tool-name">
-                    حساب النسبة المئوية
-                </h3>
-
-                <p class="tool-desc">
-                    احسب النسبة المئوية بسرعة وسهولة لأي رقم.
-                </p>
-
-                <a href="percentage.html"
-                   class="tool-button">
-
-                    استخدم الأداة
-
-                    <span class="material-symbols-rounded">
-                        arrow_back
-                    </span>
-
-                </a>
-
-            </article>
+        <div class="grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    gap-5">
 
 
             <!-- حساب العمر -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="حساب العمر العمر تاريخ الميلاد">
+                data-keywords="العمر حساب العمر سن تاريخ الميلاد مواليد">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         calendar_month
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
@@ -538,15 +1199,162 @@
             </article>
 
 
-            <!-- الخصم -->
+            <!-- ضغط الصور -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="حساب الخصم الخصم التخفيض السعر">
+                data-keywords="ضغط الصور ضغط صورة تصغير حجم الصور تقليل الحجم">
 
                 <div class="tool-icon">
+
+                    <span class="material-symbols-rounded">
+                        compress
+                    </span>
+
+                </div>
+
+                <h3 class="tool-name">
+                    ضغط الصور
+                </h3>
+
+                <p class="tool-desc">
+                    قلل حجم الصور بسهولة مباشرة من المتصفح.
+                </p>
+
+                <a href="compress-image.html"
+                   class="tool-button">
+
+                    استخدم الأداة
+
+                    <span class="material-symbols-rounded">
+                        arrow_back
+                    </span>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CALCULATIONS
+    ====================================================== -->
+
+    <section class="mb-14 tool-section">
+
+        <div class="section-title">
+
+            <span class="section-title-icon">
+
+                <span class="material-symbols-rounded">
+                    calculate
+                </span>
+
+            </span>
+
+            <h2 class="section-title-text">
+                أدوات الحسابات والمالية
+            </h2>
+
+            <span class="section-title-line"></span>
+
+        </div>
+
+
+        <div class="grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    gap-5">
+
+
+            <!-- النسبة -->
+
+            <article
+                class="tool-card tool-item text-right"
+                data-keywords="النسبة النسبة المئوية نسبة مئوية حساب النسبة">
+
+                <div class="tool-icon">
+
+                    <span class="material-symbols-rounded">
+                        percent
+                    </span>
+
+                </div>
+
+                <h3 class="tool-name">
+                    حاسبة النسبة المئوية
+                </h3>
+
+                <p class="tool-desc">
+                    احسب النسبة المئوية لأي رقم بسرعة وسهولة.
+                </p>
+
+                <a href="percentage.html"
+                   class="tool-button">
+
+                    استخدم الأداة
+
+                    <span class="material-symbols-rounded">
+                        arrow_back
+                    </span>
+
+                </a>
+
+            </article>
+
+
+            <!-- العمر -->
+
+            <article
+                class="tool-card tool-item text-right"
+                data-keywords="العمر حساب العمر سن تاريخ الميلاد مواليد">
+
+                <div class="tool-icon">
+
+                    <span class="material-symbols-rounded">
+                        calendar_month
+                    </span>
+
+                </div>
+
+                <h3 class="tool-name">
+                    حساب العمر
+                </h3>
+
+                <p class="tool-desc">
+                    احسب عمرك بالسنوات والأشهر والأيام.
+                </p>
+
+                <a href="age.html"
+                   class="tool-button">
+
+                    استخدم الأداة
+
+                    <span class="material-symbols-rounded">
+                        arrow_back
+                    </span>
+
+                </a>
+
+            </article>
+
+
+            <!-- الخصم -->
+
+            <article
+                class="tool-card tool-item text-right"
+                data-keywords="الخصم حساب الخصم تخفيض سعر تخفيضات">
+
+                <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         local_offer
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
@@ -554,7 +1362,7 @@
                 </h3>
 
                 <p class="tool-desc">
-                    اعرف السعر بعد الخصم وقيمة الخصم بسهولة.
+                    احسب قيمة الخصم والسعر النهائي بعد الخصم.
                 </p>
 
                 <a href="discount.html"
@@ -575,19 +1383,24 @@
     </section>
 
 
-    <!-- ================= الصور والتصميم ================= -->
+    <!-- =====================================================
+         IMAGES
+    ====================================================== -->
+
     <section class="mb-14 tool-section">
 
         <div class="section-title">
 
             <span class="section-title-icon">
+
                 <span class="material-symbols-rounded">
                     image
                 </span>
+
             </span>
 
             <h2 class="section-title-text">
-                الصور والتصميم
+                أدوات الصور والتصميم
             </h2>
 
             <span class="section-title-line"></span>
@@ -595,18 +1408,25 @@
         </div>
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    gap-5">
 
 
             <!-- ضغط الصور -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="ضغط الصور ضغط صورة تصغير حجم الصورة">
+                data-keywords="ضغط الصور ضغط صورة تصغير حجم الصور">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         compress
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
@@ -614,7 +1434,7 @@
                 </h3>
 
                 <p class="tool-desc">
-                    قلل حجم الصور مع الحفاظ على جودة مناسبة.
+                    قلل حجم الصورة بسهولة من المتصفح.
                 </p>
 
                 <a href="compress-image.html"
@@ -631,15 +1451,18 @@
             </article>
 
 
-            <!-- تغيير حجم الصورة -->
+            <!-- تغيير الحجم -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="تغيير حجم الصور تعديل أبعاد الصورة resize">
+                data-keywords="تغيير حجم الصورة تغيير حجم الصور أبعاد الصورة تكبير تصغير">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         photo_size_select_large
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
@@ -647,7 +1470,7 @@
                 </h3>
 
                 <p class="tool-desc">
-                    غيّر أبعاد الصورة بسهولة لتناسب احتياجك.
+                    غيّر أبعاد الصور إلى المقاس الذي تحتاجه.
                 </p>
 
                 <a href="resize-image.html"
@@ -665,22 +1488,25 @@
 
 
             <!-- JPG إلى PNG -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="تحويل jpg إلى png تحويل الصور">
+                data-keywords="jpg jpeg png تحويل jpg إلى png تحويل الصور">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         transform
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
-                    JPG إلى PNG
+                    تحويل JPG إلى PNG
                 </h3>
 
                 <p class="tool-desc">
-                    حوّل صور JPG إلى PNG بسهولة من المتصفح.
+                    حوّل صور JPG إلى PNG بسهولة.
                 </p>
 
                 <a href="jpg-to-png.html"
@@ -698,22 +1524,25 @@
 
 
             <!-- PNG إلى JPG -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="تحويل png إلى jpg تحويل الصور">
+                data-keywords="png jpg تحويل png إلى jpg تحويل الصور">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         sync_alt
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
-                    PNG إلى JPG
+                    تحويل PNG إلى JPG
                 </h3>
 
                 <p class="tool-desc">
-                    حوّل صور PNG إلى JPG بسرعة وسهولة.
+                    حوّل صور PNG إلى JPG بسرعة.
                 </p>
 
                 <a href="png-to-jpg.html"
@@ -731,14 +1560,17 @@
 
 
             <!-- QR -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="qr رمز qr كود qr رمز الاستجابة السريعة">
+                data-keywords="qr qr code كيو ار رمز رمز الاستجابة السريعة رابط">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         qr_code_2
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
@@ -746,7 +1578,7 @@
                 </h3>
 
                 <p class="tool-desc">
-                    أنشئ رمز QR بسهولة للنصوص والروابط.
+                    أنشئ رمز QR للنصوص والروابط بسهولة.
                 </p>
 
                 <a href="qr.html"
@@ -767,19 +1599,24 @@
     </section>
 
 
-    <!-- ================= النصوص والأمان ================= -->
+    <!-- =====================================================
+         TEXT & SECURITY
+    ====================================================== -->
+
     <section class="mb-14 tool-section">
 
         <div class="section-title">
 
             <span class="section-title-icon">
+
                 <span class="material-symbols-rounded">
                     security
                 </span>
+
             </span>
 
             <h2 class="section-title-text">
-                النصوص والأمان
+                أدوات النصوص والأمان
             </h2>
 
             <span class="section-title-line"></span>
@@ -787,18 +1624,25 @@
         </div>
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    gap-5">
 
 
             <!-- كلمات المرور -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="مولد كلمات المرور كلمة مرور كلمات السر">
+                data-keywords="كلمة المرور كلمات المرور مولد كلمة مرور كلمات السر password أمان">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
                         password
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
@@ -823,19 +1667,22 @@
             </article>
 
 
-            <!-- عداد النصوص -->
+            <!-- عداد الكلمات والحروف -->
+
             <article
                 class="tool-card tool-item text-right"
-                data-name="عداد النصوص عداد الكلمات عدد الكلمات الحروف">
+                data-keywords="عداد الكلمات عداد الحروف عداد النصوص عدد الكلمات عدد الحروف نصوص">
 
                 <div class="tool-icon">
+
                     <span class="material-symbols-rounded">
-                        format_align_left
+                        format_size
                     </span>
+
                 </div>
 
                 <h3 class="tool-name">
-                    عداد النصوص
+                    عداد الكلمات والحروف
                 </h3>
 
                 <p class="tool-desc">
@@ -860,64 +1707,203 @@
     </section>
 
 
-    <!-- ================= لا توجد نتائج ================= -->
+    <!-- =====================================================
+         NO RESULTS
+    ====================================================== -->
+
     <div id="noResults"
-         class="hidden text-center py-12">
+         class="hidden text-center py-16">
 
-        <span class="material-symbols-rounded text-5xl text-slate-400">
-            search_off
-        </span>
+        <div class="w-16 h-16
+                    mx-auto
+                    rounded-2xl
+                    bg-slate-100
+                    dark:bg-slate-900
+                    flex items-center justify-center">
 
-        <h3 class="text-xl font-bold text-slate-700 mt-4">
+            <span class="material-symbols-rounded
+                         text-4xl
+                         text-slate-400">
+
+                search_off
+
+            </span>
+
+        </div>
+
+        <h3 class="mt-5
+                   text-xl
+                   font-extrabold
+                   text-slate-800
+                   dark:text-white">
+
             لم نجد أداة مطابقة
+
         </h3>
 
-        <p class="text-slate-500 mt-2">
-            جرّبي البحث بكلمة أخرى.
+        <p class="mt-2
+                  text-sm
+                  text-slate-500
+                  dark:text-slate-400">
+
+            جرّب البحث بكلمة أخرى.
+
         </p>
 
     </div>
 
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="rounded-3xl
+                    bg-slate-900
+                    dark:bg-slate-900
+                    border border-slate-800
+                    p-7 sm:p-9
+                    text-center">
+
+        <div class="w-14 h-14
+                    mx-auto
+                    mb-4
+                    rounded-2xl
+                    bg-teal-500/10
+                    flex items-center justify-center">
+
+            <span class="material-symbols-rounded
+                         text-teal-400
+                         text-3xl">
+
+                apps
+
+            </span>
+
+        </div>
+
+        <h2 class="text-xl
+                   sm:text-2xl
+                   font-extrabold
+                   text-white">
+
+            كل أدواتك في مكان واحد
+
+        </h2>
+
+        <p class="mt-2
+                  text-sm
+                  leading-7
+                  text-slate-400
+                  max-w-xl
+                  mx-auto">
+
+            أدوات مجانية وسهلة الاستخدام لإنجاز مهامك اليومية بسرعة.
+
+        </p>
+
+    </section>
+
 </main>
 
 
-<!-- ================= FOOTER ================= -->
-<footer class="border-t border-slate-200 bg-white">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+<footer class="border-t
+               border-slate-200
+               dark:border-slate-800
+               bg-white
+               dark:bg-slate-950">
 
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto
+                px-4 sm:px-6
+                py-8">
+
+        <div class="flex flex-col
+                    sm:flex-row
+                    items-center
+                    justify-between
+                    gap-5">
+
 
             <div class="text-center sm:text-right">
 
-                <div class="font-extrabold text-lg text-slate-900">
-                    أدواتي
+                <div class="flex items-center
+                            justify-center
+                            sm:justify-start
+                            gap-2">
+
+                    <span class="material-symbols-rounded
+                                 text-teal-600
+                                 dark:text-teal-400">
+
+                        handyman
+
+                    </span>
+
+                    <span class="font-extrabold
+                                 text-lg
+                                 text-slate-900
+                                 dark:text-white">
+
+                        أدواتي
+
+                    </span>
+
                 </div>
 
-                <p class="text-sm text-slate-500 mt-1">
-                    أدوات بسيطة لإنجاز أعمالك اليومية
+                <p class="text-sm
+                          text-slate-500
+                          dark:text-slate-400
+                          mt-1">
+
+                    أدوات بسيطة لإنجاز أعمالك اليومية.
+
                 </p>
 
             </div>
 
-            <div class="flex items-center gap-5 text-sm font-bold">
+
+            <div class="flex items-center gap-5
+                        text-sm font-bold">
 
                 <a href="privacy.html"
-                   class="text-slate-500 hover:text-teal-700">
+                   class="text-slate-500
+                          dark:text-slate-400
+                          hover:text-teal-600
+                          dark:hover:text-teal-400">
+
                     الخصوصية
+
                 </a>
 
                 <a href="contact.html"
-                   class="text-slate-500 hover:text-teal-700">
+                   class="text-slate-500
+                          dark:text-slate-400
+                          hover:text-teal-600
+                          dark:hover:text-teal-400">
+
                     تواصل معنا
+
                 </a>
 
             </div>
 
         </div>
 
-        <div class="text-center text-xs text-slate-400 mt-6">
+
+        <div class="text-center
+                    text-xs
+                    text-slate-400
+                    mt-6
+                    pt-5
+                    border-t
+                    border-slate-100
+                    dark:border-slate-900">
+
             © 2026 أدواتي — جميع الحقوق محفوظة
+
         </div>
 
     </div>
@@ -925,170 +1911,443 @@
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =========================================================
+     JAVASCRIPT
+     1. الوضع الليلي
+     2. البحث الفوري
+     3. القائمة المتنقلة
+========================================================= -->
+
 <script>
-document.addEventListener('DOMContentLoaded', function () {
 
-    const searchInput = document.getElementById('toolSearch');
-    const toolItems = document.querySelectorAll('.tool-item');
-    const sections = document.querySelectorAll('.tool-section');
-    const noResults = document.getElementById('noResults');
-
-    /*
-     * البحث المباشر Live Filter
-     *
-     * عند الكتابة:
-     * 1. يبحث في اسم الأداة.
-     * 2. يبحث في وصف الأداة.
-     * 3. يخفي الأدوات غير المطابقة فورًا.
-     * 4. يخفي القسم إذا لم يبقَ بداخله أي أداة.
-     */
-
-    if (searchInput) {
-
-        searchInput.addEventListener('input', function () {
-
-            const query = this.value
-                .toLowerCase()
-                .trim();
-
-            let visibleTools = 0;
-
-            toolItems.forEach(function (tool) {
-
-                const toolName =
-                    (tool.dataset.name || '').toLowerCase();
-
-                const toolText =
-                    (tool.textContent || '').toLowerCase();
-
-                const matches =
-                    query === '' ||
-                    toolName.includes(query) ||
-                    toolText.includes(query);
-
-                if (matches) {
-
-                    tool.classList.remove('hidden-tool');
-                    visibleTools++;
-
-                } else {
-
-                    tool.classList.add('hidden-tool');
-
-                }
-
-            });
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
 
-            /* إخفاء الأقسام الفارغة */
-            sections.forEach(function (section) {
+        /* =====================================================
+           THEME
+        ====================================================== */
 
-                const visibleToolsInSection =
-                    section.querySelectorAll(
-                        '.tool-item:not(.hidden-tool)'
-                    ).length;
+        const themeToggle =
+            document.getElementById(
+                "theme-toggle"
+            );
 
-                if (visibleToolsInSection === 0) {
-
-                    section.classList.add('hidden-tool');
-
-                } else {
-
-                    section.classList.remove('hidden-tool');
-
-                }
-
-            });
+        const themeIcon =
+            document.getElementById(
+                "theme-icon"
+            );
 
 
-            /* إظهار رسالة عند عدم وجود نتائج */
-            if (visibleTools === 0 && query !== '') {
+        function updateThemeIcon() {
 
-                noResults.classList.remove('hidden');
-
-            } else {
-
-                noResults.classList.add('hidden');
-
+            if (!themeIcon) {
+                return;
             }
 
-        });
-
-    }
-
-
-    /* ================= القائمة على الهاتف ================= */
-
-    const mobileMenuButton =
-        document.getElementById('mobileMenuButton');
-
-    const mobileMenu =
-        document.getElementById('mobileMenu');
+            const isDark =
+                document.documentElement
+                    .classList
+                    .contains("dark");
 
 
-    if (mobileMenuButton && mobileMenu) {
+            themeIcon.textContent =
+                isDark
+                    ? "light_mode"
+                    : "dark_mode";
 
-        mobileMenuButton.addEventListener('click', function () {
 
-            mobileMenu.classList.toggle('active');
+            if (themeToggle) {
 
-            const icon =
-                mobileMenuButton.querySelector(
-                    '.material-symbols-rounded'
-                );
-
-            if (mobileMenu.classList.contains('active')) {
-
-                if (icon) {
-                    icon.textContent = 'close';
-                }
-
-                mobileMenuButton.setAttribute(
-                    'aria-label',
-                    'إغلاق القائمة'
-                );
-
-            } else {
-
-                if (icon) {
-                    icon.textContent = 'menu';
-                }
-
-                mobileMenuButton.setAttribute(
-                    'aria-label',
-                    'فتح القائمة'
+                themeToggle.setAttribute(
+                    "aria-label",
+                    isDark
+                        ? "تفعيل الوضع الفاتح"
+                        : "تفعيل الوضع الليلي"
                 );
 
             }
 
-        });
+        }
 
 
-        /* إغلاق القائمة بعد الضغط على أحد الروابط */
-        mobileMenu.querySelectorAll('a').forEach(function (link) {
+        function setTheme(theme) {
 
-            link.addEventListener('click', function () {
+            if (theme === "dark") {
 
-                mobileMenu.classList.remove('active');
+                document.documentElement
+                    .classList
+                    .add("dark");
 
-                const icon =
-                    mobileMenuButton.querySelector(
-                        '.material-symbols-rounded'
+            } else {
+
+                document.documentElement
+                    .classList
+                    .remove("dark");
+
+            }
+
+
+            try {
+
+                localStorage.setItem(
+                    "adwati-theme",
+                    theme
+                );
+
+            } catch (error) {
+
+                console.warn(
+                    "تعذر حفظ تفضيل الوضع الليلي",
+                    error
+                );
+
+            }
+
+
+            updateThemeIcon();
+
+        }
+
+
+        updateThemeIcon();
+
+
+        if (themeToggle) {
+
+            themeToggle.addEventListener(
+                "click",
+                function () {
+
+                    const isDark =
+                        document.documentElement
+                            .classList
+                            .contains("dark");
+
+
+                    setTheme(
+                        isDark
+                            ? "light"
+                            : "dark"
                     );
 
-                if (icon) {
-                    icon.textContent = 'menu';
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           LIVE SEARCH
+        ====================================================== */
+
+        const searchInput =
+            document.getElementById(
+                "toolSearch"
+            );
+
+
+        const toolItems =
+            Array.from(
+                document.querySelectorAll(
+                    ".tool-item"
+                )
+            );
+
+
+        const sections =
+            Array.from(
+                document.querySelectorAll(
+                    ".tool-section"
+                )
+            );
+
+
+        const noResults =
+            document.getElementById(
+                "noResults"
+            );
+
+
+        function normalizeArabic(text) {
+
+            return String(text || "")
+                .toLowerCase()
+                .trim()
+                .replace(/[أإآ]/g, "ا")
+                .replace(/ة/g, "ه")
+                .replace(/ى/g, "ي");
+
+        }
+
+
+        function filterTools(query) {
+
+            const normalizedQuery =
+                normalizeArabic(query);
+
+
+            let visibleCount = 0;
+
+
+            toolItems.forEach(
+                function (tool) {
+
+
+                    const keywords =
+                        normalizeArabic(
+                            tool.getAttribute(
+                                "data-keywords"
+                            )
+                        );
+
+
+                    const content =
+                        normalizeArabic(
+                            tool.textContent
+                        );
+
+
+                    const matches =
+                        normalizedQuery === "" ||
+                        keywords.includes(
+                            normalizedQuery
+                        ) ||
+                        content.includes(
+                            normalizedQuery
+                        );
+
+
+                    if (matches) {
+
+                        tool.classList.remove(
+                            "hidden-tool"
+                        );
+
+                        visibleCount++;
+
+                    } else {
+
+                        tool.classList.add(
+                            "hidden-tool"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* إخفاء القسم الفارغ */
+
+            sections.forEach(
+                function (section) {
+
+                    const visibleTools =
+                        section.querySelectorAll(
+                            ".tool-item:not(.hidden-tool)"
+                        ).length;
+
+
+                    if (
+                        visibleTools === 0 &&
+                        normalizedQuery !== ""
+                    ) {
+
+                        section.classList.add(
+                            "hidden-tool"
+                        );
+
+                    } else {
+
+                        section.classList.remove(
+                            "hidden-tool"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* رسالة عدم وجود نتائج */
+
+            if (
+                noResults &&
+                normalizedQuery !== "" &&
+                visibleCount === 0
+            ) {
+
+                noResults.classList.remove(
+                    "hidden"
+                );
+
+            } else if (noResults) {
+
+                noResults.classList.add(
+                    "hidden"
+                );
+
+            }
+
+        }
+
+
+        if (searchInput) {
+
+            searchInput.addEventListener(
+                "input",
+                function () {
+
+                    filterTools(
+                        this.value
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           ESCAPE - CLEAR SEARCH
+        ====================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    searchInput
+                ) {
+
+                    searchInput.value = "";
+
+                    filterTools("");
+
+                    searchInput.blur();
+
                 }
 
-            });
+            }
+        );
 
-        });
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        const mobileMenuButton =
+            document.getElementById(
+                "mobileMenuButton"
+            );
+
+
+        const mobileMenu =
+            document.getElementById(
+                "mobileMenu"
+            );
+
+
+        if (
+            mobileMenuButton &&
+            mobileMenu
+        ) {
+
+
+            mobileMenuButton.addEventListener(
+                "click",
+                function () {
+
+
+                    mobileMenu.classList.toggle(
+                        "active"
+                    );
+
+
+                    const icon =
+                        mobileMenuButton
+                            .querySelector(
+                                ".material-symbols-rounded"
+                            );
+
+
+                    const isOpen =
+                        mobileMenu.classList
+                            .contains(
+                                "active"
+                            );
+
+
+                    if (icon) {
+
+                        icon.textContent =
+                            isOpen
+                                ? "close"
+                                : "menu";
+
+                    }
+
+
+                    mobileMenuButton.setAttribute(
+                        "aria-label",
+                        isOpen
+                            ? "إغلاق القائمة"
+                            : "فتح القائمة"
+                    );
+
+                }
+            );
+
+
+            /* إغلاق القائمة عند الضغط على رابط */
+
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach(
+                    function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                mobileMenu.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+
+                                const icon =
+                                    mobileMenuButton
+                                        .querySelector(
+                                            ".material-symbols-rounded"
+                                        );
+
+
+                                if (icon) {
+
+                                    icon.textContent =
+                                        "menu";
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+        }
+
 
     }
+);
 
-});
 </script>
 
+
 </body>
+
 </html>
