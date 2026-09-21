@@ -1,44 +1,56 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org">
-  <url>
-    <loc>https://vercel.app</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appage.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.apppercentage.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appdiscount.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.apppassword.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appcompress-image.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appresize-image.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appjpg-to-png.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.apppng-to-jpg.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appqr.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.apptext-counter.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appprivacy.html</loc>
-  </url>
-  <url>
-    <loc>https://vercel.appcontact.html</loc>
-  </url>
-</urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <url>
+    <loc>https://adwati-mu.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/age.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/percentage.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/discount.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/compress-image.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/resize-image.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/jpg-to-png.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/png-to-jpg.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/qr.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/text-counter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/password.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://adwati-mu.vercel.app/contact.html</loc>
+  </url>
+
+</urlset>
