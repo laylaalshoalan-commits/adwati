@@ -2,39 +2,1154 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أدواتي | أدوات عربية مجانية</title>
-  <link rel="stylesheet" href="style.css">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <meta name="description"
+        content="أدواتي - مجموعة مجانية من الأدوات والحاسبات العملية للصور والنصوص والحسابات والأمان.">
+
+  <meta name="keywords"
+        content="أدوات مجانية, حاسبة العمر, حساب الخصم, النسبة المئوية, ضغط الصور, تحويل الصور, QR Code, عداد الكلمات">
+
+  <meta name="theme-color" content="#f8fafc">
+
+  <title>أدواتي | أدوات مجانية وسهلة لإنجاز أعمالك اليومية</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,0..200&display=swap"
+        rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            arabic: ['Tajawal', 'Arial', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 10px 35px rgba(15, 23, 42, 0.07)',
+            card: '0 8px 30px rgba(15, 23, 42, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Tajawal", Arial, sans-serif;
+      background: #f8fafc;
+    }
+
+    .material-symbols-rounded {
+      font-family: 'Material Symbols Rounded';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 24;
+    }
+
+    .glass-header {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .tool-card {
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
+      border-color: #cbd5e1;
+    }
+
+    .tool-card:active {
+      transform: translateY(-1px);
+    }
+
+    .tool-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .tool-card:hover .tool-icon {
+      transform: scale(1.08);
+    }
+
+    .search-box:focus-within {
+      box-shadow:
+        0 0 0 4px rgba(14, 165, 233, 0.10),
+        0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .section-line {
+      height: 1px;
+      background: linear-gradient(
+        to left,
+        transparent,
+        #e2e8f0,
+        transparent
+      );
+    }
+
+    .hidden-tool {
+      display: none !important;
+    }
+  </style>
 </head>
-<body>
 
-<header>
-  <h1>أدواتي</h1>
-  <p>أدوات عربية مجانية وسهلة الاستخدام</p>
-</header>
+<body class="text-slate-800">
 
-<main>
-  <h2>أدواتنا</h2>
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="glass-header sticky top-0 z-50 border-b border-slate-200/70">
 
-  <div class="tools">
-    <a href="percentage.html">حاسبة النسبة المئوية</a>
-    <a href="age.html">حساب العمر</a>
-    <a href="discount.html">حساب الخصم</a>
-    <a href="password.html">مولد كلمات المرور</a>
-    <a href="compress-image.html">ضغط الصور</a>
-    <a href="resize-image.html">تغيير حجم الصورة</a>
-    <a href="jpg-to-png.html">تحويل JPG إلى PNG</a>
-    <a href="png-to-jpg.html">تحويل PNG إلى JPG</a>
-    <a href="qr.html">إنشاء QR Code</a>
-    <a href="text-counter.html">عداد الكلمات والحروف</a>
-  </div>
-</main>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-<footer>
-  <a href="privacy.html">سياسة الخصوصية</a>
-  <a href="contact.html">تواصل معنا</a>
-  <p>© 2026 أدواتي</p>
-</footer>
+      <div class="h-16 flex items-center justify-between gap-4">
+
+        <!-- Logo -->
+        <a href="index.html"
+           class="flex items-center gap-2.5 shrink-0"
+           aria-label="أدواتي - الرئيسية">
+
+          <span class="w-10 h-10 rounded-xl
+                       bg-slate-900 text-white
+                       flex items-center justify-center
+                       shadow-sm">
+
+            <span class="material-symbols-rounded text-[25px]">
+              handyman
+            </span>
+
+          </span>
+
+          <div class="leading-tight">
+            <div class="font-extrabold text-lg text-slate-900">
+              أدواتي
+            </div>
+
+            <div class="text-[10px] sm:text-xs text-slate-500">
+              أدوات بسيطة لإنجاز أعمالك
+            </div>
+          </div>
+
+        </a>
+
+
+        <!-- Navigation -->
+        <nav class="hidden sm:flex items-center gap-1">
+
+          <a href="index.html"
+             class="px-4 py-2 rounded-lg text-sm font-semibold
+                    text-slate-900 bg-slate-100
+                    hover:bg-slate-200 transition">
+            الرئيسية
+          </a>
+
+          <a href="privacy.html"
+             class="px-4 py-2 rounded-lg text-sm font-medium
+                    text-slate-600 hover:text-slate-900
+                    hover:bg-slate-100 transition">
+            سياسة الخصوصية
+          </a>
+
+          <a href="contact.html"
+             class="px-4 py-2 rounded-lg text-sm font-medium
+                    text-slate-600 hover:text-slate-900
+                    hover:bg-slate-100 transition">
+            اتصل بنا
+          </a>
+
+        </nav>
+
+        <!-- Mobile Menu -->
+        <button id="mobileMenuButton"
+                type="button"
+                aria-label="فتح القائمة"
+                class="sm:hidden w-10 h-10 rounded-xl
+                       bg-slate-100 text-slate-700
+                       flex items-center justify-center">
+
+          <span class="material-symbols-rounded">
+            menu
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu"
+           class="hidden sm:hidden pb-4">
+
+        <div class="grid gap-1">
+
+          <a href="index.html"
+             class="px-4 py-3 rounded-xl bg-slate-100
+                    text-slate-900 font-semibold">
+            الرئيسية
+          </a>
+
+          <a href="privacy.html"
+             class="px-4 py-3 rounded-xl
+                    text-slate-600 hover:bg-slate-100">
+            سياسة الخصوصية
+          </a>
+
+          <a href="contact.html"
+             class="px-4 py-3 rounded-xl
+                    text-slate-600 hover:bg-slate-100">
+            اتصل بنا
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="relative overflow-hidden">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="py-14 sm:py-20 lg:py-24 text-center">
+
+          <!-- Small badge -->
+          <div class="inline-flex items-center gap-2
+                      px-4 py-2 rounded-full
+                      bg-white border border-slate-200
+                      shadow-sm text-sm text-slate-600
+                      mb-6">
+
+            <span class="material-symbols-rounded text-sky-600">
+              auto_awesome
+            </span>
+
+            أدوات مجانية وسهلة الاستخدام
+
+          </div>
+
+
+          <!-- Main title -->
+          <h1 class="max-w-4xl mx-auto
+                     text-4xl sm:text-5xl lg:text-6xl
+                     font-black tracking-tight
+                     text-slate-950 leading-tight">
+
+            كل الأدوات التي تحتاجها
+            <span class="text-sky-600">
+              في مكان واحد
+            </span>
+
+          </h1>
+
+
+          <!-- Description -->
+          <p class="max-w-2xl mx-auto mt-6
+                    text-base sm:text-lg
+                    leading-8 text-slate-500">
+
+            أدواتي منصة عربية مجانية تساعدك على إنجاز
+            الحسابات وتعديل الصور ومعالجة النصوص والمهام
+            اليومية بسرعة وبطريقة بسيطة.
+
+          </p>
+
+
+          <!-- Search -->
+          <div class="max-w-2xl mx-auto mt-9">
+
+            <div class="search-box relative
+                        bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-soft transition">
+
+              <span class="material-symbols-rounded
+                           absolute right-5 top-1/2
+                           -translate-y-1/2
+                           text-slate-400">
+                search
+              </span>
+
+              <input
+                id="toolSearch"
+                type="search"
+                autocomplete="off"
+                placeholder="ابحث عن أداة... مثل العمر أو الصور أو QR"
+                class="w-full h-14 sm:h-16
+                       pr-14 pl-5
+                       bg-transparent
+                       outline-none
+                       text-slate-800
+                       placeholder:text-slate-400
+                       text-sm sm:text-base">
+
+            </div>
+
+            <p id="searchResult"
+               class="text-sm text-slate-400 mt-3 min-h-[20px]">
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TOOLS
+    ========================== -->
+    <section id="tools"
+             class="pb-20">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+        <!-- =========================
+             الحساب والمالية
+        ========================== -->
+        <div class="tool-section mb-16"
+             data-section="الحساب والمالية">
+
+          <div class="flex items-center gap-4 mb-7">
+
+            <div class="w-12 h-12 rounded-xl
+                        bg-emerald-50
+                        text-emerald-600
+                        flex items-center justify-center">
+
+              <span class="material-symbols-rounded">
+                calculate
+              </span>
+
+            </div>
+
+            <div>
+
+              <h2 class="text-xl sm:text-2xl
+                         font-extrabold text-slate-900">
+                أدوات الحساب والمالية
+              </h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                حسابات يومية سريعة وبسيطة
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-line mb-7"></div>
+
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+
+            <!-- Percentage -->
+            <a href="percentage.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="حاسبة النسبة المئوية نسبة مئوية حساب النسبة">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-emerald-50
+                            text-emerald-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    percent
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-emerald-500
+                             transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                حاسبة النسبة المئوية
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                احسب النسب المئوية بسهولة.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-emerald-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+
+            <!-- Age -->
+            <a href="age.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="حساب العمر العمر تاريخ الميلاد كم عمري">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-blue-50
+                            text-blue-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    calendar_month
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-blue-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                حساب العمر
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                احسب عمرك بالسنوات والأشهر والأيام.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-blue-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+
+            <!-- Discount -->
+            <a href="discount.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="حساب الخصم الخصم السعر التخفيض">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-orange-50
+                            text-orange-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    local_offer
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-orange-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                حساب الخصم
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                اعرف السعر بعد الخصم بسرعة.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-orange-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             الصور والتصميم
+        ========================== -->
+        <div class="tool-section mb-16"
+             data-section="الصور والتصميم">
+
+          <div class="flex items-center gap-4 mb-7">
+
+            <div class="w-12 h-12 rounded-xl
+                        bg-purple-50
+                        text-purple-600
+                        flex items-center justify-center">
+
+              <span class="material-symbols-rounded">
+                image
+              </span>
+
+            </div>
+
+            <div>
+
+              <h2 class="text-xl sm:text-2xl
+                         font-extrabold text-slate-900">
+                أدوات الصور والتصميم
+              </h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                عدّل صورك وحوّلها بسهولة
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-line mb-7"></div>
+
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+
+            <!-- Compress -->
+            <a href="compress-image.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="ضغط الصور تصغير حجم الصورة ضغط صورة">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-purple-50
+                            text-purple-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    compress
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-purple-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                ضغط الصور
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                قلل حجم الصورة مع الحفاظ على جودتها.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-purple-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+
+            <!-- Resize -->
+            <a href="resize-image.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="تغيير حجم الصورة تصغير تكبير الصور">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-pink-50
+                            text-pink-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    photo_size_select_large
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-pink-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                تغيير حجم الصورة
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                غيّر أبعاد الصورة بسهولة.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-pink-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+
+            <!-- JPG PNG -->
+            <a href="jpg-to-png.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="تحويل JPG إلى PNG تحويل الصور">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-sky-50
+                            text-sky-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    transform
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-sky-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                JPG إلى PNG
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                حوّل صور JPG إلى PNG بسهولة.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-sky-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+
+            <!-- PNG JPG -->
+            <a href="png-to-jpg.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="تحويل PNG إلى JPG تحويل الصور">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-cyan-50
+                            text-cyan-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    swap_horiz
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-cyan-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                PNG إلى JPG
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                حوّل صور PNG إلى JPG بسرعة.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-cyan-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+
+            <!-- QR -->
+            <a href="qr.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="إنشاء QR Code رمز QR باركود">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-indigo-50
+                            text-indigo-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    qr_code_2
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-indigo-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                إنشاء QR Code
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                أنشئ رمز QR من النص أو الرابط.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-indigo-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             النصوص والأمان
+        ========================== -->
+        <div class="tool-section mb-10"
+             data-section="النصوص والأمان">
+
+          <div class="flex items-center gap-4 mb-7">
+
+            <div class="w-12 h-12 rounded-xl
+                        bg-amber-50
+                        text-amber-600
+                        flex items-center justify-center">
+
+              <span class="material-symbols-rounded">
+                security
+              </span>
+
+            </div>
+
+            <div>
+
+              <h2 class="text-xl sm:text-2xl
+                         font-extrabold text-slate-900">
+                أدوات النصوص والأمان
+              </h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                أدوات مفيدة للنصوص والحماية
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-line mb-7"></div>
+
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+
+            <!-- Password -->
+            <a href="password.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="مولد كلمات المرور كلمة مرور باسورد password أمان">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-red-50
+                            text-red-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    password
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-red-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                مولد كلمات المرور
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                أنشئ كلمات مرور قوية وعشوائية.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-red-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+
+            <!-- Text Counter -->
+            <a href="text-counter.html"
+               class="tool-card tool-item group
+                      bg-white border border-slate-200
+                      rounded-2xl p-5 shadow-card"
+               data-name="عداد الكلمات والحروف الكلمات الحروف النص">
+
+              <div class="flex items-start justify-between">
+
+                <div class="tool-icon w-12 h-12
+                            rounded-xl bg-yellow-50
+                            text-yellow-600
+                            flex items-center justify-center">
+
+                  <span class="material-symbols-rounded">
+                    text_fields
+                  </span>
+
+                </div>
+
+                <span class="material-symbols-rounded
+                             text-slate-300
+                             group-hover:text-yellow-500 transition">
+                  arrow_back
+                </span>
+
+              </div>
+
+              <h3 class="font-bold text-lg mt-5 text-slate-900">
+                عداد الكلمات والحروف
+              </h3>
+
+              <p class="text-sm text-slate-500 mt-2">
+                احسب الكلمات والحروف في أي نص.
+              </p>
+
+              <div class="mt-5 text-sm font-bold text-yellow-600">
+                استخدم الأداة ←
+              </div>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- No results -->
+        <div id="noResults"
+             class="hidden text-center py-14">
+
+          <div class="w-16 h-16 mx-auto rounded-2xl
+                      bg-slate-100
+                      flex items-center justify-center
+                      text-slate-400">
+
+            <span class="material-symbols-rounded text-3xl">
+              search_off
+            </span>
+
+          </div>
+
+          <h3 class="font-bold text-lg mt-5 text-slate-800">
+            لم نجد أداة مطابقة
+          </h3>
+
+          <p class="text-sm text-slate-500 mt-2">
+            جرّبي البحث باسم الأداة أو وظيفتها.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="border-t border-slate-200 bg-white">
+
+    <div class="max-w-7xl mx-auto
+                px-4 sm:px-6 lg:px-8
+                py-8">
+
+      <div class="flex flex-col
+                  sm:flex-row
+                  items-center
+                  justify-between
+                  gap-4">
+
+        <div class="flex items-center gap-2">
+
+          <span class="w-9 h-9 rounded-lg
+                       bg-slate-900 text-white
+                       flex items-center justify-center">
+
+            <span class="material-symbols-rounded text-xl">
+              handyman
+            </span>
+
+          </span>
+
+          <div>
+
+            <p class="font-bold text-slate-900">
+              أدواتي
+            </p>
+
+            <p class="text-xs text-slate-500">
+              أدوات بسيطة لإنجاز أعمالك اليومية
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="flex items-center gap-4 text-sm">
+
+          <a href="privacy.html"
+             class="text-slate-500 hover:text-slate-900 transition">
+            الخصوصية
+          </a>
+
+          <a href="contact.html"
+             class="text-slate-500 hover:text-slate-900 transition">
+            اتصل بنا
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="mt-6 pt-6 border-t border-slate-100
+                  text-center text-xs text-slate-400">
+
+        © 2026 أدواتي — جميع الحقوق محفوظة
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+  <script>
+
+    /*
+      ==========================================
+      البحث الذكي في الأدوات
+      ==========================================
+    */
+
+    const searchInput = document.getElementById("toolSearch");
+    const toolItems = document.querySelectorAll(".tool-item");
+    const toolSections = document.querySelectorAll(".tool-section");
+    const noResults = document.getElementById("noResults");
+    const searchResult = document.getElementById("searchResult");
+
+    searchInput.addEventListener("input", function () {
+
+      const query = this.value.trim().toLowerCase();
+
+      let visibleTools = 0;
+
+      toolItems.forEach(function (tool) {
+
+        const name =
+          (tool.dataset.name || "").toLowerCase();
+
+        const text =
+          tool.textContent.toLowerCase();
+
+        const matches =
+          query === "" ||
+          name.includes(query) ||
+          text.includes(query);
+
+        if (matches) {
+
+          tool.classList.remove("hidden-tool");
+          visibleTools++;
+
+        } else {
+
+          tool.classList.add("hidden-tool");
+
+        }
+
+      });
+
+
+      /*
+        إخفاء الأقسام التي لا تحتوي
+        على أي أداة ظاهرة
+      */
+
+      toolSections.forEach(function (section) {
+
+        const visible =
+          section.querySelectorAll(
+            ".tool-item:not(.hidden-tool)"
+          ).length > 0;
+
+        section.style.display =
+          visible ? "" : "none";
+
+      });
+
+
+      /*
+        حالة عدم وجود نتائج
+      */
+
+      if (query !== "" && visibleTools === 0) {
+
+        noResults.classList.remove("hidden");
+
+        searchResult.textContent =
+          "لم يتم العثور على أداة مطابقة.";
+
+      } else {
+
+        noResults.classList.add("hidden");
+
+        if (query !== "") {
+
+          searchResult.textContent =
+            `تم العثور على ${visibleTools} أداة`;
+
+        } else {
+
+          searchResult.textContent = "";
+
+        }
+
+      }
+
+    });
+
+
+    /*
+      ==========================================
+      قائمة الهاتف
+      ==========================================
+    */
+
+    const mobileMenuButton =
+      document.getElementById("mobileMenuButton");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    mobileMenuButton.addEventListener("click", function () {
+
+      mobileMenu.classList.toggle("hidden");
+
+    });
+
+
+    /*
+      إغلاق القائمة بعد الضغط على أحد الروابط
+    */
+
+    document.querySelectorAll("#mobileMenu a")
+      .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+          mobileMenu.classList.add("hidden");
+
+        });
+
+      });
+
+  </script>
 
 </body>
 </html>
