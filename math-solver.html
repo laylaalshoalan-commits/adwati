@@ -1,0 +1,2843 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مساعد الرياضيات | حل المسائل خطوة بخطوة</title>
+<meta name="description" content="مساعد رياضيات عربي مجاني يساعد الطلاب على حل المعادلات والجبر والهندسة والمثلثات والمصفوفات والإحصاء خطوة بخطوة.">
+<meta name="keywords" content="حل مسائل الرياضيات, حل المعادلات, حاسبة رياضيات, شرح الرياضيات, حل تربيعية, رياضيات للطلاب">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/mathjs@14.6.0/lib/browser/math.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+
+<style>
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --secondary:#7c3aed;
+    --success:#16a34a;
+    --danger:#dc2626;
+    --warning:#d97706;
+
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#64748b;
+    --border:#e2e8f0;
+
+    --shadow:0 12px 35px rgba(15,23,42,.08);
+    --radius:20px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        Tahoma,
+        Arial,
+        "Segoe UI",
+        sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    width:min(1120px, calc(100% - 28px));
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    background:
+        linear-gradient(135deg,#1d4ed8,#2563eb 55%,#7c3aed);
+    color:white;
+    padding:18px 0 55px;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo small{
+    display:block;
+    font-size:11px;
+    opacity:.8;
+    font-weight:500;
+}
+
+.home-btn{
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.12);
+    color:white;
+    padding:9px 15px;
+    border-radius:12px;
+}
+
+.hero{
+    text-align:center;
+    max-width:800px;
+    margin:48px auto 0;
+}
+
+.hero h1{
+    margin:0 0 12px;
+    font-size:clamp(30px,6vw,48px);
+    line-height:1.2;
+}
+
+.hero p{
+    margin:0;
+    opacity:.9;
+    font-size:17px;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-top:-28px;
+    padding-bottom:60px;
+}
+
+.panel{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px;
+    margin-bottom:20px;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.step{
+    background:#f8fafc;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:12px;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+}
+
+.step.active{
+    background:#eff6ff;
+    color:var(--primary);
+    border-color:#93c5fd;
+    font-weight:800;
+}
+
+.step-number{
+    width:30px;
+    height:30px;
+    display:grid;
+    place-items:center;
+    margin:0 auto 5px;
+    border-radius:50%;
+    background:#e2e8f0;
+    color:#475569;
+    font-weight:bold;
+}
+
+.step.active .step-number{
+    background:var(--primary);
+    color:white;
+}
+
+/* ================= MODE ================= */
+
+.mode-switch{
+    display:flex;
+    gap:8px;
+    background:#f1f5f9;
+    padding:5px;
+    border-radius:14px;
+    margin-bottom:20px;
+}
+
+.mode-btn{
+    flex:1;
+    border:0;
+    background:transparent;
+    padding:11px;
+    border-radius:10px;
+    font-weight:700;
+    color:var(--muted);
+}
+
+.mode-btn.active{
+    background:white;
+    color:var(--primary);
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+
+/* ================= SECTIONS ================= */
+
+.section-title{
+    margin:0 0 5px;
+    font-size:23px;
+}
+
+.section-description{
+    color:var(--muted);
+    margin:0 0 20px;
+}
+
+/* ================= CATEGORY GRID ================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+.category{
+    border:1px solid var(--border);
+    background:white;
+    border-radius:17px;
+    padding:18px;
+    text-align:right;
+    transition:.2s;
+    min-height:135px;
+}
+
+.category:hover{
+    transform:translateY(-3px);
+    border-color:#93c5fd;
+    box-shadow:0 8px 20px rgba(37,99,235,.1);
+}
+
+.category-icon{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:#eff6ff;
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.category strong{
+    display:block;
+    font-size:16px;
+}
+
+.category span{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:3px;
+}
+
+/* ================= PROBLEM TYPES ================= */
+
+.type-list{
+    display:grid;
+    gap:10px;
+}
+
+.type-btn{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    text-align:right;
+    width:100%;
+    border:1px solid var(--border);
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    transition:.2s;
+}
+
+.type-btn:hover{
+    border-color:#93c5fd;
+    background:#f8fbff;
+}
+
+.type-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#eff6ff;
+    display:grid;
+    place-items:center;
+    flex-shrink:0;
+}
+
+.type-btn strong{
+    display:block;
+}
+
+.type-btn small{
+    color:var(--muted);
+}
+
+/* ================= FORM ================= */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+.field label{
+    display:block;
+    font-weight:800;
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.field input,
+.field select,
+.quick-input{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    outline:none;
+    background:white;
+    font-size:16px;
+    direction:ltr;
+    text-align:left;
+}
+
+.field input:focus,
+.field select:focus,
+.quick-input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(37,99,235,.1);
+}
+
+.hint{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+}
+
+.example-box{
+    margin-top:18px;
+    padding:13px 15px;
+    border-radius:13px;
+    background:#f8fafc;
+    border:1px dashed #cbd5e1;
+}
+
+.example-box strong{
+    color:var(--primary);
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.primary-btn{
+    border:0;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:white;
+    padding:14px 22px;
+    border-radius:13px;
+    font-weight:900;
+    font-size:15px;
+    flex:1;
+}
+
+.secondary-btn{
+    border:1px solid var(--border);
+    background:white;
+    padding:14px 18px;
+    border-radius:13px;
+    font-weight:800;
+}
+
+/* ================= QUICK ================= */
+
+.quick-box{
+    display:flex;
+    gap:10px;
+}
+
+.quick-box .primary-btn{
+    flex:0 0 180px;
+}
+
+.keyboard{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:13px;
+}
+
+.key{
+    border:1px solid var(--border);
+    background:#f8fafc;
+    padding:8px 12px;
+    border-radius:9px;
+    min-width:43px;
+}
+
+.key:hover{
+    background:#eff6ff;
+}
+
+/* ================= RESULT ================= */
+
+.result{
+    display:none;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.result-header h2{
+    margin:0;
+}
+
+.verify{
+    padding:7px 11px;
+    border-radius:20px;
+    background:#dcfce7;
+    color:#166534;
+    font-size:12px;
+    font-weight:800;
+}
+
+.problem-card{
+    background:#f8fafc;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:17px;
+    margin-bottom:18px;
+}
+
+.problem-card .label{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.math{
+    direction:ltr;
+    text-align:center;
+    overflow-x:auto;
+    padding:10px 4px;
+    font-size:18px;
+}
+
+.solution-step{
+    border:1px solid var(--border);
+    border-radius:16px;
+    margin:12px 0;
+    overflow:hidden;
+}
+
+.solution-step-header{
+    background:#f8fafc;
+    padding:12px 15px;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.solution-step-number{
+    width:29px;
+    height:29px;
+    display:grid;
+    place-items:center;
+    background:var(--primary);
+    color:white;
+    border-radius:50%;
+    font-size:13px;
+}
+
+.solution-step-body{
+    padding:15px;
+}
+
+.explanation{
+    color:#475569;
+    font-size:14px;
+    background:#f8fafc;
+    padding:11px;
+    border-radius:11px;
+    margin-top:10px;
+}
+
+.final-answer{
+    background:linear-gradient(135deg,#eff6ff,#f5f3ff);
+    border:1px solid #bfdbfe;
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    margin-top:18px;
+}
+
+.final-answer h3{
+    margin:0 0 5px;
+    color:var(--primary);
+}
+
+.final-answer .answer{
+    font-size:24px;
+    font-weight:900;
+}
+
+/* ================= ERROR ================= */
+
+.error{
+    display:none;
+    padding:13px 15px;
+    background:#fef2f2;
+    color:#991b1b;
+    border:1px solid #fecaca;
+    border-radius:13px;
+    margin-top:15px;
+}
+
+.error.show{
+    display:block;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    text-align:center;
+    padding:30px 15px;
+    color:var(--muted);
+}
+
+.empty-icon{
+    font-size:40px;
+    margin-bottom:5px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    padding:25px 15px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .container{
+        width:min(100% - 18px,1120px);
+    }
+
+    .header{
+        padding-bottom:45px;
+    }
+
+    .panel{
+        padding:16px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+    }
+
+    .category{
+        padding:13px;
+        min-height:120px;
+    }
+
+    .category-icon{
+        width:40px;
+        height:40px;
+        font-size:21px;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .quick-box{
+        flex-direction:column;
+    }
+
+    .quick-box .primary-btn{
+        flex:1;
+    }
+
+    .result-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+
+        <nav class="nav">
+            <div class="logo">
+                🧮 مساعد الرياضيات
+                <small>منصة أدواتي التعليمية</small>
+            </div>
+
+            <button class="home-btn" onclick="resetAll()">
+                ↻ البداية
+            </button>
+        </nav>
+
+        <div class="hero">
+            <h1>حل الرياضيات وافهم الحل</h1>
+            <p>
+                اختر نوع المسألة، أدخل الأرقام بسهولة،
+                واحصل على الحل والشرح خطوة بخطوة.
+            </p>
+        </div>
+
+    </div>
+</header>
+
+
+<main class="main container">
+
+    <div class="steps">
+        <div class="step active" id="step1">
+            <div class="step-number">1</div>
+            اختر القسم
+        </div>
+
+        <div class="step" id="step2">
+            <div class="step-number">2</div>
+            اختر المسألة
+        </div>
+
+        <div class="step" id="step3">
+            <div class="step-number">3</div>
+            أدخل البيانات
+        </div>
+
+        <div class="step" id="step4">
+            <div class="step-number">4</div>
+            شاهد الحل
+        </div>
+    </div>
+
+
+    <section class="panel">
+
+        <div class="mode-switch">
+
+            <button class="mode-btn active"
+                    id="guidedMode"
+                    onclick="switchMode('guided')">
+                🎓 وضع الطالب
+            </button>
+
+            <button class="mode-btn"
+                    id="quickMode"
+                    onclick="switchMode('quick')">
+                ⚡ الحل السريع
+            </button>
+
+        </div>
+
+
+        <!-- GUIDED MODE -->
+
+        <div id="guided">
+
+            <!-- STEP 1 -->
+
+            <div id="categories">
+
+                <h2 class="section-title">
+                    اختر قسم الرياضيات
+                </h2>
+
+                <p class="section-description">
+                    لا تحتاج إلى معرفة طريقة كتابة المسألة.
+                    اختر نوعها وسنخبرك ماذا تدخل.
+                </p>
+
+                <div class="category-grid">
+
+                    <button class="category"
+                            onclick="chooseCategory('algebra')">
+                        <div class="category-icon">🔢</div>
+                        <strong>الجبر</strong>
+                        <span>تبسيط وتحليل التعبيرات</span>
+                    </button>
+
+                    <button class="category"
+                            onclick="chooseCategory('equations')">
+                        <div class="category-icon">🟰</div>
+                        <strong>المعادلات</strong>
+                        <span>خطية وتربيعية وأنظمة</span>
+                    </button>
+
+                    <button class="category"
+                            onclick="chooseCategory('geometry')">
+                        <div class="category-icon">📐</div>
+                        <strong>الهندسة</strong>
+                        <span>مساحات ومحيطات وأشكال</span>
+                    </button>
+
+                    <button class="category"
+                            onclick="chooseCategory('trig')">
+                        <div class="category-icon">📐</div>
+                        <strong>المثلثات</strong>
+                        <span>جيب وجيب تمام وظل</span>
+                    </button>
+
+                    <button class="category"
+                            onclick="chooseCategory('matrices')">
+                        <div class="category-icon">🔲</div>
+                        <strong>المصفوفات</strong>
+                        <span>جمع وضرب ومحدد ومُنقول</span>
+                    </button>
+
+                    <button class="category"
+                            onclick="chooseCategory('statistics')">
+                        <div class="category-icon">📊</div>
+                        <strong>الإحصاء</strong>
+                        <span>المتوسط والوسيط والانحراف</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div id="types" style="display:none">
+
+                <button class="secondary-btn"
+                        onclick="backToCategories()">
+                    ← رجوع للأقسام
+                </button>
+
+                <br><br>
+
+                <h2 class="section-title" id="typesTitle"></h2>
+
+                <p class="section-description">
+                    اختر المسألة التي تريد حلها.
+                </p>
+
+                <div class="type-list" id="typeList"></div>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+
+            <div id="formArea" style="display:none">
+
+                <button class="secondary-btn"
+                        onclick="backToTypes()">
+                    ← تغيير نوع المسألة
+                </button>
+
+                <br><br>
+
+                <h2 class="section-title" id="formTitle"></h2>
+
+                <p class="section-description" id="formDescription"></p>
+
+                <div id="dynamicForm"></div>
+
+                <div class="error" id="error"></div>
+
+                <div class="actions">
+
+                    <button class="primary-btn"
+                            onclick="solveCurrent()">
+                        🧮 حل المسألة خطوة بخطوة
+                    </button>
+
+                    <button class="secondary-btn"
+                            onclick="clearForm()">
+                        مسح
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK MODE -->
+
+        <div id="quick" style="display:none">
+
+            <h2 class="section-title">
+                ⚡ اكتب المسألة مباشرة
+            </h2>
+
+            <p class="section-description">
+                اكتب تعبيرًا أو معادلة بسيطة، وسنحاول تحديد طريقة الحل.
+            </p>
+
+            <div class="quick-box">
+
+                <input
+                    id="quickInput"
+                    class="quick-input"
+                    dir="ltr"
+                    placeholder="مثال: 2x + 5 = 15"
+                >
+
+                <button class="primary-btn"
+                        onclick="solveQuick()">
+                    حل الآن
+                </button>
+
+            </div>
+
+            <div class="keyboard">
+
+                <button class="key" onclick="insertKey('x')">x</button>
+                <button class="key" onclick="insertKey('²')">x²</button>
+                <button class="key" onclick="insertKey('^')">^</button>
+                <button class="key" onclick="insertKey('√(')">√</button>
+                <button class="key" onclick="insertKey('(')">(</button>
+                <button class="key" onclick="insertKey(')')">)</button>
+                <button class="key" onclick="insertKey('+')">+</button>
+                <button class="key" onclick="insertKey('-')">−</button>
+                <button class="key" onclick="insertKey('×')">×</button>
+                <button class="key" onclick="insertKey('÷')">÷</button>
+                <button class="key" onclick="insertKey('π')">π</button>
+
+            </div>
+
+            <div class="example-box">
+                <strong>أمثلة:</strong>
+                <br>
+                2x + 5 = 15
+                <br>
+                x^2 - 5x + 6 = 0
+                <br>
+                25 + 12 × 3
+            </div>
+
+            <div class="error" id="quickError"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT -->
+
+    <section class="panel result" id="result">
+
+        <div class="result-header">
+
+            <h2>📘 شرح الحل</h2>
+
+            <span class="verify">
+                ✓ تم التحقق حسابيًا
+            </span>
+
+        </div>
+
+        <div id="resultContent"></div>
+
+        <div class="actions">
+
+            <button class="primary-btn"
+                    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                ↑ تعديل المسألة
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="resetAll()">
+                🆕 مسألة جديدة
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+    مساعد الرياضيات — أداة تعليمية مجانية ضمن منصة أدواتي
+</footer>
+
+
+<script>
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let currentCategory = null;
+let currentType = null;
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+const categories = {
+
+    algebra:{
+        title:"الجبر",
+        types:[
+            {
+                id:"simplify",
+                icon:"➗",
+                title:"تبسيط تعبير",
+                desc:"تبسيط تعبير رياضي مثل 2x + 3x"
+            },
+            {
+                id:"factor",
+                icon:"🧩",
+                title:"تحليل إلى عوامل",
+                desc:"تحليل بعض التعبيرات الجبرية"
+            }
+        ]
+    },
+
+    equations:{
+        title:"المعادلات",
+        types:[
+            {
+                id:"linear",
+                icon:"➖",
+                title:"معادلة خطية",
+                desc:"مثل 2x + 5 = 15"
+            },
+            {
+                id:"quadratic",
+                icon:"²",
+                title:"معادلة تربيعية",
+                desc:"مثل x² - 5x + 6 = 0"
+            },
+            {
+                id:"system",
+                icon:"🔢",
+                title:"نظام معادلتين",
+                desc:"معادلتان بمجهولين x و y"
+            }
+        ]
+    },
+
+    geometry:{
+        title:"الهندسة",
+        types:[
+            {
+                id:"triangleArea",
+                icon:"🔺",
+                title:"مساحة مثلث",
+                desc:"المساحة = نصف × القاعدة × الارتفاع"
+            },
+            {
+                id:"rectangle",
+                icon:"▭",
+                title:"مساحة ومحيط مستطيل",
+                desc:"أدخل الطول والعرض"
+            },
+            {
+                id:"circle",
+                icon:"⭕",
+                title:"الدائرة",
+                desc:"المساحة والمحيط"
+            },
+            {
+                id:"pythagoras",
+                icon:"📐",
+                title:"نظرية فيثاغورس",
+                desc:"حساب الضلع المجهول في مثلث قائم"
+            }
+        ]
+    },
+
+    trig:{
+        title:"المثلثات",
+        types:[
+            {
+                id:"trig",
+                icon:"📐",
+                title:"جيب / جيب تمام / ظل",
+                desc:"احسب sin أو cos أو tan لزاوية"
+            }
+        ]
+    },
+
+    matrices:{
+        title:"المصفوفات",
+        types:[
+            {
+                id:"matrix2",
+                icon:"🔲",
+                title:"مصفوفة 2 × 2",
+                desc:"المحدد، المنقول، والجمع"
+            }
+        ]
+    },
+
+    statistics:{
+        title:"الإحصاء",
+        types:[
+            {
+                id:"statistics",
+                icon:"📊",
+                title:"تحليل مجموعة بيانات",
+                desc:"المتوسط والوسيط والمنوال والتباين"
+            }
+        ]
+    }
+
+};
+
+
+/* =====================================================
+   MODE
+===================================================== */
+
+function switchMode(mode){
+
+    document.getElementById("guided").style.display =
+        mode === "guided" ? "block" : "none";
+
+    document.getElementById("quick").style.display =
+        mode === "quick" ? "block" : "none";
+
+    document.getElementById("guidedMode")
+        .classList.toggle("active", mode === "guided");
+
+    document.getElementById("quickMode")
+        .classList.toggle("active", mode === "quick");
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+function chooseCategory(category){
+
+    currentCategory = category;
+
+    document.getElementById("categories").style.display="none";
+    document.getElementById("types").style.display="block";
+
+    document.getElementById("typesTitle").textContent =
+        categories[category].title;
+
+    const list = document.getElementById("typeList");
+
+    list.innerHTML="";
+
+    categories[category].types.forEach(type=>{
+
+        const button=document.createElement("button");
+
+        button.className="type-btn";
+
+        button.innerHTML=`
+            <div class="type-icon">${type.icon}</div>
+            <div>
+                <strong>${type.title}</strong>
+                <small>${type.desc}</small>
+            </div>
+        `;
+
+        button.onclick=()=>chooseType(type.id);
+
+        list.appendChild(button);
+
+    });
+
+    activateStep(2);
+}
+
+
+/* =====================================================
+   TYPE
+===================================================== */
+
+function chooseType(type){
+
+    currentType=type;
+
+    document.getElementById("types").style.display="none";
+    document.getElementById("formArea").style.display="block";
+
+    buildForm(type);
+
+    activateStep(3);
+
+    window.scrollTo({
+        top:document.getElementById("formArea").offsetTop-20,
+        behavior:"smooth"
+    });
+}
+
+
+/* =====================================================
+   FORM BUILDER
+===================================================== */
+
+function buildForm(type){
+
+    const title=document.getElementById("formTitle");
+    const description=document.getElementById("formDescription");
+    const form=document.getElementById("dynamicForm");
+
+    form.innerHTML="";
+
+    const input = (id,label,placeholder,hint="") => `
+        <div class="field">
+            <label>${label}</label>
+            <input id="${id}"
+                   type="number"
+                   step="any"
+                   placeholder="${placeholder}">
+            ${hint ? `<div class="hint">${hint}</div>` : ""}
+        </div>
+    `;
+
+    if(type==="linear"){
+
+        title.textContent="حل معادلة خطية";
+
+        description.textContent=
+            "أدخل معاملات المعادلة بالشكل ax + b = c.";
+
+        form.innerHTML=`
+            <div class="form-grid">
+
+                ${input("a","قيمة a","مثال: 2","معامل x")}
+
+                ${input("b","قيمة b","مثال: 5","العدد الثابت في الطرف الأيسر")}
+
+                ${input("c","قيمة c","مثال: 15","الطرف الأيمن")}
+
+            </div>
+
+            <div class="example-box">
+                <strong>مثال:</strong>
+                2x + 5 = 15
+                <br>
+                لذلك: a = 2 ، b = 5 ، c = 15
+            </div>
+        `;
+
+    }
+
+    else if(type==="quadratic"){
+
+        title.textContent="حل معادلة تربيعية";
+
+        description.textContent=
+            "أدخل معاملات المعادلة ax² + bx + c = 0.";
+
+        form.innerHTML=`
+            <div class="form-grid">
+
+                ${input("a","قيمة a","مثال: 1","يجب ألا تكون صفرًا")}
+
+                ${input("b","قيمة b","مثال: -5","معامل x")}
+
+                ${input("c","قيمة c","مثال: 6","العدد الثابت")}
+
+            </div>
+
+            <div class="example-box">
+                <strong>مثال:</strong>
+                x² - 5x + 6 = 0
+                <br>
+                a = 1 ، b = -5 ، c = 6
+            </div>
+        `;
+
+    }
+
+    else if(type==="triangleArea"){
+
+        title.textContent="مساحة مثلث";
+
+        description.textContent=
+            "أدخل طول القاعدة والارتفاع.";
+
+        form.innerHTML=`
+            <div class="form-grid">
+
+                ${input("base","القاعدة","مثال: 10")}
+
+                ${input("height","الارتفاع","مثال: 6")}
+
+            </div>
+
+            <div class="example-box">
+                <strong>القانون:</strong>
+                المساحة = ½ × القاعدة × الارتفاع
+            </div>
+        `;
+
+    }
+
+    else if(type==="rectangle"){
+
+        title.textContent="المستطيل";
+
+        description.textContent=
+            "أدخل الطول والعرض لحساب المساحة والمحيط.";
+
+        form.innerHTML=`
+            <div class="form-grid">
+
+                ${input("length","الطول","مثال: 10")}
+
+                ${input("width","العرض","مثال: 5")}
+
+            </div>
+        `;
+
+    }
+
+    else if(type==="circle"){
+
+        title.textContent="الدائرة";
+
+        description.textContent=
+            "أدخل نصف القطر لحساب المساحة والمحيط.";
+
+        form.innerHTML=`
+            <div class="form-grid">
+
+                ${input("radius","نصف القطر","مثال: 7")}
+
+            </div>
+
+            <div class="example-box">
+                <strong>القوانين:</strong>
+                <br>
+                المساحة = π × نق²
+                <br>
+                المحيط = 2 × π × نق
+            </div>
+        `;
+
+    }
+
+    else if(type==="pythagoras"){
+
+        title.textContent="نظرية فيثاغورس";
+
+        description.textContent=
+            "أدخل ضلعين معلومين لحساب الوتر في المثلث القائم.";
+
+        form.innerHTML=`
+            <div class="form-grid">
+
+                ${input("sideA","الضلع الأول","مثال: 3")}
+
+                ${input("sideB","الضلع الثاني","مثال: 4")}
+
+            </div>
+
+            <div class="example-box">
+                <strong>القانون:</strong>
+                c² = a² + b²
+            </div>
+        `;
+
+    }
+
+    else if(type==="trig"){
+
+        title.textContent="الدوال المثلثية";
+
+        description.textContent=
+            "أدخل الزاوية بالدرجات واختر الدالة المطلوبة.";
+
+        form.innerHTML=`
+
+            <div class="form-grid">
+
+                ${input("angle","الزاوية","مثال: 30")}
+
+                <div class="field">
+                    <label>اختر الدالة</label>
+
+                    <select id="trigFunction">
+                        <option value="sin">sin — جيب</option>
+                        <option value="cos">cos — جيب تمام</option>
+                        <option value="tan">tan — ظل</option>
+                    </select>
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    else if(type==="matrix2"){
+
+        title.textContent="مصفوفة 2 × 2";
+
+        description.textContent=
+            "أدخل عناصر المصفوفة لحساب المحدد والمنقول.";
+
+        form.innerHTML=`
+
+            <div style="
+                max-width:320px;
+                margin:auto;
+            ">
+
+                <div class="form-grid">
+
+                    ${input("m11","العنصر a₁₁","1")}
+
+                    ${input("m12","العنصر a₁₂","2")}
+
+                    ${input("m21","العنصر a₂₁","3")}
+
+                    ${input("m22","العنصر a₂₂","4")}
+
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    else if(type==="statistics"){
+
+        title.textContent="تحليل البيانات";
+
+        description.textContent=
+            "اكتب الأرقام مفصولة بفواصل، مثل: 5, 7, 8, 10, 10";
+
+        form.innerHTML=`
+
+            <div class="field">
+
+                <label>مجموعة البيانات</label>
+
+                <input
+                    id="data"
+                    type="text"
+                    dir="ltr"
+                    style="width:100%"
+                    placeholder="5, 7, 8, 10, 10">
+
+                <div class="hint">
+                    يمكنك إدخال أرقام صحيحة أو عشرية.
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    else if(type==="simplify"){
+
+        title.textContent="تبسيط تعبير";
+
+        description.textContent=
+            "اكتب التعبير الرياضي الذي تريد تبسيطه.";
+
+        form.innerHTML=`
+
+            <div class="field">
+
+                <label>التعبير</label>
+
+                <input
+                    id="expression"
+                    type="text"
+                    dir="ltr"
+                    placeholder="مثال: 2*x + 3*x">
+
+                <div class="hint">
+                    استخدم x للمتغير، و ^ للأس.
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    else if(type==="factor"){
+
+        title.textContent="تحليل تعبير إلى عوامل";
+
+        description.textContent=
+            "أدخل تعبيرًا بسيطًا مثل x² - 5x + 6.";
+
+        form.innerHTML=`
+
+            <div class="field">
+
+                <label>التعبير</label>
+
+                <input
+                    id="expression"
+                    type="text"
+                    dir="ltr"
+                    placeholder="x^2 - 5*x + 6">
+
+            </div>
+        `;
+
+    }
+
+    else if(type==="system"){
+
+        title.textContent="نظام معادلتين";
+
+        description.textContent=
+            "أدخل المعاملات لكل معادلة بالشكل ax + by = c.";
+
+        form.innerHTML=`
+
+            <div class="form-grid">
+
+                ${input("a1","a₁","1")}
+
+                ${input("b1","b₁","1")}
+
+                ${input("c1","c₁","5")}
+
+                ${input("a2","a₂","1")}
+
+                ${input("b2","b₂","-1")}
+
+                ${input("c2","c₂","1")}
+
+            </div>
+
+            <div class="example-box">
+                <strong>مثال:</strong>
+                <br>
+                x + y = 5
+                <br>
+                x - y = 1
+            </div>
+        `;
+    }
+}
+
+
+/* =====================================================
+   SOLVE
+===================================================== */
+
+function solveCurrent(){
+
+    hideError();
+
+    try{
+
+        let result;
+
+        switch(currentType){
+
+            case "linear":
+                result=solveLinear();
+                break;
+
+            case "quadratic":
+                result=solveQuadratic();
+                break;
+
+            case "triangleArea":
+                result=solveTriangle();
+                break;
+
+            case "rectangle":
+                result=solveRectangle();
+                break;
+
+            case "circle":
+                result=solveCircle();
+                break;
+
+            case "pythagoras":
+                result=solvePythagoras();
+                break;
+
+            case "trig":
+                result=solveTrig();
+                break;
+
+            case "matrix2":
+                result=solveMatrix();
+                break;
+
+            case "statistics":
+                result=solveStatistics();
+                break;
+
+            case "simplify":
+                result=solveSimplify();
+                break;
+
+            case "factor":
+                result=solveFactor();
+                break;
+
+            case "system":
+                result=solveSystem();
+                break;
+
+            default:
+                throw new Error("اختر نوع المسألة أولاً.");
+
+        }
+
+        renderResult(result);
+
+    }catch(error){
+
+        showError(error.message);
+
+    }
+}
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function number(id){
+
+    const value=parseFloat(document.getElementById(id).value);
+
+    if(!Number.isFinite(value)){
+        throw new Error("يرجى إدخال جميع القيم المطلوبة بشكل صحيح.");
+    }
+
+    return value;
+}
+
+function clean(n){
+
+    if(Math.abs(n)<1e-12) return 0;
+
+    return Number(n.toFixed(10));
+}
+
+function latexNumber(n){
+
+    n=clean(n);
+
+    if(Number.isInteger(n)){
+        return String(n);
+    }
+
+    return String(n);
+}
+
+function renderMath(expression){
+
+    if(typeof katex==="undefined"){
+        return `<div class="math">${expression}</div>`;
+    }
+
+    try{
+        return `<div class="math">${katex.renderToString(
+            expression,
+            {
+                throwOnError:false,
+                displayMode:true
+            }
+        )}</div>`;
+    }catch(e){
+        return `<div class="math">${expression}</div>`;
+    }
+}
+
+
+/* =====================================================
+   LINEAR
+===================================================== */
+
+function solveLinear(){
+
+    const a=number("a");
+    const b=number("b");
+    const c=number("c");
+
+    if(a===0){
+        throw new Error("قيمة a لا يمكن أن تكون صفرًا في هذه المعادلة الخطية.");
+    }
+
+    const x=(c-b)/a;
+
+    return {
+        title:"حل المعادلة الخطية",
+
+        problem:`${a}x + ${b} = ${c}`,
+
+        steps:[
+
+            {
+                title:"كتابة المعادلة",
+                math:`${latexNumber(a)}x + ${latexNumber(b)} = ${latexNumber(c)}`,
+                explanation:"نبدأ من المعادلة التي أدخلتها."
+            },
+
+            {
+                title:"نطرح b من الطرفين",
+                math:`${latexNumber(a)}x = ${latexNumber(c)} - ${latexNumber(b)}`,
+                explanation:"نزيل العدد الثابت من الطرف الأيسر مع المحافظة على تساوي الطرفين."
+            },
+
+            {
+                title:"إجراء عملية الطرح",
+                math:`${latexNumber(a)}x = ${latexNumber(c-b)}`,
+                explanation:"بعد حساب العملية نحصل على قيمة الطرف الأيمن."
+            },
+
+            {
+                title:"القسمة على a",
+                math:`x = \\frac{${latexNumber(c-b)}}{${latexNumber(a)}}`
+                    + ` = ${latexNumber(x)}`,
+                explanation:"نقسم الطرفين على معامل x للحصول على قيمة x."
+            }
+
+        ],
+
+        answer:`x = ${latexNumber(x)}`
+    };
+}
+
+
+/* =====================================================
+   QUADRATIC
+===================================================== */
+
+function solveQuadratic(){
+
+    const a=number("a");
+    const b=number("b");
+    const c=number("c");
+
+    if(a===0){
+        throw new Error("هذه ليست معادلة تربيعية لأن a = 0.");
+    }
+
+    const D=b*b-4*a*c;
+
+    if(D<0){
+
+        return {
+            title:"حل المعادلة التربيعية",
+
+            problem:`${a}x^2 + ${b}x + ${c} = 0`,
+
+            steps:[
+                {
+                    title:"القانون العام",
+                    math:"x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}",
+                    explanation:"نستخدم القانون العام لحل المعادلة التربيعية."
+                },
+                {
+                    title:"تحديد القيم",
+                    math:`a=${a},\\quad b=${b},\\quad c=${c}`,
+                    explanation:"نحدد معاملات المعادلة."
+                },
+                {
+                    title:"حساب المميز",
+                    math:`\\Delta=b^2-4ac=${b*b}-4(${a})(${c})=${D}`,
+                    explanation:"المميز سالب، لذلك لا توجد حلول حقيقية."
+                }
+            ],
+
+            answer:"لا توجد حلول حقيقية"
+        };
+    }
+
+    const sqrtD=Math.sqrt(D);
+
+    const x1=(-b+sqrtD)/(2*a);
+    const x2=(-b-sqrtD)/(2*a);
+
+    return {
+
+        title:"حل المعادلة التربيعية",
+
+        problem:`${a}x^2 + ${b}x + ${c}=0`,
+
+        steps:[
+
+            {
+                title:"القانون العام",
+                math:"x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}",
+                explanation:"هذا هو القانون المستخدم لحل المعادلة التربيعية."
+            },
+
+            {
+                title:"تحديد المعاملات",
+                math:`a=${a},\\quad b=${b},\\quad c=${c}`,
+                explanation:"نستخرج قيم a و b و c من المعادلة."
+            },
+
+            {
+                title:"حساب المميز",
+                math:`\\Delta=b^2-4ac`
+                    +`=${b}^2-4(${a})(${c})`
+                    +`=${D}`,
+                explanation:"المميز يحدد طبيعة حلول المعادلة."
+            },
+
+            {
+                title:"التعويض في القانون",
+                math:`x=\\frac{-(${b})\\pm\\sqrt{${D}}}{2(${a})}`,
+                explanation:"نعوض بالقيم التي حسبناها في القانون العام."
+            },
+
+            {
+                title:"الحل الأول",
+                math:`x_1=${latexNumber(x1)}`,
+                explanation:"نستخدم إشارة + في القانون العام."
+            },
+
+            {
+                title:"الحل الثاني",
+                math:`x_2=${latexNumber(x2)}`,
+                explanation:"نستخدم إشارة − في القانون العام."
+            }
+
+        ],
+
+        answer:`x₁ = ${latexNumber(x1)} &nbsp;&nbsp; و &nbsp;&nbsp; x₂ = ${latexNumber(x2)}`
+    };
+}
+
+
+/* =====================================================
+   GEOMETRY
+===================================================== */
+
+function solveTriangle(){
+
+    const base=number("base");
+    const height=number("height");
+
+    if(base<=0 || height<=0){
+        throw new Error("يجب أن تكون القاعدة والارتفاع أكبر من صفر.");
+    }
+
+    const area=.5*base*height;
+
+    return {
+
+        title:"مساحة المثلث",
+
+        problem:`القاعدة = ${base} ، الارتفاع = ${height}`,
+
+        steps:[
+
+            {
+                title:"القانون",
+                math:"A=\\frac{1}{2}\\times b\\times h",
+                explanation:"مساحة المثلث تساوي نصف حاصل ضرب القاعدة في الارتفاع."
+            },
+
+            {
+                title:"التعويض",
+                math:`A=\\frac{1}{2}\\times ${base}\\times ${height}`,
+                explanation:"نعوض بالقيم التي أدخلتها."
+            },
+
+            {
+                title:"الحساب",
+                math:`A=${latexNumber(area)}`,
+                explanation:"نحسب حاصل الضرب."
+            }
+
+        ],
+
+        answer:`مساحة المثلث = ${latexNumber(area)} وحدة²`
+    };
+}
+
+
+function solveRectangle(){
+
+    const l=number("length");
+    const w=number("width");
+
+    if(l<=0 || w<=0){
+        throw new Error("يجب أن يكون الطول والعرض أكبر من صفر.");
+    }
+
+    const area=l*w;
+    const perimeter=2*(l+w);
+
+    return {
+
+        title:"المستطيل",
+
+        problem:`الطول = ${l} ، العرض = ${w}`,
+
+        steps:[
+
+            {
+                title:"مساحة المستطيل",
+                math:`A=l\\times w=${l}\\times${w}=${area}`,
+                explanation:"نضرب الطول في العرض."
+            },
+
+            {
+                title:"محيط المستطيل",
+                math:`P=2(l+w)=2(${l}+${w})=${perimeter}`,
+                explanation:"محيط المستطيل يساوي ضعف مجموع الطول والعرض."
+            }
+
+        ],
+
+        answer:`المساحة = ${area} وحدة²<br>المحيط = ${perimeter} وحدة`
+    };
+}
+
+
+function solveCircle(){
+
+    const r=number("radius");
+
+    if(r<=0){
+        throw new Error("نصف القطر يجب أن يكون أكبر من صفر.");
+    }
+
+    const area=Math.PI*r*r;
+    const circumference=2*Math.PI*r;
+
+    return {
+
+        title:"الدائرة",
+
+        problem:`نصف القطر = ${r}`,
+
+        steps:[
+
+            {
+                title:"مساحة الدائرة",
+                math:`A=\\pi r^2`,
+                explanation:"نستخدم قانون مساحة الدائرة."
+            },
+
+            {
+                title:"التعويض",
+                math:`A=\\pi(${r})^2`,
+                explanation:"نعوض بقيمة نصف القطر."
+            },
+
+            {
+                title:"النتيجة",
+                math:`A\\approx${area.toFixed(4)}`,
+                explanation:"نستخدم قيمة π التقريبية."
+            },
+
+            {
+                title:"محيط الدائرة",
+                math:`C=2\\pi r=2\\pi(${r})\\approx${circumference.toFixed(4)}`,
+                explanation:"نستخدم قانون محيط الدائرة."
+            }
+
+        ],
+
+        answer:`المساحة ≈ ${area.toFixed(4)} وحدة²<br>المحيط ≈ ${circumference.toFixed(4)} وحدة`
+    };
+}
+
+
+function solvePythagoras(){
+
+    const a=number("sideA");
+    const b=number("sideB");
+
+    if(a<=0 || b<=0){
+        throw new Error("يجب أن تكون أطوال الأضلاع أكبر من صفر.");
+    }
+
+    const c=Math.sqrt(a*a+b*b);
+
+    return {
+
+        title:"نظرية فيثاغورس",
+
+        problem:`a=${a} ، b=${b}`,
+
+        steps:[
+
+            {
+                title:"القانون",
+                math:"c^2=a^2+b^2",
+                explanation:"في المثلث القائم، مربع الوتر يساوي مجموع مربعي الضلعين القائمين."
+            },
+
+            {
+                title:"التعويض",
+                math:`c^2=${a}^2+${b}^2`,
+                explanation:"نعوض بالقيم المعطاة."
+            },
+
+            {
+                title:"الحساب",
+                math:`c^2=${a*a+b*b}`,
+                explanation:"نحسب مجموع مربعي الضلعين."
+            },
+
+            {
+                title:"أخذ الجذر التربيعي",
+                math:`c=\\sqrt{${a*a+b*b}}\\approx${c.toFixed(6)}`,
+                explanation:"نأخذ الجذر التربيعي للطرفين للحصول على طول الوتر."
+            }
+
+        ],
+
+        answer:`c ≈ ${c.toFixed(6)}`
+    };
+}
+
+
+/* =====================================================
+   TRIG
+===================================================== */
+
+function solveTrig(){
+
+    const angle=number("angle");
+    const fn=document.getElementById("trigFunction").value;
+
+    const radians=angle*Math.PI/180;
+
+    let value;
+
+    if(fn==="sin") value=Math.sin(radians);
+    if(fn==="cos") value=Math.cos(radians);
+    if(fn==="tan") value=Math.tan(radians);
+
+    const names={
+        sin:"جيب",
+        cos:"جيب تمام",
+        tan:"ظل"
+    };
+
+    return {
+
+        title:`الدالة ${fn}`,
+
+        problem:`الزاوية = ${angle}°`,
+
+        steps:[
+
+            {
+                title:"تحويل الزاوية إلى راديان",
+                math:`\\theta=${angle}\\times\\frac{\\pi}{180}`,
+                explanation:"محركات الحساب المثلثي تستخدم الراديان داخليًا."
+            },
+
+            {
+                title:`حساب ${names[fn]}`,
+                math:`${fn}(${angle}^\\circ)\\approx${value.toFixed(8)}`,
+                explanation:`نحسب ${names[fn]} للزاوية المدخلة.`
+            }
+
+        ],
+
+        answer:`${fn}(${angle}°) ≈ ${value.toFixed(8)}`
+    };
+}
+
+
+/* =====================================================
+   MATRIX
+===================================================== */
+
+function solveMatrix(){
+
+    const a=number("m11");
+    const b=number("m12");
+    const c=number("m21");
+    const d=number("m22");
+
+    const det=a*d-b*c;
+
+    return {
+
+        title:"مصفوفة 2 × 2",
+
+        problem:`\\begin{pmatrix}${a}&${b}\\\\${c}&${d}\\end{pmatrix}`,
+
+        steps:[
+
+            {
+                title:"المصفوفة",
+                math:`\\begin{pmatrix}${a}&${b}\\\\${c}&${d}\\end{pmatrix}`,
+                explanation:"هذه هي المصفوفة التي أدخلتها."
+            },
+
+            {
+                title:"قانون المحدد",
+                math:"\\det(A)=ad-bc",
+                explanation:"محدد مصفوفة 2×2 يحسب بطرح حاصل الضرب الثاني من الأول."
+            },
+
+            {
+                title:"التعويض",
+                math:`\\det(A)=(${a})(${d})-(${b})(${c})`,
+                explanation:"نعوض بعناصر المصفوفة."
+            },
+
+            {
+                title:"الحساب",
+                math:`\\det(A)=${a*d}-${b*c}=${det}`,
+                explanation:"نحسب الناتج النهائي للمحدد."
+            },
+
+            {
+                title:"المصفوفة المنقولة",
+                math:`A^T=\\begin{pmatrix}${a}&${c}\\\\${b}&${d}\\end{pmatrix}`,
+                explanation:"في المصفوفة المنقولة تتبادل الصفوف والأعمدة."
+            }
+
+        ],
+
+        answer:`المحدد = ${det}`
+    };
+}
+
+
+/* =====================================================
+   STATISTICS
+===================================================== */
+
+function solveStatistics(){
+
+    const raw=document.getElementById("data").value;
+
+    const data=raw
+        .split(",")
+        .map(x=>parseFloat(x.trim()))
+        .filter(x=>Number.isFinite(x));
+
+    if(data.length<2){
+        throw new Error("أدخل رقمين على الأقل مفصولين بفواصل.");
+    }
+
+    const sorted=[...data].sort((a,b)=>a-b);
+
+    const mean=data.reduce((s,x)=>s+x,0)/data.length;
+
+    const median=
+        sorted.length%2
+        ? sorted[Math.floor(sorted.length/2)]
+        : (sorted[sorted.length/2-1]+sorted[sorted.length/2])/2;
+
+    const frequencies={};
+
+    data.forEach(x=>{
+        frequencies[x]=(frequencies[x]||0)+1;
+    });
+
+    const maxFreq=Math.max(...Object.values(frequencies));
+
+    const modes=
+        maxFreq>1
+        ? Object.keys(frequencies)
+            .filter(x=>frequencies[x]===maxFreq)
+            .map(Number)
+        : [];
+
+    const variance=
+        data.reduce((s,x)=>s+(x-mean)**2,0)/data.length;
+
+    const std=Math.sqrt(variance);
+
+    return {
+
+        title:"تحليل مجموعة البيانات",
+
+        problem:data.join(" ، "),
+
+        steps:[
+
+            {
+                title:"ترتيب البيانات",
+                math:sorted.join(" , "),
+                explanation:"نرتب القيم تصاعديًا للمساعدة في إيجاد الوسيط."
+            },
+
+            {
+                title:"المتوسط الحسابي",
+                math:`\\bar{x}=\\frac{${data.join("+")}}{${data.length}}=${mean.toFixed(4)}`,
+                explanation:"نجمع جميع القيم ثم نقسم المجموع على عدد القيم."
+            },
+
+            {
+                title:"الوسيط",
+                math:`Median=${median}`,
+                explanation:"بعد ترتيب البيانات نأخذ القيمة الوسطى، أو متوسط القيمتين الوسطيتين."
+            },
+
+            {
+                title:"التباين",
+                math:`\\sigma^2\\approx${variance.toFixed(4)}`,
+                explanation:"التباين يقيس مدى انتشار القيم حول المتوسط."
+            },
+
+            {
+                title:"الانحراف المعياري",
+                math:`\\sigma\\approx${std.toFixed(4)}`,
+                explanation:"الانحراف المعياري هو الجذر التربيعي للتباين."
+            }
+
+        ],
+
+        answer:
+            `المتوسط = ${mean.toFixed(4)}<br>
+             الوسيط = ${median}<br>
+             ${modes.length ? "المنوال = "+modes.join(" ، ")+"<br>" : ""}
+             التباين = ${variance.toFixed(4)}<br>
+             الانحراف المعياري = ${std.toFixed(4)}`
+    };
+}
+
+
+/* =====================================================
+   SIMPLIFY
+===================================================== */
+
+function solveSimplify(){
+
+    const expression=document.getElementById("expression").value.trim();
+
+    if(!expression){
+        throw new Error("اكتب التعبير الذي تريد تبسيطه.");
+    }
+
+    let simplified;
+
+    try{
+        simplified=math.simplify(expression).toString();
+    }catch(e){
+        throw new Error("لم أستطع قراءة التعبير. استخدم مثلًا: 2*x + 3*x");
+    }
+
+    return {
+
+        title:"تبسيط التعبير",
+
+        problem:expression,
+
+        steps:[
+
+            {
+                title:"التعبير الأصلي",
+                math:expression.replace(/\*/g,"\\times"),
+                explanation:"هذا هو التعبير الذي أدخلته."
+            },
+
+            {
+                title:"تجميع الحدود وتبسيط التعبير",
+                math:simplified,
+                explanation:"تم استخدام محرك رياضي لتبسيط التعبير جبريًا."
+            }
+
+        ],
+
+        answer:simplified
+    };
+}
+
+
+/* =====================================================
+   FACTOR
+===================================================== */
+
+function solveFactor(){
+
+    let expression=document.getElementById("expression").value.trim();
+
+    if(!expression){
+        throw new Error("اكتب التعبير.");
+    }
+
+    /*
+       دعم خاص للمعادلات التربيعية من الشكل:
+       x^2 + bx + c
+    */
+
+    const match=expression
+        .replace(/\s/g,"")
+        .match(/^x\^2([+-]\d*\.?\d*)x([+-]\d+\.?\d*)$/);
+
+    if(!match){
+
+        let simplified;
+
+        try{
+            simplified=math.simplify(expression).toString();
+        }catch(e){
+            throw new Error("اكتب التعبير بصيغة مثل x^2-5*x+6.");
+        }
+
+        return {
+            title:"تحليل التعبير",
+            problem:expression,
+            steps:[
+                {
+                    title:"التعبير",
+                    math:expression,
+                    explanation:"تم قراءة التعبير الذي أدخلته."
+                },
+                {
+                    title:"التبسيط",
+                    math:simplified,
+                    explanation:"تم تبسيط التعبير رياضيًا."
+                }
+            ],
+            answer:simplified
+        };
+    }
+
+    const b=parseFloat(match[1]);
+    const c=parseFloat(match[2]);
+
+    const D=b*b-4*c;
+
+    if(D<0){
+        return {
+            title:"تحليل التعبير",
+            problem:expression,
+            steps:[
+                {
+                    title:"حساب المميز",
+                    math:`\\Delta=${D}`,
+                    explanation:"المميز سالب، لذلك لا توجد عوامل خطية حقيقية."
+                }
+            ],
+            answer:"لا يمكن تحليله إلى عاملين خطيين حقيقيين."
+        };
+    }
+
+    const r1=(-b+Math.sqrt(D))/2;
+    const r2=(-b-Math.sqrt(D))/2;
+
+    const answer=`(x-${latexNumber(r1)})(x-${latexNumber(r2)})`;
+
+    return {
+
+        title:"تحليل التعبير إلى عوامل",
+
+        problem:expression,
+
+        steps:[
+
+            {
+                title:"التعبير الأصلي",
+                math:"x^2"+(b>=0?"+":"")+b+"x"+(c>=0?"+":"")+c,
+                explanation:"نحدد معاملات التعبير."
+            },
+
+            {
+                title:"البحث عن الجذور",
+                math:`x_1=${latexNumber(r1)},\\quad x_2=${latexNumber(r2)}`,
+                explanation:"نجد القيم التي تجعل التعبير مساويًا للصفر."
+            },
+
+            {
+                title:"كتابة العوامل",
+                math:answer,
+                explanation:"إذا كان الجذر r فإن العامل المقابل يكون (x-r)."
+            }
+
+        ],
+
+        answer:answer
+    };
+}
+
+
+/* =====================================================
+   SYSTEM
+===================================================== */
+
+function solveSystem(){
+
+    const a1=number("a1");
+    const b1=number("b1");
+    const c1=number("c1");
+
+    const a2=number("a2");
+    const b2=number("b2");
+    const c2=number("c2");
+
+    const D=a1*b2-a2*b1;
+
+    if(Math.abs(D)<1e-12){
+        throw new Error(
+            "هذا النظام لا يملك حلاً وحيدًا. قد يكون له عدد لا نهائي من الحلول أو لا يوجد حل."
+        );
+    }
+
+    const Dx=c1*b2-c2*b1;
+    const Dy=a1*c2-a2*c1;
+
+    const x=Dx/D;
+    const y=Dy/D;
+
+    return {
+
+        title:"حل نظام المعادلتين",
+
+        problem:
+            `${a1}x + ${b1}y = ${c1}<br>
+             ${a2}x + ${b2}y = ${c2}`,
+
+        steps:[
+
+            {
+                title:"المحدد الرئيسي",
+                math:`D=a_1b_2-a_2b_1`,
+                explanation:"نحسب المحدد لمعرفة هل يوجد حل وحيد."
+            },
+
+            {
+                title:"التعويض",
+                math:`D=(${a1})(${b2})-(${a2})(${b1})=${D}`,
+                explanation:"نعوض بمعاملات المعادلتين."
+            },
+
+            {
+                title:"حساب x",
+                math:`x=\\frac{D_x}{D}=\\frac{${Dx}}{${D}}=${latexNumber(x)}`,
+                explanation:"نستخدم قاعدة كرامر لحساب x."
+            },
+
+            {
+                title:"حساب y",
+                math:`y=\\frac{D_y}{D}=\\frac{${Dy}}{${D}}=${latexNumber(y)}`,
+                explanation:"نستخدم قاعدة كرامر لحساب y."
+            }
+
+        ],
+
+        answer:`x = ${latexNumber(x)}<br>y = ${latexNumber(y)}`
+    };
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+function renderResult(result){
+
+    const container=document.getElementById("resultContent");
+
+    let html=`
+
+        <div class="problem-card">
+
+            <div class="label">المسألة</div>
+
+            ${renderMath(result.problem)}
+
+        </div>
+    `;
+
+    result.steps.forEach((step,index)=>{
+
+        html+=`
+
+            <div class="solution-step">
+
+                <div class="solution-step-header">
+
+                    <span class="solution-step-number">
+                        ${index+1}
+                    </span>
+
+                    ${step.title}
+
+                </div>
+
+                <div class="solution-step-body">
+
+                    ${renderMath(step.math)}
+
+                    <div class="explanation">
+                        💡 ${step.explanation}
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+    });
+
+    html+=`
+
+        <div class="final-answer">
+
+            <h3>🎯 الإجابة النهائية</h3>
+
+            <div class="answer">
+                ${result.answer}
+            </div>
+
+        </div>
+    `;
+
+    container.innerHTML=html;
+
+    document.getElementById("result").classList.add("show");
+
+    activateStep(4);
+
+    setTimeout(()=>{
+
+        document.getElementById("result")
+            .scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+    },100);
+}
+
+
+/* =====================================================
+   QUICK SOLVER
+===================================================== */
+
+function solveQuick(){
+
+    const input=document.getElementById("quickInput").value.trim();
+
+    const error=document.getElementById("quickError");
+
+    error.classList.remove("show");
+
+    if(!input){
+        error.textContent="اكتب المسألة أولاً.";
+        error.classList.add("show");
+        return;
+    }
+
+    /*
+       معادلة خطية:
+       ax+b=c
+    */
+
+    let match=input
+        .replace(/\s/g,"")
+        .match(/^([+-]?\d*\.?\d*)x([+-]\d+\.?\d*)=([+-]?\d+\.?\d*)$/);
+
+    if(match){
+
+        let a=parseFloat(
+            match[1]==="" || match[1]==="+" ? 1 :
+            match[1]==="-" ? -1 : match[1]
+        );
+
+        let b=parseFloat(match[2]);
+        let c=parseFloat(match[3]);
+
+        currentType="linear";
+
+        showQuickResult(
+            solveLinearFromValues(a,b,c)
+        );
+
+        return;
+    }
+
+    /*
+       معادلة تربيعية
+    */
+
+    match=input
+        .replace(/\s/g,"")
+        .match(/^([+-]?\d*\.?\d*)x\^2([+-]\d*\.?\d*)x([+-]\d+\.?\d*)=0$/);
+
+    if(match){
+
+        let a=parseFloat(
+            match[1]==="" || match[1]==="+" ? 1 :
+            match[1]==="-" ? -1 : match[1]
+        );
+
+        let b=parseFloat(match[2]);
+        let c=parseFloat(match[3]);
+
+        showQuickResult(
+            solveQuadraticFromValues(a,b,c)
+        );
+
+        return;
+    }
+
+    /*
+       تعبير حسابي
+    */
+
+    try{
+
+        const normalized=input
+            .replace(/×/g,"*")
+            .replace(/÷/g,"/")
+            .replace(/π/g,"pi");
+
+        const value=math.evaluate(normalized);
+
+        const result={
+            title:"حساب التعبير",
+            problem:input,
+            steps:[
+                {
+                    title:"التعبير",
+                    math:input,
+                    explanation:"هذا هو التعبير الذي أدخلته."
+                },
+                {
+                    title:"الحساب",
+                    math:`=${value}`,
+                    explanation:"تم إجراء العمليات الحسابية مع مراعاة ترتيب العمليات."
+                }
+            ],
+            answer:String(value)
+        };
+
+        showQuickResult(result);
+
+    }catch(e){
+
+        error.textContent=
+            "لم أتعرف على صيغة المسألة. جرّب مثلًا: 2x + 5 = 15 أو 25 + 12 × 3";
+
+        error.classList.add("show");
+    }
+}
+
+
+function solveLinearFromValues(a,b,c){
+
+    const x=(c-b)/a;
+
+    return {
+        title:"حل المعادلة الخطية",
+        problem:`${a}x + ${b} = ${c}`,
+        steps:[
+            {
+                title:"المعادلة",
+                math:`${a}x+${b}=${c}`,
+                explanation:"نبدأ بالمعادلة المدخلة."
+            },
+            {
+                title:"نطرح b",
+                math:`${a}x=${c}-${b}=${c-b}`,
+                explanation:"نطرح العدد الثابت من الطرفين."
+            },
+            {
+                title:"نقسم على a",
+                math:`x=\\frac{${c-b}}{${a}}=${x}`,
+                explanation:"نقسم الطرفين على معامل x."
+            }
+        ],
+        answer:`x = ${x}`
+    };
+}
+
+
+function solveQuadraticFromValues(a,b,c){
+
+    const D=b*b-4*a*c;
+
+    if(D<0){
+
+        return {
+            title:"حل المعادلة التربيعية",
+            problem:`${a}x² + ${b}x + ${c}=0`,
+            steps:[
+                {
+                    title:"المميز",
+                    math:`\\Delta=${D}`,
+                    explanation:"بما أن المميز سالب فلا توجد حلول حقيقية."
+                }
+            ],
+            answer:"لا توجد حلول حقيقية"
+        };
+    }
+
+    const x1=(-b+Math.sqrt(D))/(2*a);
+    const x2=(-b-Math.sqrt(D))/(2*a);
+
+    return {
+        title:"حل المعادلة التربيعية",
+        problem:`${a}x² + ${b}x + ${c}=0`,
+        steps:[
+            {
+                title:"القانون العام",
+                math:"x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}",
+                explanation:"نستخدم القانون العام."
+            },
+            {
+                title:"المميز",
+                math:`\\Delta=${D}`,
+                explanation:"نحسب المميز أولًا."
+            },
+            {
+                title:"الحلان",
+                math:`x_1=${x1},\\quad x_2=${x2}`,
+                explanation:"نعوض في القانون العام."
+            }
+        ],
+        answer:`x₁ = ${x1}<br>x₂ = ${x2}`
+    };
+}
+
+
+function showQuickResult(result){
+
+    const container=document.getElementById("resultContent");
+
+    let html=`
+
+        <div class="problem-card">
+            <div class="label">المسألة</div>
+            ${renderMath(result.problem)}
+        </div>
+    `;
+
+    result.steps.forEach((step,index)=>{
+
+        html+=`
+
+            <div class="solution-step">
+
+                <div class="solution-step-header">
+                    <span class="solution-step-number">
+                        ${index+1}
+                    </span>
+                    ${step.title}
+                </div>
+
+                <div class="solution-step-body">
+                    ${renderMath(step.math)}
+                    <div class="explanation">
+                        💡 ${step.explanation}
+                    </div>
+                </div>
+
+            </div>
+        `;
+    });
+
+    html+=`
+
+        <div class="final-answer">
+
+            <h3>🎯 الإجابة النهائية</h3>
+
+            <div class="answer">
+                ${result.answer}
+            </div>
+
+        </div>
+    `;
+
+    document.getElementById("resultContent").innerHTML=html;
+
+    document.getElementById("result").classList.add("show");
+
+    activateStep(4);
+
+    document.getElementById("result")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+}
+
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
+
+function insertKey(value){
+
+    const input=document.getElementById("quickInput");
+
+    const start=input.selectionStart;
+    const end=input.selectionEnd;
+
+    input.value=
+        input.value.substring(0,start)
+        +value
+        +input.value.substring(end);
+
+    input.focus();
+
+    input.selectionStart=
+    input.selectionEnd=
+        start+value.length;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function activateStep(number){
+
+    for(let i=1;i<=4;i++){
+
+        document.getElementById("step"+i)
+            .classList.toggle("active",i<=number);
+    }
+}
+
+
+function backToCategories(){
+
+    document.getElementById("types").style.display="none";
+    document.getElementById("categories").style.display="block";
+
+    activateStep(1);
+}
+
+
+function backToTypes(){
+
+    document.getElementById("formArea").style.display="none";
+    document.getElementById("types").style.display="block";
+
+    activateStep(2);
+}
+
+
+function clearForm(){
+
+    document
+        .querySelectorAll("#dynamicForm input")
+        .forEach(input=>{
+            input.value="";
+        });
+
+    hideError();
+}
+
+
+function hideError(){
+
+    document.getElementById("error")
+        .classList.remove("show");
+}
+
+
+function showError(message){
+
+    const error=document.getElementById("error");
+
+    error.textContent="⚠️ "+message;
+
+    error.classList.add("show");
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetAll(){
+
+    currentCategory=null;
+    currentType=null;
+
+    document.getElementById("categories").style.display="block";
+    document.getElementById("types").style.display="none";
+    document.getElementById("formArea").style.display="none";
+
+    document.getElementById("result").classList.remove("show");
+
+    document.getElementById("quickInput").value="";
+
+    activateStep(1);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+</script>
+
+</body>
+</html>
