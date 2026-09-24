@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مساعد الرياضيات | أدواتي</title>
-
-<meta name="description" content="مساعد رياضيات عربي مجاني للطلاب لحل المعادلات والمسائل الرياضية خطوة بخطوة.">
+<meta name="description" content="مساعد رياضيات عربي مجاني يشرح حل المعادلات والكسور والنسب والقوى خطوة بخطوة بطريقة تعليمية سهلة للطلاب.">
+<meta name="theme-color" content="#0f766e">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,2644 +14,1555 @@
 
 <style>
 :root{
-    --primary:#0f766e;
-    --primary-dark:#115e59;
-    --primary-light:#ecfeff;
-    --bg:#f8fafc;
-    --card:#ffffff;
-    --text:#0f172a;
-    --muted:#64748b;
-    --line:#e2e8f0;
-
-    --blue:#2563eb;
-    --blue-bg:#eff6ff;
-
-    --green:#15803d;
-    --green-bg:#f0fdf4;
-
-    --yellow:#a16207;
-    --yellow-bg:#fefce8;
-
-    --purple:#7e22ce;
-    --purple-bg:#faf5ff;
-
-    --danger:#dc2626;
-    --danger-bg:#fef2f2;
-
-    --shadow:0 10px 30px rgba(15,23,42,.07);
+  --primary:#0f766e;
+  --primary-dark:#115e59;
+  --primary-light:#ccfbf1;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#172033;
+  --muted:#64748b;
+  --border:#e2e8f0;
+  --success:#15803d;
+  --success-bg:#f0fdf4;
+  --warning:#b45309;
+  --warning-bg:#fffbeb;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
 }
 
 *{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+  box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:"Tajawal",sans-serif;
-    line-height:1.8;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Tajawal",sans-serif;
+  line-height:1.8;
 }
 
-body.dark{
-    --bg:#020617;
-    --card:#0f172a;
-    --text:#f8fafc;
-    --muted:#94a3b8;
-    --line:#1e293b;
-    --primary-light:#134e4a;
-
-    --blue-bg:#172554;
-    --green-bg:#052e16;
-    --yellow-bg:#422006;
-    --purple-bg:#3b0764;
-    --danger-bg:#450a0a;
+.container{
+  width:min(1050px,calc(100% - 28px));
+  margin:auto;
 }
 
-button,
-select,
-input,
-textarea{
-    font-family:inherit;
+/* Header */
+header{
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(10px);
 }
 
-button{
-    cursor:pointer;
+.nav{
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
-.page{
-    width:min(950px,calc(100% - 20px));
-    margin:auto;
-    padding:15px 0 45px;
+.logo{
+  color:var(--primary);
+  text-decoration:none;
+  font-size:23px;
+  font-weight:800;
 }
 
-/* الشريط العلوي */
-
-.topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:16px;
+.back{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    color:var(--text);
-    text-decoration:none;
-    font-weight:800;
+.back:hover{
+  color:var(--primary);
 }
 
-.brand-icon{
-    width:43px;
-    height:43px;
-    border-radius:14px;
-    display:grid;
-    place-items:center;
-    background:var(--primary-light);
-    color:var(--primary);
-    font-size:23px;
-}
-
-.top-actions{
-    display:flex;
-    gap:7px;
-}
-
-.back-btn,
-.theme-btn{
-    border:1px solid var(--line);
-    background:var(--card);
-    color:var(--text);
-    border-radius:12px;
-    padding:9px 12px;
-    font-family:inherit;
-    font-weight:700;
-    cursor:pointer;
-    text-decoration:none;
-}
-
-/* البطل */
-
+/* Hero */
 .hero{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:21px;
-    box-shadow:var(--shadow);
-    padding:25px 18px;
-    text-align:center;
-    margin-bottom:15px;
+  padding:38px 0 25px;
+  text-align:center;
 }
 
-.hero-icon{
-    width:64px;
-    height:64px;
-    margin:0 auto 10px;
-    border-radius:18px;
-    background:var(--primary-light);
-    color:var(--primary);
-    display:grid;
-    place-items:center;
-    font-size:31px;
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  padding:5px 13px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
 }
 
 .hero h1{
-    margin:0 0 5px;
-    font-size:27px;
-    font-weight:800;
+  margin:12px 0 8px;
+  font-size:clamp(28px,6vw,45px);
+  line-height:1.25;
 }
 
 .hero p{
-    margin:0;
-    color:var(--muted);
-    font-size:14px;
+  color:var(--muted);
+  max-width:680px;
+  margin:0 auto;
 }
 
-/* العناوين */
-
-.section-title{
-    text-align:center;
-    margin:20px 0 13px;
-}
-
-.section-title h2{
-    margin:0;
-    font-size:20px;
-}
-
-.section-title p{
-    margin:3px 0 0;
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* بطاقات الأقسام */
-
-.section-cards{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    margin-bottom:18px;
-}
-
-.section-card{
-    border:1px solid var(--line);
-    background:var(--card);
-    color:var(--text);
-    border-radius:21px;
-    box-shadow:var(--shadow);
-    padding:17px;
-    text-align:right;
-    min-height:145px;
-    transition:.2s ease;
-}
-
-.section-card:hover{
-    transform:translateY(-3px);
-    border-color:var(--primary);
-}
-
-.section-card:active{
-    transform:scale(.98);
-}
-
-.section-icon{
-    width:50px;
-    height:50px;
-    border-radius:15px;
-    background:var(--primary-light);
-    color:var(--primary);
-    display:grid;
-    place-items:center;
-    font-size:25px;
-    margin-bottom:9px;
-}
-
-.section-card h3{
-    margin:0;
-    font-size:17px;
-}
-
-.section-card p{
-    margin:3px 0 0;
-    color:var(--muted);
-    font-size:12px;
-}
-
-.section-card .arrow{
-    display:block;
-    color:var(--primary);
-    font-weight:800;
-    margin-top:6px;
-    font-size:12px;
-}
-
-/* مساحة السؤال */
-
+/* Main card */
 .workspace{
-    display:none;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:22px;
+  margin-bottom:30px;
 }
 
-.workspace.show{
-    display:block;
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
 }
 
-.back-section{
-    margin-bottom:10px;
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
 }
 
-.back-section button{
-    border:0;
-    background:transparent;
-    color:var(--primary);
-    font-weight:800;
-    padding:6px 0;
+.field.full{
+  grid-column:1/-1;
 }
 
-.card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:21px;
-    box-shadow:var(--shadow);
-    padding:19px;
-    margin-bottom:15px;
-}
-
-.card-title{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin:0 0 15px;
-    font-size:18px;
-    font-weight:800;
-}
-
-.card-title span{
-    color:var(--primary);
-}
-
-/* عنوان القسم */
-
-.selected-section{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:16px;
-}
-
-.selected-section-icon{
-    width:55px;
-    height:55px;
-    border-radius:16px;
-    background:var(--primary-light);
-    color:var(--primary);
-    display:grid;
-    place-items:center;
-    font-size:27px;
-}
-
-.selected-section h2{
-    margin:0;
-    font-size:21px;
-}
-
-.selected-section p{
-    margin:0;
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* النماذج */
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:13px;
-}
-
-.field label{
-    display:block;
-    margin-bottom:7px;
-    font-weight:700;
-    font-size:14px;
+label{
+  font-weight:700;
 }
 
 select,
 input,
 textarea{
-    width:100%;
-    border:1px solid var(--line);
-    background:var(--card);
-    color:var(--text);
-    border-radius:12px;
-    padding:12px;
-    font-family:inherit;
-    font-size:15px;
-    outline:none;
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:13px 14px;
+  font-family:inherit;
+  font-size:16px;
+  background:#fff;
+  color:var(--text);
+  outline:none;
+  transition:.2s;
+}
+
+textarea{
+  min-height:125px;
+  resize:vertical;
+  line-height:2;
 }
 
 select:focus,
 input:focus,
 textarea:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(15,118,110,.08);
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(15,118,110,.10);
 }
 
-textarea{
-    min-height:125px;
-    resize:vertical;
-    direction:ltr;
-    text-align:left;
-    font-size:20px;
-    line-height:1.9;
+/* Keyboard */
+.keyboard-title{
+  margin:18px 0 8px;
+  font-weight:800;
 }
-
-.hint{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:7px;
-}
-
-/* أنواع المسائل */
-
-.topic-title{
-    font-weight:800;
-    margin:17px 0 9px;
-}
-
-.topics{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
-
-.topic{
-    border:1px solid var(--line);
-    background:var(--card);
-    color:var(--text);
-    border-radius:11px;
-    padding:8px 11px;
-    font-family:inherit;
-    font-size:13px;
-    font-weight:700;
-}
-
-.topic:hover,
-.topic.active{
-    background:var(--primary-light);
-    color:var(--primary);
-    border-color:var(--primary);
-}
-
-/* ملاحظة */
-
-.info{
-    padding:11px 13px;
-    border-radius:13px;
-    background:var(--blue-bg);
-    color:#1e40af;
-    border:1px solid #bfdbfe;
-    font-size:13px;
-    margin-bottom:15px;
-}
-
-body.dark .info{
-    color:#bfdbfe;
-}
-
-/* لوحة الرياضيات */
 
 .keyboard{
-    margin-top:15px;
-    padding:13px;
-    background:var(--primary-light);
-    border-radius:16px;
-}
-
-.keyboard-title{
-    color:var(--primary);
-    font-weight:800;
-    margin-bottom:9px;
-}
-
-.keys{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:7px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
 }
 
 .key{
-    min-height:43px;
-    border:1px solid var(--line);
-    border-radius:10px;
-    background:var(--card);
-    color:var(--text);
-    font-family:inherit;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
+  border:1px solid var(--border);
+  background:#f8fafc;
+  color:var(--text);
+  border-radius:10px;
+  padding:8px 13px;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:700;
+  font-size:15px;
 }
 
 .key:hover{
-    background:var(--primary);
-    color:#fff;
+  background:var(--primary-light);
+  border-color:#99f6e4;
 }
 
-/* الكسر */
-
-.fraction-box{
-    display:none;
-    margin-top:13px;
-    padding:14px;
-    border:1px dashed var(--primary);
-    border-radius:14px;
-}
-
-.fraction-box.show{
-    display:block;
-}
-
-.fraction-grid{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    gap:9px;
-    align-items:center;
-}
-
-.fraction-line{
-    height:2px;
-    background:var(--primary);
-}
-
-/* التصوير */
-
-.photo-box{
-    margin-top:15px;
-    border:1px dashed var(--primary);
-    background:var(--primary-light);
-    border-radius:15px;
-    padding:14px;
-}
-
-.photo-label{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:48px;
-    border-radius:12px;
-    background:var(--card);
-    color:var(--primary);
-    font-weight:800;
-    border:1px solid var(--line);
-    cursor:pointer;
-}
-
-.photo-label input{
-    display:none;
-}
-
-#imagePreview{
-    display:none;
-    width:100%;
-    max-height:260px;
-    object-fit:contain;
-    margin-top:10px;
-    border-radius:12px;
-    border:1px solid var(--line);
-}
-
-/* الأزرار */
-
+/* Buttons */
 .actions{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:10px;
-    margin-top:15px;
+  display:flex;
+  gap:10px;
+  margin-top:18px;
 }
 
-.solve-btn{
-    min-height:49px;
-    border:0;
-    border-radius:13px;
-    background:var(--primary);
-    color:#fff;
-    font-family:inherit;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
+button{
+  font-family:inherit;
 }
 
-.solve-btn:hover{
-    background:var(--primary-dark);
+.btn{
+  border:0;
+  border-radius:13px;
+  padding:13px 20px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:800;
 }
 
-.reset-btn{
-    min-height:49px;
-    border:1px solid var(--line);
-    border-radius:13px;
-    background:var(--card);
-    color:var(--text);
-    font-family:inherit;
-    font-weight:800;
-    padding:0 16px;
-    cursor:pointer;
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+  flex:1;
 }
 
-/* الأمثلة */
+.btn-primary:hover{
+  background:var(--primary-dark);
+}
 
+.btn-secondary{
+  background:#f1f5f9;
+  color:#334155;
+}
+
+/* Examples */
 .examples{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
+  margin-top:20px;
+}
+
+.examples h3{
+  margin:0 0 8px;
+  font-size:17px;
+}
+
+.example-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
 .example{
-    border:1px solid var(--line);
-    background:var(--card);
-    color:var(--text);
-    border-radius:11px;
-    padding:8px 11px;
-    font-family:inherit;
-    cursor:pointer;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--primary-dark);
+  border-radius:10px;
+  padding:8px 12px;
+  cursor:pointer;
 }
 
-/* النتيجة */
-
+/* Solution */
 .result{
-    display:none;
+  display:none;
+  margin-top:24px;
 }
 
-.result.show{
-    display:block;
+.solution-panel{
+  border:2px solid #99f6e4;
+  border-radius:22px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 12px 35px rgba(15,118,110,.09);
 }
 
-.status{
-    padding:12px 14px;
-    border-radius:13px;
-    background:var(--success-bg);
-    color:var(--green);
-    font-weight:800;
-    margin-bottom:14px;
+.solution-head{
+  background:linear-gradient(135deg,#ecfeff,#f0fdfa);
+  padding:18px 20px;
+  border-bottom:1px solid #ccfbf1;
 }
 
-.status.error{
-    background:var(--danger-bg);
-    color:var(--danger);
+.teacher-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:21px;
+  font-weight:800;
+  color:var(--primary-dark);
 }
 
-.step{
-    padding:14px;
-    border:1px solid var(--line);
-    border-radius:14px;
-    margin-bottom:10px;
+.lesson-label{
+  color:var(--muted);
+  margin-top:2px;
+  font-size:14px;
 }
 
-.step.given{
-    background:var(--blue-bg);
-    border-color:#bfdbfe;
+.solution-body{
+  padding:20px;
 }
 
-.step.rule{
-    background:var(--green-bg);
-    border-color:#bbf7d0;
+/* Problem */
+.problem-box{
+  background:#f8fafc;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:14px 16px;
+  margin-bottom:18px;
 }
 
-.step.important{
-    background:var(--yellow-bg);
-    border-color:#fde68a;
-}
-
-.step.current{
-    background:var(--purple-bg);
-    border-color:#e9d5ff;
-}
-
-.step-number{
-    display:inline-grid;
-    place-items:center;
-    width:28px;
-    height:28px;
-    border-radius:50%;
-    background:var(--primary);
-    color:#fff;
-    font-weight:800;
-    margin-left:7px;
-}
-
-.step-title{
-    font-weight:800;
+.box-title{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:5px;
 }
 
 .math{
-    display:block;
-    direction:ltr;
-    text-align:center;
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:20px;
-    margin-top:7px;
-    overflow-wrap:anywhere;
+  direction:ltr;
+  text-align:center;
+  font-family:"Cambria","Times New Roman",serif;
+  font-size:23px;
+  font-weight:700;
+  color:#111827;
+  letter-spacing:.2px;
 }
 
-.answer{
-    padding:17px;
-    border:2px solid var(--primary);
-    border-radius:16px;
-    background:var(--primary-light);
-    text-align:center;
-    font-weight:800;
-    margin-top:15px;
+.step{
+  display:grid;
+  grid-template-columns:40px 1fr;
+  gap:12px;
+  padding:17px 0;
+  border-bottom:1px dashed #cbd5e1;
 }
 
-.verify{
-    padding:14px;
-    border-radius:14px;
-    background:var(--success-bg);
-    color:var(--green);
-    margin-top:10px;
+.step:last-child{
+  border-bottom:0;
 }
 
-.note{
-    color:var(--muted);
-    font-size:13px;
+.step-number{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
 }
 
+.step-title{
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.teacher-note{
+  color:#475569;
+  font-size:15px;
+  margin-top:5px;
+}
+
+.rule{
+  margin-top:16px;
+  padding:15px;
+  border-radius:15px;
+  background:#fffbeb;
+  border:1px solid #fde68a;
+}
+
+.rule-title{
+  color:var(--warning);
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.check{
+  margin-top:16px;
+  padding:15px;
+  border-radius:15px;
+  background:var(--success-bg);
+  border:1px solid #bbf7d0;
+}
+
+.check-title{
+  color:var(--success);
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.final{
+  margin-top:18px;
+  background:var(--primary);
+  color:white;
+  border-radius:18px;
+  padding:18px;
+  text-align:center;
+}
+
+.final-label{
+  font-size:14px;
+  opacity:.9;
+}
+
+.final-answer{
+  direction:ltr;
+  font-family:"Cambria","Times New Roman",serif;
+  font-size:30px;
+  font-weight:800;
+  margin-top:2px;
+}
+
+/* Fraction */
+.frac{
+  display:inline-flex;
+  flex-direction:column;
+  vertical-align:middle;
+  text-align:center;
+  line-height:1.05;
+  margin:0 3px;
+  min-width:28px;
+}
+
+.frac .top{
+  border-bottom:2px solid currentColor;
+  padding:0 5px 2px;
+}
+
+.frac .bottom{
+  padding:2px 5px 0;
+}
+
+/* Unsupported */
+.notice{
+  background:#fefce8;
+  border:1px solid #fde68a;
+  color:#854d0e;
+  padding:15px;
+  border-radius:14px;
+  margin-top:15px;
+}
+
+/* Footer */
 footer{
-    text-align:center;
-    color:var(--muted);
-    font-size:12px;
-    padding:10px;
+  text-align:center;
+  color:var(--muted);
+  padding:25px 10px 40px;
+  font-size:14px;
 }
 
-@media(max-width:650px){
+@media(max-width:700px){
+  .grid{
+    grid-template-columns:1fr;
+  }
 
-    .form-grid{
-        grid-template-columns:1fr;
-    }
+  .field.full{
+    grid-column:auto;
+  }
 
-    .topbar{
-        align-items:flex-start;
-    }
+  .workspace{
+    padding:15px;
+    border-radius:18px;
+  }
 
-    .back-btn{
-        font-size:12px;
-    }
+  .actions{
+    flex-direction:column;
+  }
 
-    .hero h1{
-        font-size:23px;
-    }
+  .step{
+    grid-template-columns:34px 1fr;
+    gap:9px;
+  }
 
-    .card{
-        padding:16px;
-    }
+  .step-number{
+    width:32px;
+    height:32px;
+  }
 
-    .section-cards{
-        grid-template-columns:1fr 1fr;
-    }
+  .math{
+    font-size:20px;
+  }
 
-    .section-card{
-        min-height:138px;
-        padding:14px;
-    }
-
-    .keys{
-        grid-template-columns:repeat(5,1fr);
-    }
-
-    .actions{
-        grid-template-columns:1fr;
-    }
-
-    .fraction-grid{
-        grid-template-columns:1fr;
-    }
+  .final-answer{
+    font-size:26px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="page">
-
-<header class="topbar">
-
-<a class="brand" href="index.html">
-    <span class="brand-icon">🧮</span>
-    <span>أدواتي</span>
-</a>
-
-<div class="top-actions">
-
-<button class="theme-btn" type="button" onclick="toggleTheme()">
-🌙
-</button>
-
-<a class="back-btn" href="index.html">
-← أدواتي
-</a>
-
-</div>
-
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html">أدواتي</a>
+    <a class="back" href="index.html">← العودة للأدوات</a>
+  </div>
 </header>
 
-
-<!-- =========================
-     الصفحة الأولى
-========================= -->
-
-<div id="homePage">
+<main class="container">
 
 <section class="hero">
+  <span class="badge">🎓 أداة تعليمية مجانية</span>
+  <h1>مساعد الرياضيات</h1>
+  <p>
+    اكتب المسألة كما هي في كتابك، وسأرتب لك الحل خطوة بخطوة
+    مع شرح القاعدة والتحقق من النتيجة.
+  </p>
+</section>
 
-<div class="hero-icon">∑</div>
+<section class="workspace">
 
-<h1>مساعد الرياضيات</h1>
+  <div class="grid">
 
-<p>
-اختر قسم الرياضيات الذي تريد المساعدة فيه، ثم اكتب مسألتك للحصول على شرح خطوة بخطوة.
-</p>
+    <div class="field">
+      <label for="level">المستوى الدراسي</label>
+      <select id="level">
+        <option value="primary">ابتدائي</option>
+        <option value="middle">متوسط</option>
+        <option value="secondary">ثانوي</option>
+        <option value="university">جامعي</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="lesson">الدرس</label>
+      <select id="lesson">
+        <option value="auto">تحديد تلقائي</option>
+        <option value="linear">المعادلات الخطية</option>
+        <option value="quadratic">المعادلات التربيعية</option>
+        <option value="fraction">الكسور</option>
+        <option value="percentage">النسبة المئوية</option>
+        <option value="power">القوى والجذور</option>
+      </select>
+    </div>
+
+    <div class="field full">
+      <label for="problem">اكتب المسألة</label>
+      <textarea id="problem" placeholder="مثال: س² - 5س + 6 = 0"></textarea>
+    </div>
+
+  </div>
+
+  <div class="keyboard-title">لوحة الرموز</div>
+
+  <div class="keyboard">
+    <button class="key" data-value="س">س</button>
+    <button class="key" data-value="²">²</button>
+    <button class="key" data-value="³">³</button>
+    <button class="key" data-value="+">+</button>
+    <button class="key" data-value="-">−</button>
+    <button class="key" data-value="×">×</button>
+    <button class="key" data-value="÷">÷</button>
+    <button class="key" data-value="=">=</button>
+    <button class="key" data-value="(">(</button>
+    <button class="key" data-value=")">)</button>
+    <button class="key" data-value="√">√</button>
+    <button class="key" data-value="%">%</button>
+    <button class="key" data-value="/">/</button>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="solveBtn">🧑‍🏫 اشرح لي الحل</button>
+    <button class="btn btn-secondary" id="clearBtn">مسح</button>
+  </div>
+
+  <div class="examples">
+    <h3>أمثلة جاهزة</h3>
+    <div class="example-list">
+      <button class="example" data-example="2س + 5 = 15">2س + 5 = 15</button>
+      <button class="example" data-example="س² - 5س + 6 = 0">س² - 5س + 6 = 0</button>
+      <button class="example" data-example="3/4 + 1/2">3/4 + 1/2</button>
+      <button class="example" data-example="20% من 150">20% من 150</button>
+      <button class="example" data-example="√25 + 3²">√25 + 3²</button>
+    </div>
+  </div>
+
+  <section class="result" id="result"></section>
 
 </section>
 
-
-<div class="section-title">
-
-<h2>اختر قسم الرياضيات</h2>
-
-<p>
-ابدأ بالقسم الذي تنتمي إليه المسألة
-</p>
-
-</div>
-
-
-<div class="section-cards">
-
-<button class="section-card" onclick="openSection('algebra')">
-
-<div class="section-icon">🧮</div>
-
-<h3>الجبر</h3>
-
-<p>
-المعادلات والتحليل والكسور الجبرية والقوى
-</p>
-
-<span class="arrow">
-استخدم القسم ←
-</span>
-
-</button>
-
-
-<button class="section-card" onclick="openSection('geometry')">
-
-<div class="section-icon">📐</div>
-
-<h3>الهندسة</h3>
-
-<p>
-المحيط والمساحة والحجم والأشكال
-</p>
-
-<span class="arrow">
-استخدم القسم ←
-</span>
-
-</button>
-
-
-<button class="section-card" onclick="openSection('statistics')">
-
-<div class="section-icon">📊</div>
-
-<h3>الإحصاء والاحتمالات</h3>
-
-<p>
-المتوسط والوسيط والمنوال والاحتمالات
-</p>
-
-<span class="arrow">
-استخدم القسم ←
-</span>
-
-</button>
-
-
-<button class="section-card" onclick="openSection('functions')">
-
-<div class="section-icon">📈</div>
-
-<h3>الدوال</h3>
-
-<p>
-التعويض وقيم الدوال والمجال والمدى
-</p>
-
-<span class="arrow">
-استخدم القسم ←
-</span>
-
-</button>
-
-
-<button class="section-card" onclick="openSection('trigonometry')">
-
-<div class="section-icon">📐</div>
-
-<h3>المثلثات</h3>
-
-<p>
-الجيب وجيب التمام والظل والمثلثات
-</p>
-
-<span class="arrow">
-استخدم القسم ←
-</span>
-
-</button>
-
-
-<button class="section-card" onclick="openSection('arithmetic')">
-
-<div class="section-icon">➗</div>
-
-<h3>الحساب والكسور</h3>
-
-<p>
-العمليات والكسور والنسب المئوية
-</p>
-
-<span class="arrow">
-استخدم القسم ←
-</span>
-
-</button>
-
-
-<button class="section-card" onclick="openSection('photo')">
-
-<div class="section-icon">📷</div>
-
-<h3>تصوير المسألة</h3>
-
-<p>
-التقاط أو رفع صورة للمسألة
-</p>
-
-<span class="arrow">
-استخدم القسم ←
-</span>
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- =========================
-     صفحة المسألة
-========================= -->
-
-<div id="workspace" class="workspace">
-
-<div class="back-section">
-
-<button type="button" onclick="backToSections()">
-→ العودة إلى أقسام الرياضيات
-</button>
-
-</div>
-
-
-<section class="card">
-
-<div class="selected-section">
-
-<div class="selected-section-icon" id="sectionIcon">
-🧮
-</div>
-
-<div>
-
-<h2 id="sectionTitle">
-الجبر
-</h2>
-
-<p id="sectionDescription">
-حل المسائل الجبرية خطوة بخطوة.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="info">
-💡 اختر المرحلة الدراسية حتى يكون أسلوب الشرح مناسبًا للطالب.
-</div>
-
-
-<div class="form-grid">
-
-<div class="field">
-
-<label for="level">
-المرحلة الدراسية
-</label>
-
-<select id="level">
-
-<option value="primary">
-ابتدائي
-</option>
-
-<option value="middle">
-متوسط
-</option>
-
-<option value="secondary" selected>
-ثانوي
-</option>
-
-<option value="university">
-جامعي
-</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label for="lesson">
-عنوان الدرس
-<small>(اختياري)</small>
-</label>
-
-<input
-id="lesson"
-type="text"
-placeholder="مثال: حل المعادلات">
-
-</div>
-
-</div>
-
-
-<div class="topic-title">
-نوع المسألة
-</div>
-
-<div id="topics" class="topics">
-</div>
-
-</section>
-
-
-<section class="card">
-
-<h2 class="card-title">
-<span>①</span>
-اكتب المسألة
-</h2>
-
-
-<textarea
-id="problem"
-placeholder="اكتب المسألة كما هي في الكتاب، مثل:
-
-س² - 5س + 6 = 0">
-</textarea>
-
-
-<div class="hint">
-استخدم س أو x للمتغير، ويمكنك استخدام لوحة الرموز الرياضية.
-</div>
-
-
-<div class="keyboard">
-
-<div class="keyboard-title">
-لوحة الرموز الرياضية
-</div>
-
-<div class="keys">
-
-<button class="key" type="button" onclick="insertText('س')">س</button>
-
-<button class="key" type="button" onclick="insertText('x')">x</button>
-
-<button class="key" type="button" onclick="insertText('²')">²</button>
-
-<button class="key" type="button" onclick="insertText('³')">³</button>
-
-<button class="key" type="button" onclick="insertText('+')">+</button>
-
-<button class="key" type="button" onclick="insertText('−')">−</button>
-
-<button class="key" type="button" onclick="insertText('×')">×</button>
-
-<button class="key" type="button" onclick="insertText('÷')">÷</button>
-
-<button class="key" type="button" onclick="insertText('=')">=</button>
-
-<button class="key" type="button" onclick="insertText('(')">(</button>
-
-<button class="key" type="button" onclick="insertText(')')">)</button>
-
-<button class="key" type="button" onclick="insertText('√')">√</button>
-
-<button class="key" type="button" onclick="insertText('π')">π</button>
-
-<button class="key" type="button" onclick="insertText('^')">xʸ</button>
-
-<button class="key" type="button" onclick="toggleFraction()">a/b</button>
-
-<button class="key" type="button" onclick="insertText('sin(')">sin</button>
-
-<button class="key" type="button" onclick="insertText('cos(')">cos</button>
-
-<button class="key" type="button" onclick="insertText('tan(')">tan</button>
-
-<button class="key" type="button" onclick="insertText('.')">.</button>
-
-<button class="key" type="button" onclick="clearProblem()">C</button>
-
-</div>
-
-</div>
-
-
-<div id="fractionBox" class="fraction-box">
-
-<strong>
-إدخال كسر
-</strong>
-
-<div class="fraction-grid">
-
-<div>
-
-<input
-id="numerator"
-placeholder="البسط"
-inputmode="numeric">
-
-<div class="fraction-line"></div>
-
-<input
-id="denominator"
-placeholder="المقام"
-inputmode="numeric">
-
-</div>
-
-<div style="font-weight:800">
-÷
-</div>
-
-<button
-class="solve-btn"
-type="button"
-onclick="insertFraction()">
-
-إدراج
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- تصوير المسألة -->
-
-<div class="photo-box">
-
-<div style="font-weight:800;margin-bottom:8px;">
-📷 هل المسألة موجودة في صورة؟
-</div>
-
-<label class="photo-label">
-
-📷 التقاط أو اختيار صورة
-
-<input
-type="file"
-id="imageInput"
-accept="image/*"
-capture="environment"
-onchange="previewImage(event)">
-
-</label>
-
-<img id="imagePreview" alt="صورة المسألة">
-
-<div class="hint">
-بعد اختيار الصورة، راجع المسألة واكتب نصها في مربع السؤال للحصول على نتيجة أدق.
-</div>
-
-</div>
-
-
-<div class="actions">
-
-<button
-class="solve-btn"
-type="button"
-onclick="solveProblem()">
-
-🟢 حل وشرح المسألة خطوة بخطوة
-
-</button>
-
-<button
-class="reset-btn"
-type="button"
-onclick="resetAll()">
-
-مسح
-
-</button>
-
-</div>
-
-</section>
-
-
-<section class="card">
-
-<h2 class="card-title">
-<span>②</span>
-أمثلة جاهزة
-</h2>
-
-<div class="examples">
-
-<button
-class="example"
-type="button"
-onclick="useExample('س² - 5س + 6 = 0','quadratic')">
-س² − 5س + 6 = 0
-</button>
-
-<button
-class="example"
-type="button"
-onclick="useExample('2س + 5 = 15','linear')">
-2س + 5 = 15
-</button>
-
-<button
-class="example"
-type="button"
-onclick="useExample('3/4 + 1/2','fraction')">
-3/4 + 1/2
-</button>
-
-<button
-class="example"
-type="button"
-onclick="useExample('√25 + 3²','power')">
-√25 + 3²
-</button>
-
-</div>
-
-</section>
-
-
-<section id="result" class="card result">
-
-<h2 class="card-title">
-<span>③</span>
-الحل والشرح
-</h2>
-
-<div id="status" class="status"></div>
-
-<div id="steps"></div>
-
-<div id="answer"></div>
-
-<div id="verification"></div>
-
-</section>
-
-
-<section class="card">
-
-<h2 class="card-title">
-<span>✓</span>
-ملاحظات
-</h2>
-
-<p class="note">
-هذه الأداة تعمل داخل المتصفح. إذا كانت صيغة المسألة غير واضحة أو من نوع غير مدعوم، ستوضح الأداة ذلك بدل إعطاء إجابة تخمينية.
-</p>
-
-</section>
-
-</div>
-
+</main>
 
 <footer>
-أدواتي — أدوات بسيطة لإنجاز أعمالك اليومية
+  أدواتي © جميع الحقوق محفوظة
 </footer>
 
-</div>
-
-
 <script>
-
-let currentSection="algebra";
-
-
-const sectionData={
-
-algebra:{
-    title:"الجبر",
-    icon:"🧮",
-    description:"المعادلات والتحليل والكسور الجبرية والقوى.",
-    topics:[
-        ["linear","المعادلات الخطية"],
-        ["quadratic","المعادلات التربيعية"],
-        ["simple-trinomial","المقدار الثلاثي البسيط"],
-        ["non-simple-trinomial","المقدار الثلاثي غير البسيط"],
-        ["factoring","التحليل إلى عوامل"],
-        ["algebra-fraction","الكسور الجبرية"],
-        ["powers","القوى والجذور"]
-    ]
-},
-
-geometry:{
-    title:"الهندسة",
-    icon:"📐",
-    description:"المحيط والمساحة والحجم والأشكال الهندسية.",
-    topics:[
-        ["rectangle","المستطيل"],
-        ["square","المربع"],
-        ["triangle","المثلث"],
-        ["circle","الدائرة"],
-        ["area","المساحة"],
-        ["perimeter","المحيط"],
-        ["volume","الحجم"]
-    ]
-},
-
-statistics:{
-    title:"الإحصاء والاحتمالات",
-    icon:"📊",
-    description:"المتوسط والوسيط والمنوال والاحتمالات.",
-    topics:[
-        ["mean","المتوسط الحسابي"],
-        ["median","الوسيط"],
-        ["mode","المنوال"],
-        ["probability","الاحتمالات"]
-    ]
-},
-
-functions:{
-    title:"الدوال",
-    icon:"📈",
-    description:"التعويض وقيم الدوال والمجال والمدى.",
-    topics:[
-        ["substitution","التعويض في الدالة"],
-        ["value","إيجاد قيمة الدالة"],
-        ["domain","المجال"],
-        ["range","المدى"]
-    ]
-},
-
-trigonometry:{
-    title:"المثلثات",
-    icon:"📐",
-    description:"الجيب وجيب التمام والظل والمثلثات.",
-    topics:[
-        ["sin","الجيب sin"],
-        ["cos","جيب التمام cos"],
-        ["tan","الظل tan"],
-        ["right-triangle","المثلث القائم"]
-    ]
-},
-
-arithmetic:{
-    title:"الحساب والكسور",
-    icon:"➗",
-    description:"العمليات والكسور والنسب المئوية.",
-    topics:[
-        ["operations","العمليات الحسابية"],
-        ["fractions","الكسور"],
-        ["percentage","النسبة المئوية"],
-        ["ratio","النسبة والتناسب"],
-        ["powers","القوى والجذور"]
-    ]
-},
-
-photo:{
-    title:"تصوير المسألة",
-    icon:"📷",
-    description:"التقاط أو رفع صورة للمسألة.",
-    topics:[
-        ["photo-problem","مسألة من صورة"]
-    ]
-}
-
-};
-
-
-function openSection(section){
-
-    currentSection=section;
-
-    const data=sectionData[section];
-
-    $("homePage").style.display="none";
-
-    $("workspace").classList.add("show");
-
-    $("sectionIcon").textContent=data.icon;
-
-    $("sectionTitle").textContent=data.title;
-
-    $("sectionDescription").textContent=data.description;
-
-    const topics=$("topics");
-
-    topics.innerHTML="";
-
-    data.topics.forEach(function(item,index){
-
-        const button=document.createElement("button");
-
-        button.type="button";
-
-        button.className="topic";
-
-        button.dataset.type=item[0];
-
-        button.textContent=item[1];
-
-        if(index===0){
-
-            button.classList.add("active");
-
-        }
-
-        button.onclick=function(){
-
-            document
-            .querySelectorAll(".topic")
-            .forEach(function(t){
-                t.classList.remove("active");
-            });
-
-            button.classList.add("active");
-
-            $("problem").focus();
-
-        };
-
-        topics.appendChild(button);
-
-    });
-
-    $("result").classList.remove("show");
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function backToSections(){
-
-    $("workspace").classList.remove("show");
-
-    $("homePage").style.display="block";
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function insertText(text){
-
-    const area=$("problem");
-
-    const start=area.selectionStart;
-
-    const end=area.selectionEnd;
-
-    area.value=
-        area.value.substring(0,start)+
-        text+
-        area.value.substring(end);
-
-    area.focus();
-
-    area.selectionStart=
-    area.selectionEnd=
-    start+text.length;
-
-}
-
-
-function clearProblem(){
-
-    $("problem").value="";
-
-    $("result").classList.remove("show");
-
-    $("problem").focus();
-
-}
-
-
-function toggleFraction(){
-
-    $("fractionBox").classList.toggle("show");
-
-}
-
-
-function insertFraction(){
-
-    const numerator=
-        normalize($("numerator").value);
-
-    const denominator=
-        normalize($("denominator").value);
-
-    if(!numerator || !denominator){
-
-        alert("اكتب البسط والمقام أولًا.");
-
-        return;
-    }
-
-    if(Number(denominator)===0){
-
-        alert("المقام لا يمكن أن يساوي صفرًا.");
-
-        return;
-    }
-
-    insertText(
-        numerator+"/"+denominator
-    );
-
-    $("fractionBox").classList.remove("show");
-
-    $("numerator").value="";
-
-    $("denominator").value="";
-
-}
-
-
-function previewImage(event){
-
-    const file=event.target.files[0];
-
-    if(!file) return;
-
-    const preview=$("imagePreview");
-
-    preview.src=URL.createObjectURL(file);
-
-    preview.style.display="block";
-
-    $("problem").focus();
-
-}
-
-
-function useExample(text,lesson){
-
-    $("problem").value=text;
-
-    $("lesson").value="";
-
-    const topic=
-        document.querySelector(
-            '.topic[data-type="'+lesson+'"]'
-        );
-
-    if(topic){
-
-        document
-        .querySelectorAll(".topic")
-        .forEach(function(t){
-            t.classList.remove("active");
-        });
-
-        topic.classList.add("active");
-
-    }
-
-    solveProblem();
-
-}
-
+"use strict";
+
+/* =========================
+   أدوات مساعدة
+========================= */
+
+const problemInput = document.getElementById("problem");
+const lessonInput = document.getElementById("lesson");
+const levelInput = document.getElementById("level");
+const resultBox = document.getElementById("result");
 
 function normalize(text){
-
-    return String(text||"")
-        .trim()
-        .replace(/[٠-٩]/g,function(d){
-            return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
-        })
-        .replace(/٫/g,".")
-        .replace(/،/g,".")
-        .replace(/[−–—]/g,"-")
-        .replace(/×/g,"*")
-        .replace(/÷/g,"/")
-        .replace(/\s+/g,"");
-
+  return text
+    .trim()
+    .replace(/[٠-٩]/g, d => "0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)])
+    .replace(/٫/g, ".")
+    .replace(/،/g, ",")
+    .replace(/−/g, "-")
+    .replace(/×/g, "*")
+    .replace(/÷/g, "/")
+    .replace(/٪/g, "%")
+    .replace(/س/g, "x")
+    .replace(/²/g, "^2")
+    .replace(/³/g, "^3")
+    .replace(/√/g, "sqrt");
 }
 
-
-function $(id){
-
-    return document.getElementById(id);
-
+function pretty(text){
+  return text
+    .replace(/x/g,"س")
+    .replace(/\*/g," × ")
+    .replace(/\//g," ÷ ")
+    .replace(/\^2/g,"²")
+    .replace(/\^3/g,"³")
+    .replace(/sqrt/g,"√");
 }
 
-
-function escapeHTML(text){
-
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
+function gcd(a,b){
+  a=Math.abs(a);
+  b=Math.abs(b);
+  while(b){
+    let t=a%b;
+    a=b;
+    b=t;
+  }
+  return a || 1;
 }
 
+function fraction(n,d){
+  if(d===0) return null;
 
-function showResult(success,message){
+  if(d<0){
+    n=-n;
+    d=-d;
+  }
 
-    $("result").classList.add("show");
+  const g=gcd(n,d);
+  n/=g;
+  d/=g;
 
-    $("status").className=
-        success
-        ?"status"
-        :"status error";
-
-    $("status").textContent=message;
-
-    $("steps").innerHTML="";
-
-    $("answer").innerHTML="";
-
-    $("verification").innerHTML="";
-
+  return {n,d};
 }
 
+function fractionHTML(n,d){
+  const f=fraction(n,d);
 
-function addStep(number,title,text,type="current"){
+  if(!f) return "غير معرّف";
 
-    $("steps").insertAdjacentHTML(
-        "beforeend",
+  if(f.d===1) return String(f.n);
 
-        '<div class="step '+type+'">'+
-
-        '<span class="step-number">'+
-        number+
-        '</span>'+
-
-        '<span class="step-title">'+
-        escapeHTML(title)+
-        '</span>'+
-
-        '<div class="math">'+
-        escapeHTML(text)+
-        '</div>'+
-
-        '</div>'
-    );
-
+  return `
+    <span class="frac">
+      <span class="top">${f.n}</span>
+      <span class="bottom">${f.d}</span>
+    </span>
+  `;
 }
 
+function decimalToFraction(value){
+  const str=String(value);
 
-function setAnswer(text){
+  if(!str.includes(".")){
+    return fraction(Number(str),1);
+  }
 
-    $("answer").innerHTML=
-        '<div class="answer">'+
-        'الإجابة النهائية'+
-        '<br>'+
-        '<span class="math">'+
-        escapeHTML(text)+
-        '</span>'+
-        '</div>';
+  const decimals=str.split(".")[1].length;
+  const denominator=10**decimals;
+  const numerator=Math.round(value*denominator);
 
+  return fraction(numerator,denominator);
 }
 
+function numberHTML(value){
+  if(Number.isInteger(value)){
+    return String(value);
+  }
 
-function setVerify(text){
-
-    $("verification").innerHTML=
-        '<div class="verify">'+
-        '✓ التحقق: '+
-        escapeHTML(text)+
-        '</div>';
-
+  return fractionHTML(
+    decimalToFraction(value).n,
+    decimalToFraction(value).d
+  );
 }
 
+function niceNumber(value){
+  if(Math.abs(value-Math.round(value))<1e-10){
+    return String(Math.round(value));
+  }
 
-function solveProblem(){
-
-    const raw=
-        $("problem").value.trim();
-
-    if(!raw){
-
-        showResult(
-            false,
-            "اكتب المسألة أولًا."
-        );
-
-        return;
-    }
-
-    const selectedTopic=
-        document.querySelector(".topic.active");
-
-    const topicType=
-        selectedTopic
-        ?selectedTopic.dataset.type
-        :"";
-
-    const s=normalize(raw);
-
-    try{
-
-        if(
-            topicType==="quadratic" ||
-            (topicType==="" && looksQuadratic(s))
-        ){
-
-            solveQuadratic(s);
-
-        }
-        else if(
-            topicType==="linear" ||
-            (topicType==="" && looksLinear(s))
-        ){
-
-            solveLinear(s);
-
-        }
-        else if(
-            topicType==="fractions" ||
-            topicType==="arithmetic-fraction" ||
-            (topicType==="" && looksFraction(s))
-        ){
-
-            solveFraction(s);
-
-        }
-        else if(
-            topicType==="powers" ||
-            (topicType==="" && looksPower(s))
-        ){
-
-            solvePower(s);
-
-        }
-        else if(
-            topicType==="percentage" ||
-            (topicType==="" && looksPercentage(s))
-        ){
-
-            solvePercentage(s);
-
-        }
-        else{
-
-            showResult(
-                false,
-                "هذا النوع من المسائل موجود ضمن الأقسام، لكن محلله التفصيلي لم يُضف بعد. اكتب المسألة بوضوح."
-            );
-
-        }
-
-    }catch(error){
-
-        showResult(
-            false,
-            error.message||
-            "تعذر حل المسألة بهذه الصيغة."
-        );
-
-    }
-
+  return String(Number(value.toFixed(8)));
 }
 
-
-function looksQuadratic(s){
-
-    return (
-        /[سx](²|\^2)/i.test(s) &&
-        s.includes("=")
-    );
-
+function escapeHTML(str){
+  return str
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
 }
 
+/* =========================
+   بناء لوحة الأستاذ
+========================= */
 
-function looksLinear(s){
+function startSolution(problem, lessonName){
+  resultBox.style.display="block";
 
-    return (
-        /[سx]/i.test(s) &&
-        s.includes("=") &&
-        !looksQuadratic(s)
-    );
+  resultBox.innerHTML=`
+    <div class="solution-panel">
 
+      <div class="solution-head">
+        <div class="teacher-title">🧑‍🏫 شرح الأستاذ</div>
+        <div class="lesson-label">${lessonName}</div>
+      </div>
+
+      <div class="solution-body">
+
+        <div class="problem-box">
+          <div class="box-title">المسألة</div>
+          <div class="math">${pretty(escapeHTML(problem))}</div>
+        </div>
+
+        <div id="steps"></div>
+
+        <div id="rule"></div>
+
+        <div id="check"></div>
+
+        <div id="final"></div>
+
+      </div>
+    </div>
+  `;
 }
 
+function addStep(number,title,math,explanation){
+  const steps=document.getElementById("steps");
 
-function looksFraction(s){
+  steps.insertAdjacentHTML("beforeend",`
+    <div class="step">
+      <div class="step-number">${number}</div>
 
-    return /^-?\d+\/-?\d+([+\-*\/]-?\d+\/-?\d+)?$/.test(s);
-
+      <div>
+        <div class="step-title">${title}</div>
+        <div class="math">${math}</div>
+        <div class="teacher-note">
+          💡 ${explanation}
+        </div>
+      </div>
+    </div>
+  `);
 }
 
-
-function looksPower(s){
-
-    return (
-        /√|²|³|\^/.test(s) &&
-        !/[سx]/i.test(s)
-    );
-
+function addRule(title,text){
+  document.getElementById("rule").innerHTML=`
+    <div class="rule">
+      <div class="rule-title">📌 ${title}</div>
+      <div>${text}</div>
+    </div>
+  `;
 }
 
-
-function looksPercentage(s){
-
-    return /%|٪/.test(s);
-
+function addCheck(text){
+  document.getElementById("check").innerHTML=`
+    <div class="check">
+      <div class="check-title">🔎 التحقق من الحل</div>
+      <div>${text}</div>
+    </div>
+  `;
 }
 
+function addFinal(answer){
+  document.getElementById("final").innerHTML=`
+    <div class="final">
+      <div class="final-label">✅ النتيجة النهائية</div>
+      <div class="final-answer">${answer}</div>
+    </div>
+  `;
+}
+
+function showNotice(message){
+  resultBox.style.display="block";
+
+  resultBox.innerHTML=`
+    <div class="solution-panel">
+      <div class="solution-head">
+        <div class="teacher-title">🧑‍🏫 شرح الأستاذ</div>
+      </div>
+
+      <div class="solution-body">
+        <div class="notice">
+          ${message}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* =========================
+   المعادلات الخطية
+========================= */
 
 function parseLinearSide(side){
 
-    side=
-        side
-        .replace(/x/gi,"س")
-        .replace(/-/g,"+-")
-        .replace(/^\+/,"");
+  side=side.replace(/\s+/g,"");
 
-    const terms=
-        side.split("+");
+  const terms=side.match(/[+-]?[^+-]+/g) || [];
 
-    let coefficient=0;
+  let x=0;
+  let constant=0;
 
-    let constant=0;
+  for(let term of terms){
 
-    terms.forEach(function(term){
+    if(!term) continue;
 
-        if(!term) return;
+    if(term.includes("x")){
 
-        if(term.includes("س")){
+      let coefficient=term.replace("x","");
 
-            let value=
-                term.replace("س","");
+      if(coefficient==="+" || coefficient===""){
+        coefficient="1";
+      }
 
-            if(value==="") value="1";
+      if(coefficient==="-"){
+        coefficient="-1";
+      }
 
-            if(value==="-") value="-1";
+      x+=Number(coefficient);
 
-            const n=Number(value);
+    }else{
+      constant+=Number(term);
+    }
+  }
 
-            if(!Number.isFinite(n)){
-
-                throw new Error(
-                    "صيغة المعادلة الخطية غير واضحة."
-                );
-
-            }
-
-            coefficient+=n;
-
-        }else{
-
-            const n=Number(term);
-
-            if(!Number.isFinite(n)){
-
-                throw new Error(
-                    "يوجد جزء غير رقمي في المعادلة."
-                );
-
-            }
-
-            constant+=n;
-
-        }
-
-    });
-
-    return[
-        coefficient,
-        constant
-    ];
-
+  return {x,constant};
 }
 
+function solveLinear(raw){
 
-function solveLinear(s){
+  const parts=raw.split("=");
 
-    const parts=s.split("=");
+  if(parts.length!==2){
+    showNotice("اكتب المعادلة بهذا الشكل مثل: <b>2س + 5 = 15</b>");
+    return;
+  }
 
-    if(parts.length!==2){
+  const left=parseLinearSide(parts[0]);
+  const right=parseLinearSide(parts[1]);
 
-        throw new Error(
-            "المعادلة يجب أن تحتوي على علامة = واحدة."
-        );
+  const a=left.x-right.x;
+  const b=left.constant-right.constant;
 
-    }
+  if(Math.abs(a)<1e-12){
+    showNotice("هذه ليست معادلة خطية قابلة للحل بالطريقة المعتادة.");
+    return;
+  }
 
-    const left=
-        parseLinearSide(parts[0]);
+  const x=-b/a;
 
-    const right=
-        parseLinearSide(parts[1]);
+  startSolution(raw,"المعادلات الخطية");
 
-    const a=
-        left[0]-right[0];
+  addStep(
+    1,
+    "نجمع الحدود المتشابهة",
+    `${niceNumber(a)}س ${b>=0?"+":"−"} ${Math.abs(niceNumber(b))} = 0`,
+    "نضع حدود س في جهة واحدة، والأعداد الثابتة في الجهة الأخرى."
+  );
 
-    const b=
-        right[1]-left[1];
+  addStep(
+    2,
+    "نعزل س",
+    `س = ${niceNumber(x)}`,
+    `نقسم الطرفين على معامل س (${niceNumber(a)}) حتى يبقى س وحده.`
+  );
 
-    showResult(
-        true,
-        "تم التعرف على المعادلة الخطية."
-    );
+  addRule(
+    "قاعدة المعادلة الخطية",
+    "إذا كان لدينا <b>أ س + ب = 0</b>، فإن <b>س = −ب ÷ أ</b>."
+  );
 
-    addStep(
-        1,
-        "السؤال",
-        s,
-        "given"
-    );
+  const leftCheck=left.x*x+left.constant;
+  const rightCheck=right.x*x+right.constant;
 
-    addStep(
-        2,
-        "القانون",
-        "نجمع حدود س في طرف، والأعداد الثابتة في الطرف الآخر.",
-        "rule"
-    );
+  addCheck(`
+    بعد التعويض بالقيمة س = <b>${niceNumber(x)}</b>:
+    الطرف الأيسر = <b>${niceNumber(leftCheck)}</b>
+    والطرف الأيمن = <b>${niceNumber(rightCheck)}</b>.
+    <br>
+    وبما أن الطرفين متساويان، فالحل صحيح.
+  `);
 
-    addStep(
-        3,
-        "التبسيط",
-        a+"س = "+b,
-        "current"
-    );
-
-    if(a===0){
-
-        if(b===0){
-
-            setAnswer(
-                "عدد لا نهائي من الحلول"
-            );
-
-            setVerify(
-                "المعادلة صحيحة لجميع قيم س."
-            );
-
-        }else{
-
-            setAnswer(
-                "لا يوجد حل"
-            );
-
-            setVerify(
-                "المعادلة تؤدي إلى عبارة مستحيلة."
-            );
-
-        }
-
-        return;
-    }
-
-    const x=b/a;
-
-    addStep(
-        4,
-        "التعويض",
-        "س = "+b+" ÷ "+a,
-        "current"
-    );
-
-    addStep(
-        5,
-        "الحساب",
-        "س = "+formatNumber(x),
-        "current"
-    );
-
-    setAnswer(
-        "س = "+formatNumber(x)
-    );
-
-    setVerify(
-        "بالتعويض عن س في المعادلة الأصلية نحصل على طرفين متساويين."
-    );
-
+  addFinal(`س = ${niceNumber(x)}`);
 }
 
+/* =========================
+   المعادلات التربيعية
+========================= */
 
-function getQuadraticCoefficients(s){
+function parseQuadraticSide(side){
 
-    const parts=s.split("=");
+  side=side
+    .replace(/\s+/g,"")
+    .replace(/\*/g,"");
 
-    if(parts.length!==2){
+  const terms=side.match(/[+-]?[^+-]+/g) || [];
 
-        throw new Error(
-            "اكتب المعادلة مع علامة =."
-        );
+  let a=0,b=0,c=0;
 
+  for(let term of terms){
+
+    if(term.includes("x^2")){
+
+      let value=term.replace("x^2","");
+
+      if(value==="" || value==="+") value="1";
+      if(value==="-") value="-1";
+
+      a+=Number(value);
+
+    }else if(term.includes("x")){
+
+      let value=term.replace("x","");
+
+      if(value==="" || value==="+") value="1";
+      if(value==="-") value="-1";
+
+      b+=Number(value);
+
+    }else{
+
+      c+=Number(term);
     }
+  }
 
-    let expression=
-        parts[0]+
-        "-("+
-        parts[1]+
-        ")";
-
-    expression=
-        expression
-        .replace(/x/gi,"س")
-        .replace(/²/g,"^2")
-        .replace(/\(/g,"")
-        .replace(/\)/g,"")
-        .replace(/--/g,"+");
-
-    const terms=
-        expression.match(/[+-]?[^+-]+/g)||[];
-
-    let a=0;
-    let b=0;
-    let c=0;
-
-    terms.forEach(function(term){
-
-        if(!term) return;
-
-        if(term.endsWith("س^2")){
-
-            let n=
-                term.slice(0,-3);
-
-            if(n===""||n==="+") n="1";
-
-            if(n==="-") n="-1";
-
-            a+=Number(n);
-
-        }
-        else if(term.endsWith("س")){
-
-            let n=
-                term.slice(0,-1);
-
-            if(n===""||n==="+") n="1";
-
-            if(n==="-") n="-1";
-
-            b+=Number(n);
-
-        }
-        else{
-
-            const n=Number(term);
-
-            if(!Number.isFinite(n)){
-
-                throw new Error(
-                    "لا أستطيع قراءة معاملات المعادلة التربيعية."
-                );
-
-            }
-
-            c+=n;
-
-        }
-
-    });
-
-    if(a===0){
-
-        throw new Error(
-            "المعادلة ليست تربيعية بصيغة مدعومة."
-        );
-
-    }
-
-    return[a,b,c];
-
+  return {a,b,c};
 }
 
-
-function solveQuadratic(s){
-
-    const[a,b,c]=
-        getQuadraticCoefficients(s);
-
-    const delta=
-        b*b-4*a*c;
-
-    showResult(
-        true,
-        "تم التعرف على المعادلة التربيعية."
-    );
-
-    addStep(
-        1,
-        "السؤال",
-        s,
-        "given"
-    );
-
-    addStep(
-        2,
-        "القانون",
-        "س = (−ب ± √Δ) ÷ 2أ",
-        "rule"
-    );
-
-    addStep(
-        3,
-        "المعاملات",
-        "أ = "+a+" ، ب = "+b+" ، ج = "+c,
-        "important"
-    );
-
-    addStep(
-        4,
-        "حساب المميز",
-        "Δ = ب² − 4أج = "+delta,
-        "current"
-    );
-
-    if(delta<0){
-
-        setAnswer(
-            "لا توجد حلول حقيقية"
-        );
-
-        setVerify(
-            "لأن المميز سالب."
-        );
-
-        return;
-
-    }
-
-    if(delta===0){
-
-        const x=
-            -b/(2*a);
-
-        addStep(
-            5,
-            "الحل",
-            "س = "+formatNumber(x),
-            "current"
-        );
-
-        setAnswer(
-            "س = "+formatNumber(x)
-        );
-
-        setVerify(
-            "بالتعويض في المعادلة تكون النتيجة صفرًا."
-        );
-
-        return;
-
-    }
-
-    const root=Math.sqrt(delta);
-
-    const x1=
-        (-b+root)/(2*a);
-
-    const x2=
-        (-b-root)/(2*a);
-
-    addStep(
-        5,
-        "الحل الأول",
-        "س₁ = "+formatNumber(x1),
-        "current"
-    );
-
-    addStep(
-        6,
-        "الحل الثاني",
-        "س₂ = "+formatNumber(x2),
-        "current"
-    );
-
-    setAnswer(
-        "س₁ = "+
-        formatNumber(x1)+
-        " ، س₂ = "+
-        formatNumber(x2)
-    );
-
-    setVerify(
-        "يمكن التحقق من الحلين بالتعويض بهما في المعادلة الأصلية."
-    );
-
+function perfectSquare(n){
+  const r=Math.sqrt(n);
+  return Math.abs(r-Math.round(r))<1e-10;
 }
 
+function solveQuadratic(raw){
 
-function parseFraction(value){
+  const parts=raw.split("=");
 
-    const parts=value.split("/");
+  if(parts.length!==2){
+    showNotice("اكتب المعادلة التربيعية مثل: <b>س² - 5س + 6 = 0</b>");
+    return;
+  }
 
-    if(parts.length!==2){
+  const L=parseQuadraticSide(parts[0]);
+  const R=parseQuadraticSide(parts[1]);
 
-        throw new Error(
-            "صيغة الكسر غير صحيحة."
-        );
+  const a=L.a-R.a;
+  const b=L.b-R.b;
+  const c=L.c-R.c;
 
-    }
+  if(Math.abs(a)<1e-12){
+    solveLinear(raw);
+    return;
+  }
 
-    const n=Number(parts[0]);
+  const delta=b*b-4*a*c;
 
-    const d=Number(parts[1]);
+  startSolution(raw,"المعادلات التربيعية");
 
-    if(!Number.isFinite(n)||!Number.isFinite(d)){
+  addStep(
+    1,
+    "نرتب المعادلة",
+    `${niceNumber(a)}س² ${b>=0?"+":"−"} ${Math.abs(niceNumber(b))}س ${c>=0?"+":"−"} ${Math.abs(niceNumber(c))} = 0`,
+    "نحوّل المعادلة إلى الصورة القياسية: أ س² + ب س + ج = 0."
+  );
 
-        throw new Error(
-            "الكسر يحتوي على قيمة غير صحيحة."
-        );
+  addStep(
+    2,
+    "نحسب المميز Δ",
+    `Δ = ب² − 4 × أ × ج = ${niceNumber(delta)}`,
+    "المميز يساعدنا على معرفة عدد الحلول الحقيقية للمعادلة."
+  );
 
-    }
+  if(delta<0){
 
-    if(d===0){
+    addStep(
+      3,
+      "نفسر المميز",
+      "Δ < 0",
+      "عندما يكون المميز سالبًا، لا توجد حلول حقيقية."
+    );
 
-        throw new Error(
-            "المقام لا يمكن أن يساوي صفرًا."
-        );
+    addRule(
+      "قاعدة المميز",
+      "إذا كان Δ < 0 فلا توجد جذور حقيقية، وإذا كان Δ = 0 يوجد حل حقيقي واحد، وإذا كان Δ > 0 يوجد حلان حقيقيان."
+    );
 
-    }
+    addFinal("لا توجد حلول حقيقية");
 
-    return simplifyFraction(n,d);
+    return;
+  }
 
+  if(delta===0){
+
+    const x=-b/(2*a);
+
+    addStep(
+      3,
+      "نطبق القانون",
+      `س = −ب ÷ (2أ) = ${niceNumber(x)}`,
+      "بما أن المميز يساوي صفرًا، فإن الجذرين متساويان."
+    );
+
+    addRule(
+      "القانون العام",
+      "س = (−ب ± √Δ) ÷ (2أ)"
+    );
+
+    addCheck(`
+      عند التعويض بـ س = <b>${niceNumber(x)}</b>
+      تصبح المعادلة مساوية للصفر.
+    `);
+
+    addFinal(`س = ${niceNumber(x)}`);
+
+    return;
+  }
+
+  const sqrtDelta=Math.sqrt(delta);
+
+  let x1=(-b+sqrtDelta)/(2*a);
+  let x2=(-b-sqrtDelta)/(2*a);
+
+  addStep(
+    3,
+    "نطبق القانون العام",
+    `س = (−ب ± √Δ) ÷ (2أ)`,
+    "نستخدم القانون العام للمعادلة التربيعية للحصول على الجذرين."
+  );
+
+  if(perfectSquare(delta)){
+
+    addStep(
+      4,
+      "نبسط الجذر",
+      `√${niceNumber(delta)} = ${niceNumber(sqrtDelta)}`,
+      "لأن المميز مربع كامل، نستطيع تبسيط الجذر."
+    );
+
+  }else{
+
+    addStep(
+      4,
+      "نحسب الجذرين",
+      `س₁ ≈ ${niceNumber(x1)} ، س₂ ≈ ${niceNumber(x2)}`,
+      "المميز ليس مربعًا كاملًا، لذلك نعرض القيم التقريبية للجذرين."
+    );
+  }
+
+  addRule(
+    "اختصار مهم",
+    "القانون العام هو الطريقة العامة لحل أي معادلة تربيعية عندما تكون على الصورة أ س² + ب س + ج = 0."
+  );
+
+  const check1=a*x1*x1+b*x1+c;
+  const check2=a*x2*x2+b*x2+c;
+
+  addCheck(`
+    عند التعويض بالجذر الأول تكون قيمة الطرف الأيسر ≈
+    <b>${niceNumber(check1)}</b>.
+    <br>
+    وعند التعويض بالجذر الثاني تكون ≈
+    <b>${niceNumber(check2)}</b>.
+    <br>
+    والقيمتان قريبتان جدًا من الصفر، إذن الحل صحيح.
+  `);
+
+  addFinal(`
+    س₁ = ${niceNumber(x1)}
+    <br>
+    س₂ = ${niceNumber(x2)}
+  `);
 }
 
+/* =========================
+   الكسور
+========================= */
 
-function gcd(a,b){
+function parseFractionValue(text){
 
-    a=Math.abs(a);
-    b=Math.abs(b);
+  text=text.trim();
 
-    while(b){
+  if(text.includes("/")){
 
-        const temp=a%b;
+    const p=text.split("/");
 
-        a=b;
-        b=temp;
-
+    if(p.length===2){
+      return fraction(Number(p[0]),Number(p[1]));
     }
+  }
 
-    return a||1;
+  const n=Number(text);
 
+  if(!Number.isNaN(n)){
+    return fraction(n,1);
+  }
+
+  return null;
 }
 
+function solveFraction(raw){
 
-function simplifyFraction(n,d){
+  let expression=raw
+    .replace(/\s+/g,"")
+    .replace(/×/g,"*")
+    .replace(/÷/g,"/");
 
-    if(d<0){
+  let match=expression.match(/^(-?\d+(?:\/\d+)?)\+(-?\d+(?:\/\d+)?)$/);
 
-        n=-n;
-        d=-d;
+  let operation="+";
 
-    }
+  if(!match){
+    match=expression.match(/^(-?\d+(?:\/\d+)?)-(-?\d+(?:\/\d+)?)$/);
+    operation="-";
+  }
 
-    const g=gcd(n,d);
+  if(!match){
+    match=expression.match(/^(-?\d+(?:\/\d+)?)\*(-?\d+(?:\/\d+)?)$/);
+    operation="*";
+  }
 
-    return[
-        n/g,
-        d/g
-    ];
+  if(!match){
+    match=expression.match(/^(-?\d+(?:\/\d+)?)\/(-?\d+(?:\/\d+)?)$/);
+    operation="/";
+  }
 
-}
+  if(!match){
+    showNotice("أستطيع حاليًا شرح العمليات الأساسية على الكسور مثل: <b>3/4 + 1/2</b> أو <b>3/4 × 2/3</b>.");
+    return;
+  }
 
+  const f1=parseFractionValue(match[1]);
+  const f2=parseFractionValue(match[2]);
 
-function fractionText(f){
+  if(!f1 || !f2){
+    showNotice("تأكد من كتابة الكسر بهذا الشكل: 3/4");
+    return;
+  }
 
-    if(f[1]===1){
+  let result;
 
-        return String(f[0]);
+  startSolution(raw,"الكسور");
 
-    }
+  if(operation==="+" || operation==="-"){
 
-    return f[0]+"/"+f[1];
+    const common=f1.d*f2.d;
 
-}
+    const n1=f1.n*f2.d;
+    const n2=f2.n*f1.d;
 
+    const finalN=operation==="+" ? n1+n2 : n1-n2;
 
-function solveFraction(s){
+    result=fraction(finalN,common);
 
-    const match=
-        s.match(
-            /^(-?\d+)\/(-?\d+)([+\-*\/])(-?\d+)\/(-?\d+)$/
-        );
-
-    if(!match){
-
-        throw new Error(
-            "اكتب كسرين مثل: 3/4 + 1/2"
-        );
-
-    }
-
-    const a=
-        parseFraction(
-            match[1]+"/"+match[2]
-        );
-
-    const b=
-        parseFraction(
-            match[4]+"/"+match[5]
-        );
-
-    const operation=match[3];
-
-    let result;
-
-    if(operation==="+"){
-
-        result=
-            simplifyFraction(
-                a[0]*b[1]+
-                b[0]*a[1],
-                a[1]*b[1]
-            );
-
-    }
-    else if(operation==="-"){
-
-        result=
-            simplifyFraction(
-                a[0]*b[1]-
-                b[0]*a[1],
-                a[1]*b[1]
-            );
-
-    }
-    else if(operation==="*"){
-
-        result=
-            simplifyFraction(
-                a[0]*b[0],
-                a[1]*b[1]
-            );
-
-    }
-    else{
-
-        if(b[0]===0){
-
-            throw new Error(
-                "لا يمكن القسمة على صفر."
-            );
-
-        }
-
-        result=
-            simplifyFraction(
-                a[0]*b[1],
-                a[1]*b[0]
-            );
-
-    }
-
-    showResult(
-        true,
-        "تم التعرف على عملية الكسور."
+    addStep(
+      1,
+      "نوحّد المقامات",
+      `${fractionHTML(f1.n,f1.d)} ${operation} ${fractionHTML(f2.n,f2.d)}
+       = 
+       ${fractionHTML(n1,common)}
+       ${operation}
+       ${fractionHTML(n2,common)}`,
+      "لا نستطيع جمع أو طرح الكسور مباشرة إلا بعد جعل المقامات متساوية."
     );
 
     addStep(
-        1,
-        "السؤال",
-        s,
-        "given"
+      2,
+      "نجمع أو نطرح البسطين",
+      `${fractionHTML(n1,common)} ${operation} ${fractionHTML(n2,common)}
+       = ${fractionHTML(finalN,common)}`,
+      "بعد توحيد المقامات، نجمع أو نطرح البسطين فقط، ونبقي المقام كما هو."
+    );
+
+  }else if(operation==="*"){
+
+    result=fraction(
+      f1.n*f2.n,
+      f1.d*f2.d
     );
 
     addStep(
-        2,
-        "القانون",
-        "نطبق قاعدة العملية ثم نبسط الناتج.",
-        "rule"
+      1,
+      "نضرب البسطين",
+      `${fractionHTML(f1.n,f1.d)} × ${fractionHTML(f2.n,f2.d)}`,
+      "في ضرب الكسور نضرب البسط في البسط."
     );
 
     addStep(
-        3,
-        "الحساب",
-        fractionText(result),
-        "current"
+      2,
+      "نضرب المقامين ونبسط",
+      `= ${fractionHTML(f1.n*f2.n,f1.d*f2.d)}`,
+      "نضرب المقام في المقام، ثم نختصر الكسر إذا كان ذلك ممكنًا."
     );
 
-    setAnswer(
-        fractionText(result)
+  }else{
+
+    result=fraction(
+      f1.n*f2.d,
+      f1.d*f2.n
     );
 
-    setVerify(
-        "الناتج في أبسط صورة."
+    addStep(
+      1,
+      "نقلب الكسر الثاني",
+      `${fractionHTML(f1.n,f1.d)} ÷ ${fractionHTML(f2.n,f2.d)}
+       =
+       ${fractionHTML(f1.n,f1.d)} × ${fractionHTML(f2.d,f2.n)}`,
+      "قسمة كسر على كسر تعني ضرب الكسر الأول في مقلوب الكسر الثاني."
     );
 
+    addStep(
+      2,
+      "نضرب ونبسط",
+      `= ${fractionHTML(f1.n*f2.d,f1.d*f2.n)}`,
+      "نضرب البسطين والمقامين ثم نبسط الناتج."
+    );
+  }
+
+  addRule(
+    "اختصارات مهمة في الكسور",
+    "الجمع والطرح يحتاجان مقامًا مشتركًا. أما الضرب فنضرب البسطين والمقامين، وفي القسمة نقلب الكسر الثاني ثم نضرب."
+  );
+
+  addCheck("تم تبسيط الناتج إلى أبسط صورة ممكنة.");
+
+  addFinal(fractionHTML(result.n,result.d));
 }
 
+/* =========================
+   النسبة المئوية
+========================= */
 
-function solvePower(s){
+function solvePercentage(raw){
 
-    let expression=
-        s
-        .replace(/\s/g,"")
-        .replace(/²/g,"^2")
-        .replace(/³/g,"^3");
+  const normalized=raw
+    .replace(/\s+/g," ")
+    .replace(/٪/g,"%");
 
-    const sqrtMatch=
-        expression.match(/^√(\d+)$/);
+  const match=normalized.match(/(\d+(?:\.\d+)?)\s*%\s*(?:من\s*)?(\d+(?:\.\d+)?)/);
 
-    let value;
+  if(!match){
+    showNotice("اكتب النسبة بهذا الشكل مثل: <b>20% من 150</b>");
+    return;
+  }
 
-    if(sqrtMatch){
+  const percent=Number(match[1]);
+  const number=Number(match[2]);
+  const result=percent/100*number;
 
-        value=
-            Math.sqrt(
-                Number(sqrtMatch[1])
-            );
+  startSolution(raw,"النسبة المئوية");
 
-    }
-    else{
+  addStep(
+    1,
+    "نحوّل النسبة إلى كسر",
+    `${percent}% = ${percent} ÷ 100`,
+    "علامة % تعني أن العدد مقسوم على 100."
+  );
 
-        const powerMatch=
-            expression.match(
-                /^(\d+(?:\.\d+)?)\^(\d+(?:\.\d+)?)$/
-            );
+  addStep(
+    2,
+    "نضرب في العدد",
+    `(${percent} ÷ 100) × ${number}`,
+    "لإيجاد نسبة من عدد، نضرب النسبة العشرية في العدد."
+  );
 
-        if(powerMatch){
+  addStep(
+    3,
+    "نحسب الناتج",
+    `= ${niceNumber(result)}`,
+    "بعد إجراء العملية الحسابية نحصل على قيمة النسبة المطلوبة."
+  );
 
-            value=
-                Math.pow(
-                    Number(powerMatch[1]),
-                    Number(powerMatch[2])
-                );
+  addRule(
+    "قاعدة النسبة المئوية",
+    "النسبة من عدد = (النسبة ÷ 100) × العدد."
+  );
 
-        }
-        else{
+  addCheck(`
+    ${percent}% من ${number} = <b>${niceNumber(result)}</b>.
+  `);
 
-            const plusMatch=
-                expression.match(
-                    /^(\d+(?:\.\d+)?)\^(\d+(?:\.\d+)?)\+(\d+(?:\.\d+)?)\^(\d+(?:\.\d+)?)$/
-                );
-
-            if(!plusMatch){
-
-                throw new Error(
-                    "استخدم صيغة بسيطة مثل √25 أو 3²."
-                );
-
-            }
-
-            value=
-                Math.pow(
-                    Number(plusMatch[1]),
-                    Number(plusMatch[2])
-                )+
-                Math.pow(
-                    Number(plusMatch[3]),
-                    Number(plusMatch[4])
-                );
-
-        }
-
-    }
-
-    if(!Number.isFinite(value)){
-
-        throw new Error(
-            "النتيجة غير معرفة."
-        );
-
-    }
-
-    showResult(
-        true,
-        "تم حساب التعبير الرياضي."
-    );
-
-    addStep(
-        1,
-        "السؤال",
-        s,
-        "given"
-    );
-
-    addStep(
-        2,
-        "القانون",
-        "نحسب القوة أو الجذر حسب التعبير.",
-        "rule"
-    );
-
-    addStep(
-        3,
-        "الحساب",
-        "الناتج = "+formatNumber(value),
-        "current"
-    );
-
-    setAnswer(
-        formatNumber(value)
-    );
-
-    setVerify(
-        "تم حساب التعبير الرياضي."
-    );
-
+  addFinal(niceNumber(result));
 }
 
+/* =========================
+   القوى والجذور
+========================= */
 
-function solvePercentage(s){
+function solvePower(raw){
 
-    const clean=
-        s
-        .replace(/٪/g,"%")
-        .replace(/من/g,"")
-        .replace(/\s/g,"");
+  let expression=normalize(raw).replace(/\s+/g,"");
 
-    const match=
-        clean.match(
-            /^(-?\d+(?:\.\d+)?)%(-?\d+(?:\.\d+)?)$/
-        );
+  const rootMatch=expression.match(/^sqrt(\d+(?:\.\d+)?)$/);
 
-    if(!match){
+  if(rootMatch){
 
-        throw new Error(
-            "اكتب النسبة مثل: 20% من 150"
-        );
+    const n=Number(rootMatch[1]);
+    const result=Math.sqrt(n);
 
-    }
+    startSolution(raw,"الجذور");
 
-    const percentage=
-        Number(match[1]);
-
-    const number=
-        Number(match[2]);
-
-    const result=
-        percentage*number/100;
-
-    showResult(
-        true,
-        "تم التعرف على مسألة النسبة المئوية."
+    addStep(
+      1,
+      "نحدد العدد تحت الجذر",
+      `√${n}`,
+      "نبحث عن العدد الذي إذا ضربناه في نفسه يعطينا العدد الموجود تحت الجذر."
     );
 
     addStep(
-        1,
-        "السؤال",
-        s,
-        "given"
+      2,
+      "نحسب الجذر",
+      `√${n} = ${niceNumber(result)}`,
+      "القيمة الناتجة هي العدد الذي مربعه يساوي العدد الأصلي."
+    );
+
+    addRule(
+      "قاعدة الجذر التربيعي",
+      "√أ هو العدد الذي إذا ضربناه في نفسه يعطينا أ."
+    );
+
+    addCheck(`
+      ${niceNumber(result)} × ${niceNumber(result)}
+      = ${niceNumber(result*result)}
+    `);
+
+    addFinal(`√${n} = ${niceNumber(result)}`);
+
+    return;
+  }
+
+  const powerMatch=expression.match(/^(\d+(?:\.\d+)?)\^(\d+)$/);
+
+  if(powerMatch){
+
+    const base=Number(powerMatch[1]);
+    const exponent=Number(powerMatch[2]);
+    const result=Math.pow(base,exponent);
+
+    startSolution(raw,"القوى");
+
+    addStep(
+      1,
+      "نفسر الأس",
+      `${base}<sup>${exponent}</sup>`,
+      `الأس ${exponent} يعني تكرار ضرب العدد ${base} في نفسه ${exponent} مرات.`
     );
 
     addStep(
-        2,
-        "القانون",
-        "الجزء = النسبة × العدد ÷ 100",
-        "rule"
+      2,
+      "نكتب الضرب",
+      Array(exponent).fill(base).join(" × "),
+      "نحوّل القوة إلى عملية ضرب متكررة."
     );
 
     addStep(
-        3,
-        "التعويض",
-        percentage+
-        " × "+
-        number+
-        " ÷ 100",
-        "current"
+      3,
+      "نحسب الناتج",
+      `= ${niceNumber(result)}`,
+      "بعد إجراء عمليات الضرب نحصل على الناتج النهائي."
     );
 
-    setAnswer(
-        formatNumber(result)
+    addRule(
+      "قاعدة القوى",
+      "أⁿ تعني ضرب أ في نفسه ن مرات."
     );
 
-    setVerify(
-        percentage+
-        "% من "+
-        number+
-        " = "+
-        formatNumber(result)
-    );
+    addCheck(`
+      ${niceNumber(result)} هو ناتج ${base}<sup>${exponent}</sup>.
+    `);
 
+    addFinal(`${base}<sup>${exponent}</sup> = ${niceNumber(result)}`);
+
+    return;
+  }
+
+  showNotice("أستطيع حاليًا شرح أمثلة مثل <b>3²</b> و <b>2³</b> و <b>√25</b>.");
 }
 
+/* =========================
+   تحديد نوع المسألة
+========================= */
 
-function formatNumber(number){
+function detectLesson(raw){
 
-    if(
-        Math.abs(
-            number-Math.round(number)
-        )<0.000000001
-    ){
+  const selected=lessonInput.value;
 
-        return String(
-            Math.round(number)
-        );
+  if(selected!=="auto"){
+    return selected;
+  }
 
+  const n=normalize(raw);
+
+  if(n.includes("%")){
+    return "percentage";
+  }
+
+  if(n.includes("/")){
+    return "fraction";
+  }
+
+  if(n.includes("^2") || n.includes("x^2")){
+    return "quadratic";
+  }
+
+  if(n.includes("sqrt")){
+    return "power";
+  }
+
+  if(n.includes("x") && n.includes("=")){
+    return "linear";
+  }
+
+  if(/[س]/.test(raw) && raw.includes("=")){
+    return "linear";
+  }
+
+  if(/\d+\^\d+/.test(n)){
+    return "power";
+  }
+
+  return "unknown";
+}
+
+/* =========================
+   تشغيل الحل
+========================= */
+
+function solve(){
+
+  const raw=problemInput.value.trim();
+
+  if(!raw){
+    showNotice("اكتب المسألة أولًا، ثم اضغط «اشرح لي الحل».");
+    return;
+  }
+
+  const type=detectLesson(raw);
+
+  switch(type){
+
+    case "linear":
+      solveLinear(normalize(raw));
+      break;
+
+    case "quadratic":
+      solveQuadratic(normalize(raw));
+      break;
+
+    case "fraction":
+      solveFraction(raw);
+      break;
+
+    case "percentage":
+      solvePercentage(raw);
+      break;
+
+    case "power":
+      solvePower(raw);
+      break;
+
+    default:
+      showNotice(`
+        لم أتعرف على نوع المسألة بشكل مؤكد.
+        <br><br>
+        حتى لا أعطيك إجابة غير صحيحة، اكتب المسألة بصيغة أوضح، مثل:
+        <br>
+        <b>2س + 5 = 15</b>
+        <br>
+        أو
+        <b>س² - 5س + 6 = 0</b>
+        <br>
+        أو
+        <b>3/4 + 1/2</b>.
+      `);
+  }
+
+  resultBox.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+/* =========================
+   الأحداث
+========================= */
+
+document.getElementById("solveBtn")
+  .addEventListener("click",solve);
+
+document.getElementById("clearBtn")
+  .addEventListener("click",()=>{
+
+    problemInput.value="";
+    resultBox.style.display="none";
+    resultBox.innerHTML="";
+    problemInput.focus();
+
+  });
+
+document.querySelectorAll(".key").forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    const value=button.dataset.value;
+    const start=problemInput.selectionStart;
+    const end=problemInput.selectionEnd;
+
+    problemInput.value=
+      problemInput.value.slice(0,start)
+      +value
+      +problemInput.value.slice(end);
+
+    problemInput.focus();
+
+    const position=start+value.length;
+
+    problemInput.setSelectionRange(position,position);
+  });
+
+});
+
+document.querySelectorAll(".example").forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    problemInput.value=button.dataset.example;
+
+    const example=button.dataset.example;
+
+    if(example.includes("س²")){
+      lessonInput.value="quadratic";
+    }else if(example.includes("/")){
+      lessonInput.value="fraction";
+    }else if(example.includes("%")){
+      lessonInput.value="percentage";
+    }else if(example.includes("√") || example.includes("²")){
+      lessonInput.value="power";
+    }else{
+      lessonInput.value="linear";
     }
 
-    return String(
-        Number(
-            number.toFixed(10)
-        )
-    );
+    problemInput.focus();
+  });
 
-}
+});
 
+problemInput.addEventListener("keydown",event=>{
 
-function resetAll(){
+  if(event.ctrlKey && event.key==="Enter"){
+    solve();
+  }
 
-    $("problem").value="";
-
-    $("lesson").value="";
-
-    $("result").classList.remove("show");
-
-    $("steps").innerHTML="";
-
-    $("answer").innerHTML="";
-
-    $("verification").innerHTML="";
-
-    $("imageInput").value="";
-
-    $("imagePreview").style.display="none";
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function toggleTheme(){
-
-    document.body.classList.toggle("dark");
-
-    localStorage.setItem(
-        "adwati-theme",
-        document.body.classList.contains("dark")
-        ?"dark"
-        :"light"
-    );
-
-}
-
-
-try{
-
-    if(
-        localStorage.getItem("adwati-theme")
-        ==="dark"
-    ){
-
-        document.body.classList.add("dark");
-
-    }
-
-}catch(e){}
-
-
-/* فتح الجبر افتراضيًا عند تحميل الصفحة لا يتم؛
-   البداية دائمًا بطاقات الأقسام كما طلبنا. */
-
+});
 </script>
 
 </body>
