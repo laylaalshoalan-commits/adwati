@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>تغيير حجم الصور | أدواتي</title>
-  <meta name="description" content="غيّر أبعاد صورك بسهولة وحدد العرض والارتفاع باستخدام أداة تغيير حجم الصور المجانية من أدواتي.">
+
+  <link rel="canonical" href="https://adwati-mu.vercel.app/resize-image.html">
+
+  <meta
+    name="description"
+    content="غيّر أبعاد صورك بسهولة وحدد العرض والارتفاع باستخدام أداة تغيير حجم الصور المجانية من أدواتي."
+  >
 
   <script>
-    if (localStorage.getItem("adwati-theme") === "dark") {
-      document.documentElement.classList.add("dark");
-    }
+    try {
+      if (localStorage.getItem("adwati-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    } catch (e) {}
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +26,7 @@
   <script>
     tailwind.config = {
       darkMode: "class"
-    }
+    };
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +71,7 @@
 
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
 
-      <a href="index.html" class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2">
 
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700 text-white shadow-sm">
           <span class="material-symbols-rounded">build</span>
@@ -86,7 +94,7 @@
         <nav class="hidden items-center gap-5 md:flex">
 
           <a
-            href="index.html"
+            href="/"
             class="text-sm font-bold text-slate-600 transition hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-400"
           >
             الرئيسية
@@ -114,15 +122,15 @@
           aria-label="تغيير الوضع"
           class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-teal-600 dark:hover:text-teal-400"
         >
-
           <span id="themeIcon" class="material-symbols-rounded">
             dark_mode
           </span>
-
         </button>
 
       </div>
+
     </div>
+
   </header>
 
 
@@ -131,7 +139,7 @@
 
     <!-- Back -->
     <a
-      href="index.html"
+      href="/"
       class="mb-5 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-teal-600 dark:hover:text-teal-400"
     >
 
@@ -209,9 +217,14 @@
           <input
             id="imageInput"
             type="file"
-            accept="image/*"
+            accept="image/jpeg,image/png,image/webp,image/gif"
             class="block w-full cursor-pointer rounded-xl border border-slate-200 bg-white text-sm text-slate-600 file:mr-0 file:rounded-r-xl file:border-0 file:bg-teal-700 file:px-5 file:py-3.5 file:font-bold file:text-white hover:file:bg-teal-800 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
           >
+
+          <p
+            id="fileInfo"
+            class="mt-2 text-xs text-slate-400"
+          ></p>
 
         </div>
 
@@ -232,6 +245,7 @@
               id="width"
               type="number"
               min="1"
+              max="10000"
               inputmode="numeric"
               placeholder="مثال: 1200"
               class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-base outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500"
@@ -253,6 +267,7 @@
               id="height"
               type="number"
               min="1"
+              max="10000"
               inputmode="numeric"
               placeholder="مثال: 800"
               class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-base outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500"
@@ -263,11 +278,43 @@
         </div>
 
 
+        <!-- Keep Ratio -->
+        <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+
+          <input
+            id="keepRatio"
+            type="checkbox"
+            checked
+            class="h-5 w-5 accent-teal-700"
+          >
+
+          <span>
+
+            <span class="block text-sm font-extrabold text-slate-800 dark:text-white">
+              الحفاظ على تناسب الصورة
+            </span>
+
+            <span class="block text-xs text-slate-500 dark:text-slate-400">
+              عند تغيير أحد الأبعاد يتم حساب البعد الآخر تلقائيًا
+            </span>
+
+          </span>
+
+        </label>
+
+
+        <!-- Error -->
+        <div
+          id="errorBox"
+          class="hidden rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"
+        ></div>
+
+
         <!-- Resize Button -->
         <button
+          id="resizeButton"
           type="button"
-          onclick="resizeImage()"
-          class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-5 py-4 font-extrabold text-white shadow-lg shadow-teal-700/20 transition hover:-translate-y-0.5 hover:bg-teal-800 active:scale-95"
+          class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-5 py-4 font-extrabold text-white shadow-lg shadow-teal-700/20 transition hover:-translate-y-0.5 hover:bg-teal-800 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
         >
 
           <span class="material-symbols-rounded">
@@ -306,7 +353,7 @@
           <a
             id="downloadLink"
             href="#"
-            download="resized-image.jpg"
+            download="adwati-resized-image.jpg"
             class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-5 py-3.5 font-extrabold text-white transition hover:bg-teal-800 active:scale-95"
           >
 
@@ -361,123 +408,586 @@
 
   <script>
 
-    // Resize Image
-    function resizeImage() {
+    const imageInput =
+      document.getElementById("imageInput");
 
-      const input =
-        document.getElementById("imageInput");
+    const widthInput =
+      document.getElementById("width");
 
-      const width =
-        parseInt(document.getElementById("width").value);
+    const heightInput =
+      document.getElementById("height");
 
-      const height =
-        parseInt(document.getElementById("height").value);
+    const keepRatio =
+      document.getElementById("keepRatio");
+
+    const resizeButton =
+      document.getElementById("resizeButton");
+
+    const resultBox =
+      document.getElementById("resultBox");
+
+    const errorBox =
+      document.getElementById("errorBox");
+
+    const fileInfo =
+      document.getElementById("fileInfo");
+
+    const dimensions =
+      document.getElementById("dimensions");
+
+    const downloadLink =
+      document.getElementById("downloadLink");
+
+    let currentImage = null;
+
+    let currentObjectUrl = null;
 
 
-      if (!input.files || !input.files[0]) {
+    /*
+     * تنسيق حجم الملف
+     */
+    function formatSize(bytes) {
 
-        alert("يرجى اختيار صورة أولاً");
+      if (bytes < 1024) {
+        return bytes + " بايت";
+      }
+
+      if (bytes < 1024 * 1024) {
+        return (bytes / 1024).toFixed(1) + " كيلوبايت";
+      }
+
+      return (bytes / (1024 * 1024)).toFixed(2) + " ميجابايت";
+
+    }
+
+
+    /*
+     * عرض الخطأ
+     */
+    function showError(message) {
+
+      errorBox.textContent = message;
+
+      errorBox.classList.remove("hidden");
+
+      resultBox.classList.add("hidden");
+
+    }
+
+
+    /*
+     * إخفاء الخطأ
+     */
+    function hideError() {
+
+      errorBox.classList.add("hidden");
+
+    }
+
+
+    /*
+     * اختيار الصورة
+     */
+    imageInput.addEventListener("change", function () {
+
+      hideError();
+
+      resultBox.classList.add("hidden");
+
+      currentImage = null;
+
+
+      if (!imageInput.files || !imageInput.files[0]) {
+
+        fileInfo.textContent = "";
 
         return;
       }
+
+
+      const file = imageInput.files[0];
+
+
+      if (!file.type.startsWith("image/")) {
+
+        showError("يرجى اختيار ملف صورة صالح.");
+
+        imageInput.value = "";
+
+        return;
+      }
+
+
+      fileInfo.textContent =
+        file.name + " — " + formatSize(file.size);
+
+
+      const objectUrl =
+        URL.createObjectURL(file);
+
+
+      const image =
+        new Image();
+
+
+      image.onload = function () {
+
+        URL.revokeObjectURL(objectUrl);
+
+        currentImage = image;
+
+
+        /*
+         * تعبئة الأبعاد الأصلية تلقائيًا
+         */
+        widthInput.value =
+          image.naturalWidth;
+
+        heightInput.value =
+          image.naturalHeight;
+
+      };
+
+
+      image.onerror = function () {
+
+        URL.revokeObjectURL(objectUrl);
+
+        showError(
+          "تعذر قراءة الصورة. يرجى تجربة صورة أخرى."
+        );
+
+      };
+
+
+      image.src = objectUrl;
+
+    });
+
+
+    /*
+     * تغيير العرض مع الحفاظ على النسبة
+     */
+    widthInput.addEventListener("input", function () {
+
+      if (
+        !keepRatio.checked ||
+        !currentImage ||
+        !widthInput.value
+      ) {
+        return;
+      }
+
+
+      const newWidth =
+        Number(widthInput.value);
+
+
+      if (newWidth <= 0) {
+        return;
+      }
+
+
+      const ratio =
+        currentImage.naturalHeight /
+        currentImage.naturalWidth;
+
+
+      const newHeight =
+        Math.round(newWidth * ratio);
+
+
+      heightInput.value =
+        newHeight;
+
+    });
+
+
+    /*
+     * تغيير الارتفاع مع الحفاظ على النسبة
+     */
+    heightInput.addEventListener("input", function () {
+
+      if (
+        !keepRatio.checked ||
+        !currentImage ||
+        !heightInput.value
+      ) {
+        return;
+      }
+
+
+      const newHeight =
+        Number(heightInput.value);
+
+
+      if (newHeight <= 0) {
+        return;
+      }
+
+
+      const ratio =
+        currentImage.naturalWidth /
+        currentImage.naturalHeight;
+
+
+      const newWidth =
+        Math.round(newHeight * ratio);
+
+
+      widthInput.value =
+        newWidth;
+
+    });
+
+
+    /*
+     * الضغط على زر تغيير الحجم
+     */
+    resizeButton.addEventListener("click", resizeImage);
+
+
+    async function resizeImage() {
+
+      hideError();
+
+      resultBox.classList.add("hidden");
+
+
+      /*
+       * التحقق من الصورة
+       */
+      if (!imageInput.files || !imageInput.files[0]) {
+
+        showError("يرجى اختيار صورة أولاً.");
+
+        return;
+      }
+
+
+      /*
+       * التحقق من الأبعاد
+       */
+      const width =
+        Number(widthInput.value);
+
+      const height =
+        Number(heightInput.value);
 
 
       if (
-        isNaN(width) ||
-        isNaN(height) ||
-        width <= 0 ||
-        height <= 0
+        !Number.isInteger(width) ||
+        !Number.isInteger(height) ||
+        width < 1 ||
+        height < 1
       ) {
 
-        alert("يرجى إدخال عرض وارتفاع صحيحين");
+        showError(
+          "يرجى إدخال عرض وارتفاع صحيحين."
+        );
 
         return;
       }
 
 
-      const file = input.files[0];
+      /*
+       * حماية من أبعاد ضخمة جدًا
+       */
+      if (width > 10000 || height > 10000) {
 
-      const reader = new FileReader();
+        showError(
+          "الحد الأقصى للأبعاد هو 10000 × 10000 بكسل."
+        );
 
-      const image = new Image();
-
-
-      reader.onload = function(event) {
-
-        image.onload = function() {
-
-          const canvas =
-            document.createElement("canvas");
-
-          canvas.width = width;
-
-          canvas.height = height;
+        return;
+      }
 
 
-          const context =
-            canvas.getContext("2d");
+      const file =
+        imageInput.files[0];
 
 
-          context.drawImage(
-            image,
-            0,
-            0,
-            width,
-            height
+      resizeButton.disabled = true;
+
+      resizeButton.innerHTML =
+        '<span class="material-symbols-rounded">hourglass_top</span> جارٍ تغيير الحجم...';
+
+
+      try {
+
+        let image = currentImage;
+
+
+        /*
+         * إذا لم يتم تحميل الصورة سابقًا
+         */
+        if (!image) {
+
+          const objectUrl =
+            URL.createObjectURL(file);
+
+
+          image =
+            await loadImage(objectUrl);
+
+
+          URL.revokeObjectURL(objectUrl);
+
+        }
+
+
+        /*
+         * إنشاء Canvas
+         */
+        const canvas =
+          document.createElement("canvas");
+
+
+        canvas.width =
+          width;
+
+        canvas.height =
+          height;
+
+
+        const context =
+          canvas.getContext("2d");
+
+
+        if (!context) {
+
+          throw new Error(
+            "تعذر تجهيز الصورة."
+          );
+
+        }
+
+
+        /*
+         * تحسين جودة التصغير
+         */
+        context.imageSmoothingEnabled =
+          true;
+
+        context.imageSmoothingQuality =
+          "high";
+
+
+        /*
+         * خلفية بيضاء عند إنشاء JPG
+         */
+        context.fillStyle =
+          "#ffffff";
+
+        context.fillRect(
+          0,
+          0,
+          width,
+          height
+        );
+
+
+        /*
+         * رسم الصورة بالأبعاد الجديدة
+         */
+        context.drawImage(
+          image,
+          0,
+          0,
+          width,
+          height
+        );
+
+
+        /*
+         * إنشاء الملف
+         */
+        const blob =
+          await canvasToBlob(
+            canvas,
+            0.92
           );
 
 
-          canvas.toBlob(function(blob) {
+        if (!blob || blob.size === 0) {
+
+          throw new Error(
+            "تعذر إنشاء الصورة الجديدة."
+          );
+
+        }
+
+
+        /*
+         * حذف رابط سابق
+         */
+        if (currentObjectUrl) {
+
+          URL.revokeObjectURL(
+            currentObjectUrl
+          );
+
+        }
+
+
+        currentObjectUrl =
+          URL.createObjectURL(blob);
+
+
+        /*
+         * رابط التحميل
+         */
+        downloadLink.href =
+          currentObjectUrl;
+
+        downloadLink.download =
+          "adwati-resized-image.jpg";
+
+
+        /*
+         * معلومات النتيجة
+         */
+        dimensions.textContent =
+          "الأبعاد الجديدة: " +
+          width +
+          " × " +
+          height +
+          " بكسل" +
+          " — الحجم: " +
+          formatSize(blob.size);
+
+
+        /*
+         * إظهار النتيجة
+         */
+        resultBox.classList.remove("hidden");
+
+
+        /*
+         * النزول للنتيجة على الهاتف
+         */
+        setTimeout(function () {
+
+          resultBox.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+          });
+
+        }, 100);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showError(
+          error.message ||
+          "حدث خطأ أثناء تغيير حجم الصورة."
+        );
+
+      } finally {
+
+        resizeButton.disabled = false;
+
+        resizeButton.innerHTML =
+          '<span class="material-symbols-rounded">photo_size_select_large</span> تغيير حجم الصورة';
+
+      }
+
+    }
+
+
+    /*
+     * تحميل الصورة
+     */
+    function loadImage(url) {
+
+      return new Promise(function (resolve, reject) {
+
+        const image =
+          new Image();
+
+
+        image.onload = function () {
+
+          resolve(image);
+
+        };
+
+
+        image.onerror = function () {
+
+          reject(
+            new Error(
+              "تعذر قراءة الصورة."
+            )
+          );
+
+        };
+
+
+        image.src = url;
+
+      });
+
+    }
+
+
+    /*
+     * إنشاء ملف الصورة
+     */
+    function canvasToBlob(
+      canvas,
+      quality
+    ) {
+
+      return new Promise(function (
+        resolve,
+        reject
+      ) {
+
+        if (!canvas.toBlob) {
+
+          reject(
+            new Error(
+              "متصفحك لا يدعم هذه العملية."
+            )
+          );
+
+          return;
+        }
+
+
+        canvas.toBlob(
+          function (blob) {
 
             if (!blob) {
 
-              alert("تعذر إنشاء الصورة الجديدة");
+              reject(
+                new Error(
+                  "تعذر إنشاء الصورة."
+                )
+              );
 
               return;
             }
 
 
-            const url =
-              URL.createObjectURL(blob);
+            resolve(blob);
 
+          },
+          "image/jpeg",
+          quality
+        );
 
-            const downloadLink =
-              document.getElementById("downloadLink");
-
-            downloadLink.href = url;
-
-            downloadLink.download =
-              "adwati-resized-image.jpg";
-
-
-            document.getElementById("dimensions")
-              .textContent =
-              "الأبعاد الجديدة: " +
-              width +
-              " × " +
-              height +
-              " بكسل";
-
-
-            document.getElementById("resultBox")
-              .classList.remove("hidden");
-
-          }, "image/jpeg", 0.92);
-
-        };
-
-
-        image.src = event.target.result;
-
-      };
-
-
-      reader.readAsDataURL(file);
+      });
 
     }
 
 
-    // Dark Mode
+    /*
+     * الوضع الليلي
+     */
     const themeToggle =
       document.getElementById("themeToggle");
 
@@ -490,8 +1000,11 @@
       const isDark =
         document.documentElement.classList.contains("dark");
 
+
       themeIcon.textContent =
-        isDark ? "light_mode" : "dark_mode";
+        isDark
+          ? "light_mode"
+          : "dark_mode";
 
     }
 
@@ -499,21 +1012,52 @@
     updateThemeIcon();
 
 
-    themeToggle.addEventListener("click", () => {
+    themeToggle.addEventListener(
+      "click",
+      function () {
 
-      document.documentElement.classList.toggle("dark");
+        document.documentElement.classList.toggle("dark");
 
-      const isDark =
-        document.documentElement.classList.contains("dark");
 
-      localStorage.setItem(
-        "adwati-theme",
-        isDark ? "dark" : "light"
-      );
+        const isDark =
+          document.documentElement.classList.contains("dark");
 
-      updateThemeIcon();
 
-    });
+        try {
+
+          localStorage.setItem(
+            "adwati-theme",
+            isDark
+              ? "dark"
+              : "light"
+          );
+
+        } catch (e) {}
+
+
+        updateThemeIcon();
+
+      }
+    );
+
+
+    /*
+     * تنظيف الذاكرة عند مغادرة الصفحة
+     */
+    window.addEventListener(
+      "beforeunload",
+      function () {
+
+        if (currentObjectUrl) {
+
+          URL.revokeObjectURL(
+            currentObjectUrl
+          );
+
+        }
+
+      }
+    );
 
   </script>
 
